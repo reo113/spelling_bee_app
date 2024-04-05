@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "spelling_bee",
+            "database": "${workspaceFolder:spelling_bee_app}/backend/prisma/dev.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
