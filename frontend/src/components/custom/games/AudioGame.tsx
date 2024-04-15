@@ -8,8 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getRandomWordsWithAudio } from "../../backend/apis/dict/wordnik.tsx";
-import { Input } from "./components/ui/input.tsx";
+import { getRandomWordsWithAudio } from "../../../../../backend/apis/dict/wordnik.tsx";
+import { Input } from "../../ui/input.tsx";
 
 const AudioGameScreen = () => {
   const [words, setWords] = useState({});

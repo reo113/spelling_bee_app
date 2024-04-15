@@ -7,10 +7,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getRandomWordsWithDef } from "../../backend/apis/dict/wordnik.tsx";
+
+import { getRandomWordsWithDef } from "../../../../../backend/apis/dict/wordnik.tsx";
+
 const removeHtmlTags = (text: string) => {
   return text.replace(/<[^>]*>/g, "");
 };
+
 const DefGameScreen = () => {
   const [correctWord, setCorrectWord] = useState("");
   const [correctDefinition, setCorrectDefinition] = useState("");
@@ -51,7 +54,7 @@ const DefGameScreen = () => {
   return (
     <Card className="max-w-lg mx-auto my-8 shadow-lg bg-themeWhite">
       <CardHeader className="bg-themeBlack text-white">
-        <CardTitle>What's the Definition?</CardTitle>
+        <CardTitle>What's the Correct word?</CardTitle>
       </CardHeader>
       <CardContent className="p-4 text-themeBlack">
         <div
