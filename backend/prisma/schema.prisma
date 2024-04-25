@@ -30,26 +30,25 @@ model Game {
   updatedAt DateTime   @updatedAt
   user      User       @relation(fields: [userId], references: [id])
   questions Question[]
-  answer    Answer[]
 }
 
 model Question {
   id         String     @id @default(uuid())
   gameId     String
   dictId     String
+  answerId   String
   question   String
   game       Game       @relation(fields: [gameId], references: [id])
-  answer     Answer[]
+  answer     Answer     @relation(fields: [answerId], references: [id])
   dictionary Dictionary @relation(fields: [dictId], references: [id])
 }
 
 model Answer {
-  id         String   @id @default(uuid())
-  gameId     String
-  questionId String
+  id         String     @id @default(uuid())
   answer     String
-  game       Game     @relation(fields: [gameId], references: [id])
-  question   Question @relation(fields: [questionId], references: [id])
+  questionId String
+  gameId     String?
+  Question   Question[]
 }
 
 model Dictionary {
