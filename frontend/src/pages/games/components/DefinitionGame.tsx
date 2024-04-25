@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getRandomWordsWithDef } from "../../../../backend/apis/dict/wordnik.tsx";
+import { getRandomWordsWithDef } from "../../../../../backend/apis/dict/wordnik.tsx";
 const removeHtmlTags = (text: string) => {
   return text.replace(/<[^>]*>/g, "");
 };
