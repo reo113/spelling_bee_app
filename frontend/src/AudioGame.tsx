@@ -54,7 +54,7 @@ const AudioGameScreen = () => {
     audio.play();
   };
   return (
-    <Card className="max-w-lg mx-auto my-8 shadow-lg bg-themeWhite">
+    <Card className="mx-auto my-8 max-w-lg bg-themeWhite shadow-lg">
       <CardHeader className="bg-themeBlack text-white">
         <CardTitle>Spell the Word!</CardTitle>
       </CardHeader>

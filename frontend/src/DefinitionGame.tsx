@@ -49,7 +49,7 @@ const DefGameScreen = () => {
   };
 
   return (
-    <Card className="max-w-lg mx-auto my-8 shadow-lg bg-themeWhite">
+    <Card className="mx-auto my-8 max-w-lg bg-themeWhite shadow-lg">
       <CardHeader className="bg-themeBlack text-white">
         <CardTitle>What's the Definition?</CardTitle>
       </CardHeader>
@@ -72,11 +72,11 @@ const DefGameScreen = () => {
           </div>
         </div>
       </CardContent>
-      <CardFooter className="flex flex-wrap gap-3 p-4 bg-themeWhite">
+      <CardFooter className="flex flex-wrap gap-3 bg-themeWhite p-4">
         {options.map((word, index) => (
           <Button
             key={index}
-            className="m-2 p-1 rounded bg-themeBlack text-white hover:bg-opacity-90"
+            className="m-2 rounded bg-themeBlack p-1 text-white hover:bg-opacity-90"
             onClick={() => handleWordClick(word)}
           >
             {word}

@@ -1,12 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 export const darkMode = ["class"];
 export const content = [
-  './pages/**/*.{ts,tsx}',
-  './components/**/*.{ts,tsx}',
-  './app/**/*.{ts,tsx}',
-  './src/**/*.{ts,tsx}',
+  "./pages/**/*.{ts,tsx}",
+  "./components/**/*.{ts,tsx}",
+  "./app/**/*.{ts,tsx}",
+  "./src/**/*.{ts,tsx}",
 ];
 export const prefix = "";
+export const plugins = ["prettier-plugin-tailwindcss"];
 export const theme = {
   container: {
     center: true,
@@ -22,9 +23,9 @@ export const theme = {
       ring: "hsl(var(--ring))",
       background: "hsl(var(--background))",
       foreground: "hsl(var(--foreground))",
-      themeWhite: '#F2F2F2', // Adjust this to get the desired shade of white
-      themeBlack: '#4D4D4D', // Adjust this to get the desired shade of black
-      themeYellow: '#FBDA03',
+      themeWhite: "#F2F2F2", // Adjust this to get the desired shade of white
+      themeBlack: "#4D4D4D", // Adjust this to get the desired shade of black
+      themeYellow: "#FBDA03",
       primary: {
         DEFAULT: "hsl(var(--primary))",
         foreground: "hsl(var(--primary-foreground))",
@@ -53,7 +54,6 @@ export const theme = {
         DEFAULT: "hsl(var(--card))",
         foreground: "hsl(var(--card-foreground))",
       },
-
     },
     borderRadius: {
       lg: "var(--radius)",

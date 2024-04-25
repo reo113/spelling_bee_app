@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as SelectPrimitive from "@radix-ui/react-select"
-import { Check, ChevronDown, ChevronUp } from "lucide-react"
+import * as React from "react";
+import * as SelectPrimitive from "@radix-ui/react-select";
+import { Check, ChevronDown, ChevronUp } from "lucide-react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-const Select = SelectPrimitive.Root
+const Select = SelectPrimitive.Root;
 
-const SelectGroup = SelectPrimitive.Group
+const SelectGroup = SelectPrimitive.Group;
 
-const SelectValue = SelectPrimitive.Value
+const SelectValue = SelectPrimitive.Value;
 
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
@@ -19,18 +19,18 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "tailwind.config.jsflex tailwind.config.jsh-10 tailwind.config.jsw-full tailwind.config.jsitems-center tailwind.config.jsjustify-between tailwind.config.jsrounded-md tailwind.config.jsborder tailwind.config.jsborder-input tailwind.config.jsbg-background tailwind.config.jspx-3 tailwind.config.jspy-2 tailwind.config.jstext-sm tailwind.config.jsring-offset-background placeholder:tailwind.config.jstext-muted-foreground focus:tailwind.config.jsoutline-none focus:tailwind.config.jsring-2 focus:tailwind.config.jsring-ring focus:tailwind.config.jsring-offset-2 disabled:tailwind.config.jscursor-not-allowed disabled:tailwind.config.jsopacity-50 [&>span]:tailwind.config.jsline-clamp-1",
-      className
+      "tailwind.config.tsflex tailwind.config.tsh-10 tailwind.config.tsw-full tailwind.config.tsitems-center tailwind.config.tsjustify-between tailwind.config.tsrounded-md tailwind.config.tsborder tailwind.config.tsborder-input tailwind.config.tsbg-background tailwind.config.tspx-3 tailwind.config.tspy-2 tailwind.config.tstext-sm tailwind.config.tsring-offset-background placeholder:tailwind.config.tstext-muted-foreground focus:tailwind.config.tsoutline-none focus:tailwind.config.tsring-2 focus:tailwind.config.tsring-ring focus:tailwind.config.tsring-offset-2 disabled:tailwind.config.tscursor-not-allowed disabled:tailwind.config.tsopacity-50 [&>span]:tailwind.config.tsline-clamp-1",
+      className,
     )}
     {...props}
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <ChevronDown className="tailwind.config.jsh-4 tailwind.config.jsw-4 tailwind.config.jsopacity-50" />
+      <ChevronDown className="tailwind.config.tsh-4 tailwind.config.tsw-4 tailwind.config.tsopacity-50" />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
-))
-SelectTrigger.displayName = SelectPrimitive.Trigger.displayName
+));
+SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
 const SelectScrollUpButton = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.ScrollUpButton>,
@@ -39,15 +39,15 @@ const SelectScrollUpButton = React.forwardRef<
   <SelectPrimitive.ScrollUpButton
     ref={ref}
     className={cn(
-      "tailwind.config.jsflex tailwind.config.jscursor-default tailwind.config.jsitems-center tailwind.config.jsjustify-center tailwind.config.jspy-1",
-      className
+      "tailwind.config.tsflex tailwind.config.tscursor-default tailwind.config.tsitems-center tailwind.config.tsjustify-center tailwind.config.tspy-1",
+      className,
     )}
     {...props}
   >
-    <ChevronUp className="tailwind.config.jsh-4 tailwind.config.jsw-4" />
+    <ChevronUp className="tailwind.config.tsh-4 tailwind.config.tsw-4" />
   </SelectPrimitive.ScrollUpButton>
-))
-SelectScrollUpButton.displayName = SelectPrimitive.ScrollUpButton.displayName
+));
+SelectScrollUpButton.displayName = SelectPrimitive.ScrollUpButton.displayName;
 
 const SelectScrollDownButton = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.ScrollDownButton>,
@@ -56,16 +56,16 @@ const SelectScrollDownButton = React.forwardRef<
   <SelectPrimitive.ScrollDownButton
     ref={ref}
     className={cn(
-      "tailwind.config.jsflex tailwind.config.jscursor-default tailwind.config.jsitems-center tailwind.config.jsjustify-center tailwind.config.jspy-1",
-      className
+      "tailwind.config.tsflex tailwind.config.tscursor-default tailwind.config.tsitems-center tailwind.config.tsjustify-center tailwind.config.tspy-1",
+      className,
     )}
     {...props}
   >
-    <ChevronDown className="tailwind.config.jsh-4 tailwind.config.jsw-4" />
+    <ChevronDown className="tailwind.config.tsh-4 tailwind.config.tsw-4" />
   </SelectPrimitive.ScrollDownButton>
-))
+));
 SelectScrollDownButton.displayName =
-  SelectPrimitive.ScrollDownButton.displayName
+  SelectPrimitive.ScrollDownButton.displayName;
 
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
@@ -75,10 +75,10 @@ const SelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        "tailwind.config.jsrelative tailwind.config.jsz-50 tailwind.config.jsmax-h-96 tailwind.config.jsmin-w-[8rem] tailwind.config.jsoverflow-hidden tailwind.config.jsrounded-md tailwind.config.jsborder tailwind.config.jsbg-popover tailwind.config.jstext-popover-foreground tailwind.config.jsshadow-md data-[state=open]:tailwind.config.jsanimate-in data-[state=closed]:tailwind.config.jsanimate-out data-[state=closed]:tailwind.config.jsfade-out-0 data-[state=open]:tailwind.config.jsfade-in-0 data-[state=closed]:tailwind.config.jszoom-out-95 data-[state=open]:tailwind.config.jszoom-in-95 data-[side=bottom]:tailwind.config.jsslide-in-from-top-2 data-[side=left]:tailwind.config.jsslide-in-from-right-2 data-[side=right]:tailwind.config.jsslide-in-from-left-2 data-[side=top]:tailwind.config.jsslide-in-from-bottom-2",
+        "tailwind.config.tsrelative tailwind.config.tsz-50 tailwind.config.tsmax-h-96 tailwind.config.tsmin-w-[8rem] tailwind.config.tsoverflow-hidden tailwind.config.tsrounded-md tailwind.config.tsborder tailwind.config.tsbg-popover tailwind.config.tstext-popover-foreground tailwind.config.tsshadow-md data-[state=open]:tailwind.config.tsanimate-in data-[state=closed]:tailwind.config.tsanimate-out data-[state=closed]:tailwind.config.tsfade-out-0 data-[state=open]:tailwind.config.tsfade-in-0 data-[state=closed]:tailwind.config.tszoom-out-95 data-[state=open]:tailwind.config.tszoom-in-95 data-[side=bottom]:tailwind.config.tsslide-in-from-top-2 data-[side=left]:tailwind.config.tsslide-in-from-right-2 data-[side=right]:tailwind.config.tsslide-in-from-left-2 data-[side=top]:tailwind.config.tsslide-in-from-bottom-2",
         position === "popper" &&
-          "data-[side=bottom]:tailwind.config.jstranslate-y-1 data-[side=left]:tailwind.config.js-translate-x-1 data-[side=right]:tailwind.config.jstranslate-x-1 data-[side=top]:tailwind.config.js-translate-y-1",
-        className
+          "data-[side=bottom]:tailwind.config.tstranslate-y-1 data-[side=left]:tailwind.config.ts-translate-x-1 data-[side=right]:tailwind.config.tstranslate-x-1 data-[side=top]:tailwind.config.ts-translate-y-1",
+        className,
       )}
       position={position}
       {...props}
@@ -86,9 +86,9 @@ const SelectContent = React.forwardRef<
       <SelectScrollUpButton />
       <SelectPrimitive.Viewport
         className={cn(
-          "tailwind.config.jsp-1",
+          "tailwind.config.tsp-1",
           position === "popper" &&
-            "tailwind.config.jsh-[var(--radix-select-trigger-height)] tailwind.config.jsw-full tailwind.config.jsmin-w-[var(--radix-select-trigger-width)]"
+            "tailwind.config.tsh-[var(--radix-select-trigger-height)] tailwind.config.tsw-full tailwind.config.tsmin-w-[var(--radix-select-trigger-width)]",
         )}
       >
         {children}
@@ -96,8 +96,8 @@ const SelectContent = React.forwardRef<
       <SelectScrollDownButton />
     </SelectPrimitive.Content>
   </SelectPrimitive.Portal>
-))
-SelectContent.displayName = SelectPrimitive.Content.displayName
+));
+SelectContent.displayName = SelectPrimitive.Content.displayName;
 
 const SelectLabel = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Label>,
@@ -105,11 +105,14 @@ const SelectLabel = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
-    className={cn("tailwind.config.jspy-1.5 tailwind.config.jspl-8 tailwind.config.jspr-2 tailwind.config.jstext-sm tailwind.config.jsfont-semibold", className)}
+    className={cn(
+      "tailwind.config.tspy-1.5 tailwind.config.tspl-8 tailwind.config.tspr-2 tailwind.config.tstext-sm tailwind.config.tsfont-semibold",
+      className,
+    )}
     {...props}
   />
-))
-SelectLabel.displayName = SelectPrimitive.Label.displayName
+));
+SelectLabel.displayName = SelectPrimitive.Label.displayName;
 
 const SelectItem = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Item>,
@@ -118,21 +121,21 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      "tailwind.config.jsrelative tailwind.config.jsflex tailwind.config.jsw-full tailwind.config.jscursor-default tailwind.config.jsselect-none tailwind.config.jsitems-center tailwind.config.jsrounded-sm tailwind.config.jspy-1.5 tailwind.config.jspl-8 tailwind.config.jspr-2 tailwind.config.jstext-sm tailwind.config.jsoutline-none focus:tailwind.config.jsbg-accent focus:tailwind.config.jstext-accent-foreground data-[disabled]:tailwind.config.jspointer-events-none data-[disabled]:tailwind.config.jsopacity-50",
-      className
+      "tailwind.config.tsrelative tailwind.config.tsflex tailwind.config.tsw-full tailwind.config.tscursor-default tailwind.config.tsselect-none tailwind.config.tsitems-center tailwind.config.tsrounded-sm tailwind.config.tspy-1.5 tailwind.config.tspl-8 tailwind.config.tspr-2 tailwind.config.tstext-sm tailwind.config.tsoutline-none focus:tailwind.config.tsbg-accent focus:tailwind.config.tstext-accent-foreground data-[disabled]:tailwind.config.tspointer-events-none data-[disabled]:tailwind.config.tsopacity-50",
+      className,
     )}
     {...props}
   >
-    <span className="tailwind.config.jsabsolute tailwind.config.jsleft-2 tailwind.config.jsflex tailwind.config.jsh-3.5 tailwind.config.jsw-3.5 tailwind.config.jsitems-center tailwind.config.jsjustify-center">
+    <span className="tailwind.config.tsabsolute tailwind.config.tsleft-2 tailwind.config.tsflex tailwind.config.tsh-3.5 tailwind.config.tsw-3.5 tailwind.config.tsitems-center tailwind.config.tsjustify-center">
       <SelectPrimitive.ItemIndicator>
-        <Check className="tailwind.config.jsh-4 tailwind.config.jsw-4" />
+        <Check className="tailwind.config.tsh-4 tailwind.config.tsw-4" />
       </SelectPrimitive.ItemIndicator>
     </span>
 
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
   </SelectPrimitive.Item>
-))
-SelectItem.displayName = SelectPrimitive.Item.displayName
+));
+SelectItem.displayName = SelectPrimitive.Item.displayName;
 
 const SelectSeparator = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Separator>,
@@ -140,11 +143,14 @@ const SelectSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     ref={ref}
-    className={cn("tailwind.config.js-mx-1 tailwind.config.jsmy-1 tailwind.config.jsh-px tailwind.config.jsbg-muted", className)}
+    className={cn(
+      "tailwind.config.ts-mx-1 tailwind.config.tsmy-1 tailwind.config.tsh-px tailwind.config.tsbg-muted",
+      className,
+    )}
     {...props}
   />
-))
-SelectSeparator.displayName = SelectPrimitive.Separator.displayName
+));
+SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
 
 export {
   Select,
@@ -157,4 +163,4 @@ export {
   SelectSeparator,
   SelectScrollUpButton,
   SelectScrollDownButton,
-}
+};

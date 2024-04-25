@@ -1,56 +1,59 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "tailwind.config.jsinline-flex tailwind.config.jsitems-center tailwind.config.jsjustify-center tailwind.config.jswhitespace-nowrap tailwind.config.jsrounded-md tailwind.config.jstext-sm tailwind.config.jsfont-medium tailwind.config.jsring-offset-background tailwind.config.jstransition-colors focus-visible:tailwind.config.jsoutline-none focus-visible:tailwind.config.jsring-2 focus-visible:tailwind.config.jsring-ring focus-visible:tailwind.config.jsring-offset-2 disabled:tailwind.config.jspointer-events-none disabled:tailwind.config.jsopacity-50",
+  "tailwind.config.tsinline-flex tailwind.config.tsitems-center tailwind.config.tsjustify-center tailwind.config.tswhitespace-nowrap tailwind.config.tsrounded-md tailwind.config.tstext-sm tailwind.config.tsfont-medium tailwind.config.tsring-offset-background tailwind.config.tstransition-colors focus-visible:tailwind.config.tsoutline-none focus-visible:tailwind.config.tsring-2 focus-visible:tailwind.config.tsring-ring focus-visible:tailwind.config.tsring-offset-2 disabled:tailwind.config.tspointer-events-none disabled:tailwind.config.tsopacity-50",
   {
     variants: {
       variant: {
-        default: "tailwind.config.jsbg-primary tailwind.config.jstext-primary-foreground hover:tailwind.config.jsbg-primary/90",
+        default:
+          "tailwind.config.tsbg-primary tailwind.config.tstext-primary-foreground hover:tailwind.config.tsbg-primary/90",
         destructive:
-          "tailwind.config.jsbg-destructive tailwind.config.jstext-destructive-foreground hover:tailwind.config.jsbg-destructive/90",
+          "tailwind.config.tsbg-destructive tailwind.config.tstext-destructive-foreground hover:tailwind.config.tsbg-destructive/90",
         outline:
-          "tailwind.config.jsborder tailwind.config.jsborder-input tailwind.config.jsbg-background hover:tailwind.config.jsbg-accent hover:tailwind.config.jstext-accent-foreground",
+          "tailwind.config.tsborder tailwind.config.tsborder-input tailwind.config.tsbg-background hover:tailwind.config.tsbg-accent hover:tailwind.config.tstext-accent-foreground",
         secondary:
-          "tailwind.config.jsbg-secondary tailwind.config.jstext-secondary-foreground hover:tailwind.config.jsbg-secondary/80",
-        ghost: "hover:tailwind.config.jsbg-accent hover:tailwind.config.jstext-accent-foreground",
-        link: "tailwind.config.jstext-primary tailwind.config.jsunderline-offset-4 hover:tailwind.config.jsunderline",
+          "tailwind.config.tsbg-secondary tailwind.config.tstext-secondary-foreground hover:tailwind.config.tsbg-secondary/80",
+        ghost:
+          "hover:tailwind.config.tsbg-accent hover:tailwind.config.tstext-accent-foreground",
+        link: "tailwind.config.tstext-primary tailwind.config.tsunderline-offset-4 hover:tailwind.config.tsunderline",
       },
       size: {
-        default: "tailwind.config.jsh-10 tailwind.config.jspx-4 tailwind.config.jspy-2",
-        sm: "tailwind.config.jsh-9 tailwind.config.jsrounded-md tailwind.config.jspx-3",
-        lg: "tailwind.config.jsh-11 tailwind.config.jsrounded-md tailwind.config.jspx-8",
-        icon: "tailwind.config.jsh-10 tailwind.config.jsw-10",
+        default:
+          "tailwind.config.tsh-10 tailwind.config.tspx-4 tailwind.config.tspy-2",
+        sm: "tailwind.config.tsh-9 tailwind.config.tsrounded-md tailwind.config.tspx-3",
+        lg: "tailwind.config.tsh-11 tailwind.config.tsrounded-md tailwind.config.tspx-8",
+        icon: "tailwind.config.tsh-10 tailwind.config.tsw-10",
       },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
     },
-  }
-)
+  },
+);
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean
+  asChild?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
+    const Comp = asChild ? Slot : "button";
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
       />
-    )
-  }
-)
-Button.displayName = "Button"
+    );
+  },
+);
+Button.displayName = "Button";
 
-export { Button, buttonVariants }
+export { Button, buttonVariants };

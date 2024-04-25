@@ -1,28 +1,35 @@
-import * as React from "react"
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const Table = React.forwardRef<
   HTMLTableElement,
   React.HTMLAttributes<HTMLTableElement>
 >(({ className, ...props }, ref) => (
-  <div className="tailwind.config.jsrelative tailwind.config.jsw-full tailwind.config.jsoverflow-auto">
+  <div className="tailwind.config.tsrelative tailwind.config.tsw-full tailwind.config.tsoverflow-auto">
     <table
       ref={ref}
-      className={cn("tailwind.config.jsw-full tailwind.config.jscaption-bottom tailwind.config.jstext-sm", className)}
+      className={cn(
+        "tailwind.config.tsw-full tailwind.config.tscaption-bottom tailwind.config.tstext-sm",
+        className,
+      )}
       {...props}
     />
   </div>
-))
-Table.displayName = "Table"
+));
+Table.displayName = "Table";
 
 const TableHeader = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, ref) => (
-  <thead ref={ref} className={cn("[&_tr]:tailwind.config.jsborder-b", className)} {...props} />
-))
-TableHeader.displayName = "TableHeader"
+  <thead
+    ref={ref}
+    className={cn("[&_tr]:tailwind.config.tsborder-b", className)}
+    {...props}
+  />
+));
+TableHeader.displayName = "TableHeader";
 
 const TableBody = React.forwardRef<
   HTMLTableSectionElement,
@@ -30,11 +37,11 @@ const TableBody = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <tbody
     ref={ref}
-    className={cn("[&_tr:last-child]:tailwind.config.jsborder-0", className)}
+    className={cn("[&_tr:last-child]:tailwind.config.tsborder-0", className)}
     {...props}
   />
-))
-TableBody.displayName = "TableBody"
+));
+TableBody.displayName = "TableBody";
 
 const TableFooter = React.forwardRef<
   HTMLTableSectionElement,
@@ -43,13 +50,13 @@ const TableFooter = React.forwardRef<
   <tfoot
     ref={ref}
     className={cn(
-      "tailwind.config.jsborder-t tailwind.config.jsbg-muted/50 tailwind.config.jsfont-medium [&>tr]:last:tailwind.config.jsborder-b-0",
-      className
+      "tailwind.config.tsborder-t tailwind.config.tsbg-muted/50 tailwind.config.tsfont-medium [&>tr]:last:tailwind.config.tsborder-b-0",
+      className,
     )}
     {...props}
   />
-))
-TableFooter.displayName = "TableFooter"
+));
+TableFooter.displayName = "TableFooter";
 
 const TableRow = React.forwardRef<
   HTMLTableRowElement,
@@ -58,13 +65,13 @@ const TableRow = React.forwardRef<
   <tr
     ref={ref}
     className={cn(
-      "tailwind.config.jsborder-b tailwind.config.jstransition-colors hover:tailwind.config.jsbg-muted/50 data-[state=selected]:tailwind.config.jsbg-muted",
-      className
+      "tailwind.config.tsborder-b tailwind.config.tstransition-colors hover:tailwind.config.tsbg-muted/50 data-[state=selected]:tailwind.config.tsbg-muted",
+      className,
     )}
     {...props}
   />
-))
-TableRow.displayName = "TableRow"
+));
+TableRow.displayName = "TableRow";
 
 const TableHead = React.forwardRef<
   HTMLTableCellElement,
@@ -73,13 +80,13 @@ const TableHead = React.forwardRef<
   <th
     ref={ref}
     className={cn(
-      "tailwind.config.jsh-12 tailwind.config.jspx-4 tailwind.config.jstext-left tailwind.config.jsalign-middle tailwind.config.jsfont-medium tailwind.config.jstext-muted-foreground [&:has([role=checkbox])]:tailwind.config.jspr-0",
-      className
+      "tailwind.config.tsh-12 tailwind.config.tspx-4 tailwind.config.tstext-left tailwind.config.tsalign-middle tailwind.config.tsfont-medium tailwind.config.tstext-muted-foreground [&:has([role=checkbox])]:tailwind.config.tspr-0",
+      className,
     )}
     {...props}
   />
-))
-TableHead.displayName = "TableHead"
+));
+TableHead.displayName = "TableHead";
 
 const TableCell = React.forwardRef<
   HTMLTableCellElement,
@@ -87,11 +94,14 @@ const TableCell = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <td
     ref={ref}
-    className={cn("tailwind.config.jsp-4 tailwind.config.jsalign-middle [&:has([role=checkbox])]:tailwind.config.jspr-0", className)}
+    className={cn(
+      "tailwind.config.tsp-4 tailwind.config.tsalign-middle [&:has([role=checkbox])]:tailwind.config.tspr-0",
+      className,
+    )}
     {...props}
   />
-))
-TableCell.displayName = "TableCell"
+));
+TableCell.displayName = "TableCell";
 
 const TableCaption = React.forwardRef<
   HTMLTableCaptionElement,
@@ -99,11 +109,14 @@ const TableCaption = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <caption
     ref={ref}
-    className={cn("tailwind.config.jsmt-4 tailwind.config.jstext-sm tailwind.config.jstext-muted-foreground", className)}
+    className={cn(
+      "tailwind.config.tsmt-4 tailwind.config.tstext-sm tailwind.config.tstext-muted-foreground",
+      className,
+    )}
     {...props}
   />
-))
-TableCaption.displayName = "TableCaption"
+));
+TableCaption.displayName = "TableCaption";
 
 export {
   Table,
@@ -114,4 +127,4 @@ export {
   TableRow,
   TableCell,
   TableCaption,
-}
+};
