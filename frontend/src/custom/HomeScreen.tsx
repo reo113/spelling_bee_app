@@ -1,4 +1,4 @@
-import DefintionGame from "../../games/definition-game/DefinitionGame";
+import DefintionGame from "../games/definition-game/DefinitionGame";
 const HomeScreen = () => {
   return (
     <div>
