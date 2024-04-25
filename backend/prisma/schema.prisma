@@ -38,3 +38,9 @@ model Question {
   answer   String
   game     Game   @relation(fields: [gameId], references: [id])
 }
+
+model Word {
+  id         String @id @default(uuid())
+  word       String @unique
+  definition String
+}

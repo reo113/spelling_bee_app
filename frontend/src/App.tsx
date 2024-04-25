@@ -1,4 +1,4 @@
-import HomeScreen from "./components/custom/HomeScreen";
+import HomeScreen from "./custom/HomeScreen";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // import GameScreen from "./components/custom/games/DefinitionGame";
 // import AudioGameScreen from "./AudioGame";
