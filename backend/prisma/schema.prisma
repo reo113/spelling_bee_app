@@ -25,22 +25,36 @@ model User {
 model Game {
   id        String     @id @default(uuid())
   userId    String
+  type      String
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   user      User       @relation(fields: [userId], references: [id])
   questions Question[]
+  answer    Answer[]
 }
 
 model Question {
-  id       String @id @default(uuid())
-  gameId   String
-  question String
-  answer   String
-  game     Game   @relation(fields: [gameId], references: [id])
+  id         String     @id @default(uuid())
+  gameId     String
+  dictId     String
+  question   String
+  game       Game       @relation(fields: [gameId], references: [id])
+  answer     Answer[]
+  dictionary Dictionary @relation(fields: [dictId], references: [id])
 }
 
-model Word {
-  id         String @id @default(uuid())
-  word       String @unique
+model Answer {
+  id         String   @id @default(uuid())
+  gameId     String
+  questionId String
+  answer     String
+  game       Game     @relation(fields: [gameId], references: [id])
+  question   Question @relation(fields: [questionId], references: [id])
+}
+
+model Dictionary {
+  id         String     @id @default(uuid())
+  word       String     @unique
   definition String
+  question   Question[]
 }
