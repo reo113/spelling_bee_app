@@ -7,10 +7,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getRandomWordsWithDef } from "../../backend/apis/dict/wordnik.tsx";
+
+import { getRandomWordsWithDef } from "../../../../../backend/apis/dict/wordnik.tsx";
+
 const removeHtmlTags = (text: string) => {
   return text.replace(/<[^>]*>/g, "");
 };
+
 const DefGameScreen = () => {
   const [correctWord, setCorrectWord] = useState("");
   const [correctDefinition, setCorrectDefinition] = useState("");
@@ -49,9 +52,9 @@ const DefGameScreen = () => {
   };
 
   return (
-    <Card className="mx-auto my-8 max-w-lg bg-themeWhite shadow-lg">
+    <Card className="max-w-lg mx-auto my-8 shadow-lg bg-themeWhite">
       <CardHeader className="bg-themeBlack text-white">
-        <CardTitle>What's the Definition?</CardTitle>
+        <CardTitle>What's the Correct word?</CardTitle>
       </CardHeader>
       <CardContent className="p-4 text-themeBlack">
         <div
@@ -72,11 +75,11 @@ const DefGameScreen = () => {
           </div>
         </div>
       </CardContent>
-      <CardFooter className="flex flex-wrap gap-3 bg-themeWhite p-4">
+      <CardFooter className="flex flex-wrap gap-3 p-4 bg-themeWhite">
         {options.map((word, index) => (
           <Button
             key={index}
-            className="m-2 rounded bg-themeBlack p-1 text-white hover:bg-opacity-90"
+            className="m-2 p-1 rounded bg-themeBlack text-white hover:bg-opacity-90"
             onClick={() => handleWordClick(word)}
           >
             {word}
