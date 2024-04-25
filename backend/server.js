@@ -1,24 +1,13 @@
 const express = require("express");
 const app = express();
-const sqlite3 = require("sqlite3").verbose();
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-const { auth, requiresAuth } = require("express-openid-connect");
 require("dotenv").config();
 const cors = require("cors");
 
 const PORT = process.env.PORT || 3001;
 
 const authRouter = require("./routes/auth");
-
-const config = {
-  authRequired: false,
-  auth0Logout: true,
-  secret: process.env.AUTH0_SECRET,
-  baseURL: "http://localhost:3001",
-  clientID: process.env.AUTH0_CLIENT_ID,
-  issuerBaseURL: process.env.AUTH0_DOMAIN,
-};
 
 const corsOptions = {
   origin: "http://localhost:5173",
@@ -43,8 +32,6 @@ app.use((req, res, next) => {
 
 app.use("/api/auth", authRouter);
 
-
-const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
