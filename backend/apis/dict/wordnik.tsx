@@ -1,41 +1,79 @@
-const apiKey = "v200pgdwucwqdtqnp2dll678gosivzb0761lllr8w0ql2na70";
-const urlr = `https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&excludePartOfSpeech=noun-plural&limit=5&api_key=${apiKey}`;
+// const apiKey = "v200pgdwucwqdtqnp2dll678gosivzb0761lllr8w0ql2na70";
+// const urlr = `https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&excludePartOfSpeech=noun-plural&limit=5&api_key=${apiKey}`;
 
-export const getRandomWordsWithDef = async () => {
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
+
+export const fetchWordsWithDefinitions = async () => {
   try {
-    const response = await fetch(urlr);
-    const words = await response.json();
+    // Fetch 30 unique words
+    const words = await prisma.dictionary.findMany({
+      take: 30,
+      select: {
+        word: true,
+        definition: true
+      }
+    });
 
-    const wordDefinitions: { [key: string]: string } = {};
+    // fetch defs for randomness
+    const allDefinitions = await prisma.dictionary.findMany({
+      select: { definition: true }
+    });
 
-    for (const wordObj of words) {
-      const word = wordObj.word;
-      const defResponse = await fetch(
-        `https://api.wordnik.com/v4/word.json/${word}/definitions?&useCanonical=true&limit=5&api_key=${apiKey}`
-      );
-      const defData = await defResponse.json();
-      console.log("defData", defData);
 
-      let definitionFound = false;
-      for (const def of defData) {
-        if (def.text && !def.text.toLowerCase().includes(word.toLowerCase())) {
-          wordDefinitions[word] = def.text;
-          definitionFound = true;
-          break;
+
+
+
+
+
+
+
+    
+    // filter defs to avoid repeats
+    const filteredDefinitions = allDefinitions.filter(def =>
+      !words.some(w => w.definition === def.definition)
+    );
+
+    // Shuffle the definitions for random access
+    shuffleArray(filteredDefinitions);
+
+    // Array to hold final results
+    const results: { [x: string]: string[]; }[] = [];
+    // For each word, pick two random definitions that are not the word's own definition
+    words.forEach(word => {
+      // Ensure definitions are unique and not the same as the word's own definition
+      let randomDefs = [];
+      let count = 0;
+      for (let def of filteredDefinitions) {
+        if (def.definition !== word.definition) {
+          randomDefs.push(def.definition);
+          count++;
+          if (count === 2) break;
         }
       }
 
-      if (!definitionFound) {
-        wordDefinitions[word] = "Definition not found";
-      }
-    }
-    console.log("wordDefinitions", wordDefinitions);
-    return wordDefinitions;
+      results.push({
+        [word.word]: [word.definition, ...randomDefs]
+      });
+    });
+
+    return results;
   } catch (error) {
-    console.error("Error:", error);
-    return {};
+    console.error('Error fetching words and definitions:', error);
+  } finally {
+    await prisma.$disconnect();
   }
 };
+
+function shuffleArray(array: string[] | any[]) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+  }
+}
+
+
 export const getRandomWordsWithAudio = async () => {
   try {
     const response = await fetch(urlr);

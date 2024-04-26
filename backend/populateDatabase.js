@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 async function main() {
   for (const [word, definition] of Object.entries(wordsData)) {
-    await prisma.word.create({
+    await prisma.dictionary.create({
       data: {
         word: word,
         definition: definition
