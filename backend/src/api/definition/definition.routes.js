@@ -1,53 +1,54 @@
 // const apiKey = "v200pgdwucwqdtqnp2dll678gosivzb0761lllr8w0ql2na70";
 // const urlr = `https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&excludePartOfSpeech=noun-plural&limit=5&api_key=${apiKey}`;
 
-const { PrismaClient } = require('@prisma/client');
-const _ = require('lodash');
 const express = require("express");
+const _ = require("lodash");
+const { db } = require("../../utils/db");
+
 const router = express.Router();
-const prisma = new PrismaClient();
 
-
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const wordsWithDefinitions = await prisma.dictionary.findMany({
+    const wordsWithDefinitions = await db.dictionary.findMany({
       take: 50,
-      select: { word: true, definition: true }
+      select: { word: true, definition: true },
     });
 
     // split the words into correct and incorrect answers
     const correctAnswers = wordsWithDefinitions.slice(0, 10);
     let incorrectPool = wordsWithDefinitions.slice(10);
 
-    const result = correctAnswers.map(word => {
+    const result = correctAnswers.map((word) => {
       //shuffle and pick two incorrect definitions
       const shuffledIncorrect = _.shuffle(incorrectPool).slice(0, 2);
       // remove the already used definitions from the pool
-      incorrectPool = incorrectPool.filter(def => !shuffledIncorrect.includes(def));
+      incorrectPool = incorrectPool.filter(
+        (def) => !shuffledIncorrect.includes(def),
+      );
       const finalWords = _.shuffle([
         word.word,
         shuffledIncorrect[0].word,
-        shuffledIncorrect[1].word
+        shuffledIncorrect[1].word,
       ]);
 
       return {
         answer: word,
-        words: finalWords
+        words: finalWords,
       };
     });
     res.json(result);
   } catch (error) {
-    console.error('Error fetching words and definitions:', error);
-    res.status(500).send('Server Error');
+    console.error("Error fetching words and definitions:", error);
+    res.status(500).send("Server Error");
   }
 });
 
 // Assuming similar structure for other game types
-router.get('/audio', async (req, res) => {
+router.get("/audio", async (req, res) => {
   // Your logic for handling 'audio' game type
 });
 
-router.get('/sentence', async (req, res) => {
+router.get("/sentence", async (req, res) => {
   // Your logic for handling 'sentence' game type
 });
 module.exports = router;

@@ -1,13 +1,12 @@
 const express = require("express");
-const router = express.Router();
 const bcrypt = require("bcryptjs");
+const { db } = require("../../utils/db");
 
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
+const router = express.Router();
 
 router.get("/current_user", async (req, res) => {
   if (req.session.userId) {
-    const user = await prisma.user.findUnique({
+    const user = await db.user.findUnique({
       where: {
         id: req.session.userId,
       },
@@ -27,7 +26,7 @@ router.post("/signup", async (req, res) => {
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
   try {
-    const user = await prisma.user.create({
+    const user = await db.user.create({
       data: {
         username: req.body.username,
         email: req.body.email,
@@ -68,7 +67,7 @@ router.delete("/logout", (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const user = await prisma.user.findUnique({
+    const user = await db.user.findUnique({
       where: {
         username: req.body.username,
       },

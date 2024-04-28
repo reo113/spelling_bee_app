@@ -1,11 +1,9 @@
-const { PrismaClient } = require('@prisma/client');
-const wordsData = require('../dictionary.json'); 
-
-const prisma = new PrismaClient();
+const wordsData = require('../../dictionary.json');
+const { db } = require("../../utils/db");
 
 async function main() {
   for (const [word, definition] of Object.entries(wordsData)) {
-    await prisma.dictionary.create({
+    await db.dictionary.create({
       data: {
         word: word,
         definition: definition
@@ -20,5 +18,5 @@ main()
     process.exit(1);
   })
   .finally(async () => {
-    await prisma.$disconnect();
+    await db.$disconnect();
   });
