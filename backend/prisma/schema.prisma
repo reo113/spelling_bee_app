@@ -55,5 +55,7 @@ model Dictionary {
   id         String     @id @default(uuid())
   word       String     @unique
   definition String
+  audio      String?
+  example    String?
   question   Question[]
 }
