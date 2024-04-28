@@ -1,23 +1,24 @@
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const alertVariants = cva(
-  "tailwind.config.jsrelative tailwind.config.jsw-full tailwind.config.jsrounded-lg tailwind.config.jsborder tailwind.config.jsp-4 [&>svg~*]:tailwind.config.jspl-7 [&>svg+div]:tailwind.config.jstranslate-y-[-3px] [&>svg]:tailwind.config.jsabsolute [&>svg]:tailwind.config.jsleft-4 [&>svg]:tailwind.config.jstop-4 [&>svg]:tailwind.config.jstext-foreground",
+  "tailwind.config.tsrelative tailwind.config.tsw-full tailwind.config.tsrounded-lg tailwind.config.tsborder tailwind.config.tsp-4 [&>svg~*]:tailwind.config.tspl-7 [&>svg+div]:tailwind.config.tstranslate-y-[-3px] [&>svg]:tailwind.config.tsabsolute [&>svg]:tailwind.config.tsleft-4 [&>svg]:tailwind.config.tstop-4 [&>svg]:tailwind.config.tstext-foreground",
   {
     variants: {
       variant: {
-        default: "tailwind.config.jsbg-background tailwind.config.jstext-foreground",
+        default:
+          "tailwind.config.tsbg-background tailwind.config.tstext-foreground",
         destructive:
-          "tailwind.config.jsborder-destructive/50 tailwind.config.jstext-destructive dark:tailwind.config.jsborder-destructive [&>svg]:tailwind.config.jstext-destructive",
+          "tailwind.config.tsborder-destructive/50 tailwind.config.tstext-destructive dark:tailwind.config.tsborder-destructive [&>svg]:tailwind.config.tstext-destructive",
       },
     },
     defaultVariants: {
       variant: "default",
     },
-  }
-)
+  },
+);
 
 const Alert = React.forwardRef<
   HTMLDivElement,
@@ -29,8 +30,8 @@ const Alert = React.forwardRef<
     className={cn(alertVariants({ variant }), className)}
     {...props}
   />
-))
-Alert.displayName = "Alert"
+));
+Alert.displayName = "Alert";
 
 const AlertTitle = React.forwardRef<
   HTMLParagraphElement,
@@ -38,11 +39,14 @@ const AlertTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <h5
     ref={ref}
-    className={cn("tailwind.config.jsmb-1 tailwind.config.jsfont-medium tailwind.config.jsleading-none tailwind.config.jstracking-tight", className)}
+    className={cn(
+      "tailwind.config.tsmb-1 tailwind.config.tsfont-medium tailwind.config.tsleading-none tailwind.config.tstracking-tight",
+      className,
+    )}
     {...props}
   />
-))
-AlertTitle.displayName = "AlertTitle"
+));
+AlertTitle.displayName = "AlertTitle";
 
 const AlertDescription = React.forwardRef<
   HTMLParagraphElement,
@@ -50,10 +54,13 @@ const AlertDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("tailwind.config.jstext-sm [&_p]:tailwind.config.jsleading-relaxed", className)}
+    className={cn(
+      "tailwind.config.tstext-sm [&_p]:tailwind.config.tsleading-relaxed",
+      className,
+    )}
     {...props}
   />
-))
-AlertDescription.displayName = "AlertDescription"
+));
+AlertDescription.displayName = "AlertDescription";
 
-export { Alert, AlertTitle, AlertDescription }
+export { Alert, AlertTitle, AlertDescription };

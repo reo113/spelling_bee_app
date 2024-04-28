@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as SwitchPrimitives from "@radix-ui/react-switch"
+import * as React from "react";
+import * as SwitchPrimitives from "@radix-ui/react-switch";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
@@ -11,19 +11,19 @@ const Switch = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SwitchPrimitives.Root
     className={cn(
-      "tailwind.config.jspeer tailwind.config.jsinline-flex tailwind.config.jsh-6 tailwind.config.jsw-11 tailwind.config.jsshrink-0 tailwind.config.jscursor-pointer tailwind.config.jsitems-center tailwind.config.jsrounded-full tailwind.config.jsborder-2 tailwind.config.jsborder-transparent tailwind.config.jstransition-colors focus-visible:tailwind.config.jsoutline-none focus-visible:tailwind.config.jsring-2 focus-visible:tailwind.config.jsring-ring focus-visible:tailwind.config.jsring-offset-2 focus-visible:tailwind.config.jsring-offset-background disabled:tailwind.config.jscursor-not-allowed disabled:tailwind.config.jsopacity-50 data-[state=checked]:tailwind.config.jsbg-primary data-[state=unchecked]:tailwind.config.jsbg-input",
-      className
+      "tailwind.config.tspeer tailwind.config.tsinline-flex tailwind.config.tsh-6 tailwind.config.tsw-11 tailwind.config.tsshrink-0 tailwind.config.tscursor-pointer tailwind.config.tsitems-center tailwind.config.tsrounded-full tailwind.config.tsborder-2 tailwind.config.tsborder-transparent tailwind.config.tstransition-colors focus-visible:tailwind.config.tsoutline-none focus-visible:tailwind.config.tsring-2 focus-visible:tailwind.config.tsring-ring focus-visible:tailwind.config.tsring-offset-2 focus-visible:tailwind.config.tsring-offset-background disabled:tailwind.config.tscursor-not-allowed disabled:tailwind.config.tsopacity-50 data-[state=checked]:tailwind.config.tsbg-primary data-[state=unchecked]:tailwind.config.tsbg-input",
+      className,
     )}
     {...props}
     ref={ref}
   >
     <SwitchPrimitives.Thumb
       className={cn(
-        "tailwind.config.jspointer-events-none tailwind.config.jsblock tailwind.config.jsh-5 tailwind.config.jsw-5 tailwind.config.jsrounded-full tailwind.config.jsbg-background tailwind.config.jsshadow-lg tailwind.config.jsring-0 tailwind.config.jstransition-transform data-[state=checked]:tailwind.config.jstranslate-x-5 data-[state=unchecked]:tailwind.config.jstranslate-x-0"
+        "tailwind.config.tspointer-events-none tailwind.config.tsblock tailwind.config.tsh-5 tailwind.config.tsw-5 tailwind.config.tsrounded-full tailwind.config.tsbg-background tailwind.config.tsshadow-lg tailwind.config.tsring-0 tailwind.config.tstransition-transform data-[state=checked]:tailwind.config.tstranslate-x-5 data-[state=unchecked]:tailwind.config.tstranslate-x-0",
       )}
     />
   </SwitchPrimitives.Root>
-))
-Switch.displayName = SwitchPrimitives.Root.displayName
+));
+Switch.displayName = SwitchPrimitives.Root.displayName;
 
-export { Switch }
+export { Switch };

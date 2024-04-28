@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as AvatarPrimitive from "@radix-ui/react-avatar"
+import * as React from "react";
+import * as AvatarPrimitive from "@radix-ui/react-avatar";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const Avatar = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
@@ -12,13 +12,13 @@ const Avatar = React.forwardRef<
   <AvatarPrimitive.Root
     ref={ref}
     className={cn(
-      "tailwind.config.jsrelative tailwind.config.jsflex tailwind.config.jsh-10 tailwind.config.jsw-10 tailwind.config.jsshrink-0 tailwind.config.jsoverflow-hidden tailwind.config.jsrounded-full",
-      className
+      "tailwind.config.tsrelative tailwind.config.tsflex tailwind.config.tsh-10 tailwind.config.tsw-10 tailwind.config.tsshrink-0 tailwind.config.tsoverflow-hidden tailwind.config.tsrounded-full",
+      className,
     )}
     {...props}
   />
-))
-Avatar.displayName = AvatarPrimitive.Root.displayName
+));
+Avatar.displayName = AvatarPrimitive.Root.displayName;
 
 const AvatarImage = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Image>,
@@ -26,11 +26,14 @@ const AvatarImage = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Image
     ref={ref}
-    className={cn("tailwind.config.jsaspect-square tailwind.config.jsh-full tailwind.config.jsw-full", className)}
+    className={cn(
+      "tailwind.config.tsaspect-square tailwind.config.tsh-full tailwind.config.tsw-full",
+      className,
+    )}
     {...props}
   />
-))
-AvatarImage.displayName = AvatarPrimitive.Image.displayName
+));
+AvatarImage.displayName = AvatarPrimitive.Image.displayName;
 
 const AvatarFallback = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Fallback>,
@@ -39,12 +42,12 @@ const AvatarFallback = React.forwardRef<
   <AvatarPrimitive.Fallback
     ref={ref}
     className={cn(
-      "tailwind.config.jsflex tailwind.config.jsh-full tailwind.config.jsw-full tailwind.config.jsitems-center tailwind.config.jsjustify-center tailwind.config.jsrounded-full tailwind.config.jsbg-muted",
-      className
+      "tailwind.config.tsflex tailwind.config.tsh-full tailwind.config.tsw-full tailwind.config.tsitems-center tailwind.config.tsjustify-center tailwind.config.tsrounded-full tailwind.config.tsbg-muted",
+      className,
     )}
     {...props}
   />
-))
-AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
+));
+AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;
 
-export { Avatar, AvatarImage, AvatarFallback }
+export { Avatar, AvatarImage, AvatarFallback };

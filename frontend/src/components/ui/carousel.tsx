@@ -1,45 +1,45 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
-} from "embla-carousel-react"
-import { ArrowLeft, ArrowRight } from "lucide-react"
+} from "embla-carousel-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
-type CarouselApi = UseEmblaCarouselType[1]
-type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
-type CarouselOptions = UseCarouselParameters[0]
-type CarouselPlugin = UseCarouselParameters[1]
+type CarouselApi = UseEmblaCarouselType[1];
+type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
+type CarouselOptions = UseCarouselParameters[0];
+type CarouselPlugin = UseCarouselParameters[1];
 
 type CarouselProps = {
-  opts?: CarouselOptions
-  plugins?: CarouselPlugin
-  orientation?: "horizontal" | "vertical"
-  setApi?: (api: CarouselApi) => void
-}
+  opts?: CarouselOptions;
+  plugins?: CarouselPlugin;
+  orientation?: "horizontal" | "vertical";
+  setApi?: (api: CarouselApi) => void;
+};
 
 type CarouselContextProps = {
-  carouselRef: ReturnType<typeof useEmblaCarousel>[0]
-  api: ReturnType<typeof useEmblaCarousel>[1]
-  scrollPrev: () => void
-  scrollNext: () => void
-  canScrollPrev: boolean
-  canScrollNext: boolean
-} & CarouselProps
+  carouselRef: ReturnType<typeof useEmblaCarousel>[0];
+  api: ReturnType<typeof useEmblaCarousel>[1];
+  scrollPrev: () => void;
+  scrollNext: () => void;
+  canScrollPrev: boolean;
+  canScrollNext: boolean;
+} & CarouselProps;
 
-const CarouselContext = React.createContext<CarouselContextProps | null>(null)
+const CarouselContext = React.createContext<CarouselContextProps | null>(null);
 
 function useCarousel() {
-  const context = React.useContext(CarouselContext)
+  const context = React.useContext(CarouselContext);
 
   if (!context) {
-    throw new Error("useCarousel must be used within a <Carousel />")
+    throw new Error("useCarousel must be used within a <Carousel />");
   }
 
-  return context
+  return context;
 }
 
 const Carousel = React.forwardRef<
@@ -56,69 +56,69 @@ const Carousel = React.forwardRef<
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [carouselRef, api] = useEmblaCarousel(
       {
         ...opts,
         axis: orientation === "horizontal" ? "x" : "y",
       },
-      plugins
-    )
-    const [canScrollPrev, setCanScrollPrev] = React.useState(false)
-    const [canScrollNext, setCanScrollNext] = React.useState(false)
+      plugins,
+    );
+    const [canScrollPrev, setCanScrollPrev] = React.useState(false);
+    const [canScrollNext, setCanScrollNext] = React.useState(false);
 
     const onSelect = React.useCallback((api: CarouselApi) => {
       if (!api) {
-        return
+        return;
       }
 
-      setCanScrollPrev(api.canScrollPrev())
-      setCanScrollNext(api.canScrollNext())
-    }, [])
+      setCanScrollPrev(api.canScrollPrev());
+      setCanScrollNext(api.canScrollNext());
+    }, []);
 
     const scrollPrev = React.useCallback(() => {
-      api?.scrollPrev()
-    }, [api])
+      api?.scrollPrev();
+    }, [api]);
 
     const scrollNext = React.useCallback(() => {
-      api?.scrollNext()
-    }, [api])
+      api?.scrollNext();
+    }, [api]);
 
     const handleKeyDown = React.useCallback(
       (event: React.KeyboardEvent<HTMLDivElement>) => {
         if (event.key === "ArrowLeft") {
-          event.preventDefault()
-          scrollPrev()
+          event.preventDefault();
+          scrollPrev();
         } else if (event.key === "ArrowRight") {
-          event.preventDefault()
-          scrollNext()
+          event.preventDefault();
+          scrollNext();
         }
       },
-      [scrollPrev, scrollNext]
-    )
+      [scrollPrev, scrollNext],
+    );
 
     React.useEffect(() => {
       if (!api || !setApi) {
-        return
+        return;
       }
 
-      setApi(api)
-    }, [api, setApi])
+      setApi(api);
+    }, [api, setApi]);
 
     React.useEffect(() => {
       if (!api) {
-        return
+        return;
       }
 
-      onSelect(api)
-      api.on("reInit", onSelect)
-      api.on("select", onSelect)
+      onSelect(api);
+      api.on("reInit", onSelect);
+      api.on("select", onSelect);
 
       return () => {
-        api?.off("select", onSelect)
-      }
-    }, [api, onSelect])
+        api?.off("select", onSelect);
+      };
+    }, [api, onSelect]);
 
     return (
       <CarouselContext.Provider
@@ -137,7 +137,7 @@ const Carousel = React.forwardRef<
         <div
           ref={ref}
           onKeyDownCapture={handleKeyDown}
-          className={cn("tailwind.config.jsrelative", className)}
+          className={cn("tailwind.config.tsrelative", className)}
           role="region"
           aria-roledescription="carousel"
           {...props}
@@ -145,38 +145,40 @@ const Carousel = React.forwardRef<
           {children}
         </div>
       </CarouselContext.Provider>
-    )
-  }
-)
-Carousel.displayName = "Carousel"
+    );
+  },
+);
+Carousel.displayName = "Carousel";
 
 const CarouselContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-  const { carouselRef, orientation } = useCarousel()
+  const { carouselRef, orientation } = useCarousel();
 
   return (
-    <div ref={carouselRef} className="tailwind.config.jsoverflow-hidden">
+    <div ref={carouselRef} className="tailwind.config.tsoverflow-hidden">
       <div
         ref={ref}
         className={cn(
-          "tailwind.config.jsflex",
-          orientation === "horizontal" ? "tailwind.config.js-ml-4" : "tailwind.config.js-mt-4 tailwind.config.jsflex-col",
-          className
+          "tailwind.config.tsflex",
+          orientation === "horizontal"
+            ? "tailwind.config.ts-ml-4"
+            : "tailwind.config.ts-mt-4 tailwind.config.tsflex-col",
+          className,
         )}
         {...props}
       />
     </div>
-  )
-})
-CarouselContent.displayName = "CarouselContent"
+  );
+});
+CarouselContent.displayName = "CarouselContent";
 
 const CarouselItem = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-  const { orientation } = useCarousel()
+  const { orientation } = useCarousel();
 
   return (
     <div
@@ -184,21 +186,23 @@ const CarouselItem = React.forwardRef<
       role="group"
       aria-roledescription="slide"
       className={cn(
-        "tailwind.config.jsmin-w-0 tailwind.config.jsshrink-0 tailwind.config.jsgrow-0 tailwind.config.jsbasis-full",
-        orientation === "horizontal" ? "tailwind.config.jspl-4" : "tailwind.config.jspt-4",
-        className
+        "tailwind.config.tsmin-w-0 tailwind.config.tsshrink-0 tailwind.config.tsgrow-0 tailwind.config.tsbasis-full",
+        orientation === "horizontal"
+          ? "tailwind.config.tspl-4"
+          : "tailwind.config.tspt-4",
+        className,
       )}
       {...props}
     />
-  )
-})
-CarouselItem.displayName = "CarouselItem"
+  );
+});
+CarouselItem.displayName = "CarouselItem";
 
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
 >(({ className, variant = "outline", size = "icon", ...props }, ref) => {
-  const { orientation, scrollPrev, canScrollPrev } = useCarousel()
+  const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
   return (
     <Button
@@ -206,28 +210,28 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "tailwind.config.jsabsolute tailwind.config.js tailwind.config.jsh-8 tailwind.config.jsw-8 tailwind.config.jsrounded-full",
+        "tailwind.config.tsabsolute tailwind.config.ts tailwind.config.tsh-8 tailwind.config.tsw-8 tailwind.config.tsrounded-full",
         orientation === "horizontal"
-          ? "tailwind.config.js-left-12 tailwind.config.jstop-1/2 tailwind.config.js-translate-y-1/2"
-          : "tailwind.config.js-top-12 tailwind.config.jsleft-1/2 tailwind.config.js-translate-x-1/2 tailwind.config.jsrotate-90",
-        className
+          ? "tailwind.config.ts-left-12 tailwind.config.tstop-1/2 tailwind.config.ts-translate-y-1/2"
+          : "tailwind.config.ts-top-12 tailwind.config.tsleft-1/2 tailwind.config.ts-translate-x-1/2 tailwind.config.tsrotate-90",
+        className,
       )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
       {...props}
     >
-      <ArrowLeft className="tailwind.config.jsh-4 tailwind.config.jsw-4" />
-      <span className="tailwind.config.jssr-only">Previous slide</span>
+      <ArrowLeft className="tailwind.config.tsh-4 tailwind.config.tsw-4" />
+      <span className="tailwind.config.tssr-only">Previous slide</span>
     </Button>
-  )
-})
-CarouselPrevious.displayName = "CarouselPrevious"
+  );
+});
+CarouselPrevious.displayName = "CarouselPrevious";
 
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
 >(({ className, variant = "outline", size = "icon", ...props }, ref) => {
-  const { orientation, scrollNext, canScrollNext } = useCarousel()
+  const { orientation, scrollNext, canScrollNext } = useCarousel();
 
   return (
     <Button
@@ -235,22 +239,22 @@ const CarouselNext = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "tailwind.config.jsabsolute tailwind.config.jsh-8 tailwind.config.jsw-8 tailwind.config.jsrounded-full",
+        "tailwind.config.tsabsolute tailwind.config.tsh-8 tailwind.config.tsw-8 tailwind.config.tsrounded-full",
         orientation === "horizontal"
-          ? "tailwind.config.js-right-12 tailwind.config.jstop-1/2 tailwind.config.js-translate-y-1/2"
-          : "tailwind.config.js-bottom-12 tailwind.config.jsleft-1/2 tailwind.config.js-translate-x-1/2 tailwind.config.jsrotate-90",
-        className
+          ? "tailwind.config.ts-right-12 tailwind.config.tstop-1/2 tailwind.config.ts-translate-y-1/2"
+          : "tailwind.config.ts-bottom-12 tailwind.config.tsleft-1/2 tailwind.config.ts-translate-x-1/2 tailwind.config.tsrotate-90",
+        className,
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRight className="tailwind.config.jsh-4 tailwind.config.jsw-4" />
-      <span className="tailwind.config.jssr-only">Next slide</span>
+      <ArrowRight className="tailwind.config.tsh-4 tailwind.config.tsw-4" />
+      <span className="tailwind.config.tssr-only">Next slide</span>
     </Button>
-  )
-})
-CarouselNext.displayName = "CarouselNext"
+  );
+});
+CarouselNext.displayName = "CarouselNext";
 
 export {
   type CarouselApi,
@@ -259,4 +263,4 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
-}
+};

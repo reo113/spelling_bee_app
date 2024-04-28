@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Drawer as DrawerPrimitive } from "vaul"
+import * as React from "react";
+import { Drawer as DrawerPrimitive } from "vaul";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const Drawer = ({
   shouldScaleBackground = true,
@@ -13,14 +13,14 @@ const Drawer = ({
     shouldScaleBackground={shouldScaleBackground}
     {...props}
   />
-)
-Drawer.displayName = "Drawer"
+);
+Drawer.displayName = "Drawer";
 
-const DrawerTrigger = DrawerPrimitive.Trigger
+const DrawerTrigger = DrawerPrimitive.Trigger;
 
-const DrawerPortal = DrawerPrimitive.Portal
+const DrawerPortal = DrawerPrimitive.Portal;
 
-const DrawerClose = DrawerPrimitive.Close
+const DrawerClose = DrawerPrimitive.Close;
 
 const DrawerOverlay = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Overlay>,
@@ -28,11 +28,14 @@ const DrawerOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DrawerPrimitive.Overlay
     ref={ref}
-    className={cn("tailwind.config.jsfixed tailwind.config.jsinset-0 tailwind.config.jsz-50 tailwind.config.jsbg-black/80", className)}
+    className={cn(
+      "tailwind.config.tsfixed tailwind.config.tsinset-0 tailwind.config.tsz-50 tailwind.config.tsbg-black/80",
+      className,
+    )}
     {...props}
   />
-))
-DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName
+));
+DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
 
 const DrawerContent = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Content>,
@@ -43,39 +46,45 @@ const DrawerContent = React.forwardRef<
     <DrawerPrimitive.Content
       ref={ref}
       className={cn(
-        "tailwind.config.jsfixed tailwind.config.jsinset-x-0 tailwind.config.jsbottom-0 tailwind.config.jsz-50 tailwind.config.jsmt-24 tailwind.config.jsflex tailwind.config.jsh-auto tailwind.config.jsflex-col tailwind.config.jsrounded-t-[10px] tailwind.config.jsborder tailwind.config.jsbg-background",
-        className
+        "tailwind.config.tsfixed tailwind.config.tsinset-x-0 tailwind.config.tsbottom-0 tailwind.config.tsz-50 tailwind.config.tsmt-24 tailwind.config.tsflex tailwind.config.tsh-auto tailwind.config.tsflex-col tailwind.config.tsrounded-t-[10px] tailwind.config.tsborder tailwind.config.tsbg-background",
+        className,
       )}
       {...props}
     >
-      <div className="tailwind.config.jsmx-auto tailwind.config.jsmt-4 tailwind.config.jsh-2 tailwind.config.jsw-[100px] tailwind.config.jsrounded-full tailwind.config.jsbg-muted" />
+      <div className="tailwind.config.tsmx-auto tailwind.config.tsmt-4 tailwind.config.tsh-2 tailwind.config.tsw-[100px] tailwind.config.tsrounded-full tailwind.config.tsbg-muted" />
       {children}
     </DrawerPrimitive.Content>
   </DrawerPortal>
-))
-DrawerContent.displayName = "DrawerContent"
+));
+DrawerContent.displayName = "DrawerContent";
 
 const DrawerHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn("tailwind.config.jsgrid tailwind.config.jsgap-1.5 tailwind.config.jsp-4 tailwind.config.jstext-center sm:tailwind.config.jstext-left", className)}
+    className={cn(
+      "tailwind.config.tsgrid tailwind.config.tsgap-1.5 tailwind.config.tsp-4 tailwind.config.tstext-center sm:tailwind.config.tstext-left",
+      className,
+    )}
     {...props}
   />
-)
-DrawerHeader.displayName = "DrawerHeader"
+);
+DrawerHeader.displayName = "DrawerHeader";
 
 const DrawerFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn("tailwind.config.jsmt-auto tailwind.config.jsflex tailwind.config.jsflex-col tailwind.config.jsgap-2 tailwind.config.jsp-4", className)}
+    className={cn(
+      "tailwind.config.tsmt-auto tailwind.config.tsflex tailwind.config.tsflex-col tailwind.config.tsgap-2 tailwind.config.tsp-4",
+      className,
+    )}
     {...props}
   />
-)
-DrawerFooter.displayName = "DrawerFooter"
+);
+DrawerFooter.displayName = "DrawerFooter";
 
 const DrawerTitle = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Title>,
@@ -84,13 +93,13 @@ const DrawerTitle = React.forwardRef<
   <DrawerPrimitive.Title
     ref={ref}
     className={cn(
-      "tailwind.config.jstext-lg tailwind.config.jsfont-semibold tailwind.config.jsleading-none tailwind.config.jstracking-tight",
-      className
+      "tailwind.config.tstext-lg tailwind.config.tsfont-semibold tailwind.config.tsleading-none tailwind.config.tstracking-tight",
+      className,
     )}
     {...props}
   />
-))
-DrawerTitle.displayName = DrawerPrimitive.Title.displayName
+));
+DrawerTitle.displayName = DrawerPrimitive.Title.displayName;
 
 const DrawerDescription = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Description>,
@@ -98,11 +107,14 @@ const DrawerDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DrawerPrimitive.Description
     ref={ref}
-    className={cn("tailwind.config.jstext-sm tailwind.config.jstext-muted-foreground", className)}
+    className={cn(
+      "tailwind.config.tstext-sm tailwind.config.tstext-muted-foreground",
+      className,
+    )}
     {...props}
   />
-))
-DrawerDescription.displayName = DrawerPrimitive.Description.displayName
+));
+DrawerDescription.displayName = DrawerPrimitive.Description.displayName;
 
 export {
   Drawer,
@@ -115,4 +127,4 @@ export {
   DrawerFooter,
   DrawerTitle,
   DrawerDescription,
-}
+};

@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as AccordionPrimitive from "@radix-ui/react-accordion"
-import { ChevronDown } from "lucide-react"
+import * as React from "react";
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { ChevronDown } from "lucide-react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-const Accordion = AccordionPrimitive.Root
+const Accordion = AccordionPrimitive.Root;
 
 const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
@@ -14,31 +14,31 @@ const AccordionItem = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Item
     ref={ref}
-    className={cn("tailwind.config.jsborder-b", className)}
+    className={cn("tailwind.config.tsborder-b", className)}
     {...props}
   />
-))
-AccordionItem.displayName = "AccordionItem"
+));
+AccordionItem.displayName = "AccordionItem";
 
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
 >(({ className, children, ...props }, ref) => (
-  <AccordionPrimitive.Header className="tailwind.config.jsflex">
+  <AccordionPrimitive.Header className="tailwind.config.tsflex">
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "tailwind.config.jsflex tailwind.config.jsflex-1 tailwind.config.jsitems-center tailwind.config.jsjustify-between tailwind.config.jspy-4 tailwind.config.jsfont-medium tailwind.config.jstransition-all hover:tailwind.config.jsunderline [&[data-state=open]>svg]:tailwind.config.jsrotate-180",
-        className
+        "tailwind.config.tsflex tailwind.config.tsflex-1 tailwind.config.tsitems-center tailwind.config.tsjustify-between tailwind.config.tspy-4 tailwind.config.tsfont-medium tailwind.config.tstransition-all hover:tailwind.config.tsunderline [&[data-state=open]>svg]:tailwind.config.tsrotate-180",
+        className,
       )}
       {...props}
     >
       {children}
-      <ChevronDown className="tailwind.config.jsh-4 tailwind.config.jsw-4 tailwind.config.jsshrink-0 tailwind.config.jstransition-transform tailwind.config.jsduration-200" />
+      <ChevronDown className="tailwind.config.tsh-4 tailwind.config.tsw-4 tailwind.config.tsshrink-0 tailwind.config.tstransition-transform tailwind.config.tsduration-200" />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
-))
-AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
+));
+AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
 
 const AccordionContent = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Content>,
@@ -46,13 +46,17 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className="tailwind.config.jsoverflow-hidden tailwind.config.jstext-sm tailwind.config.jstransition-all data-[state=closed]:tailwind.config.jsanimate-accordion-up data-[state=open]:tailwind.config.jsanimate-accordion-down"
+    className="tailwind.config.tsoverflow-hidden tailwind.config.tstext-sm tailwind.config.tstransition-all data-[state=closed]:tailwind.config.tsanimate-accordion-up data-[state=open]:tailwind.config.tsanimate-accordion-down"
     {...props}
   >
-    <div className={cn("tailwind.config.jspb-4 tailwind.config.jspt-0", className)}>{children}</div>
+    <div
+      className={cn("tailwind.config.tspb-4 tailwind.config.tspt-0", className)}
+    >
+      {children}
+    </div>
   </AccordionPrimitive.Content>
-))
+));
 
-AccordionContent.displayName = AccordionPrimitive.Content.displayName
+AccordionContent.displayName = AccordionPrimitive.Content.displayName;
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
