@@ -9,7 +9,7 @@ const StartGame = () => {
 
   const fetchData = useCallback((type: SetStateAction<string>) => {
     axios
-      .get(`http://localhost:3001/${type}`)
+      .get(`/api/v1/${type}`)
       .then((response) => {
         const data = response.data;
         const newGame = GameFactory.createGame(type, data);
@@ -28,8 +28,8 @@ const StartGame = () => {
   };
 
   const onGameOver = useCallback(() => {
-    setGame(null); 
-}, []);
+    setGame(null);
+  }, []);
 
   return (
     <div>
@@ -44,11 +44,7 @@ const StartGame = () => {
           </button>
         </div>
       ) : (
-        <GameHub
-          game={game}
-          gameType={gameType}
-          onGameOver={onGameOver}
-        />
+        <GameHub game={game} gameType={gameType} onGameOver={onGameOver} />
       )}
     </div>
   );
