@@ -1,5 +1,5 @@
 const { PrismaClient } = require('@prisma/client');
-const wordsData = require('./dictionary.json'); 
+const wordsData = require('../dictionary.json'); 
 
 const prisma = new PrismaClient();
 
