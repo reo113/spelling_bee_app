@@ -4,6 +4,7 @@ class DefinitionGame {
         this.currentIndex = 0;
         this.points = 0;
         this.lives = 3;
+        this.gameOver = false;
         this.results = [];
     }
     getCurrentQuestion() {

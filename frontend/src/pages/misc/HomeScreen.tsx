@@ -1,4 +1,4 @@
-import DefintionGame from "../games/components/DefinitionGame";
+import StartGame from '../../games/components/StartGame';
 const HomeScreen = () => {
   return (
     <div>
