@@ -3,7 +3,7 @@ import AudioGame from './gameClass';
 import SentenceGame from './gameClass';
 
 class GameFactory {
-    static createGame(type, data) {
+    static createGame(type: string, data) {
         switch (type) {
             case 'definition':
                 return new DefinitionGame(data);
