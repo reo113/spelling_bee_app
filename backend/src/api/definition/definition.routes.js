@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
   try {
     let wordsWithDefinitions = await db.dictionary.findMany({
       take: 100,
-      select: { word: true, definition: true },
+      select: { word: true, definition: true, id: true },
     });
     // split the words into correct and incorrect answers
     wordsWithDefinitions = _.shuffle(wordsWithDefinitions);
@@ -32,7 +32,7 @@ router.get("/", async (req, res) => {
         words: finalWords,
       };
     });
-    
+
     res.json(result);
   } catch (error) {
     console.error("Error fetching words and definitions:", error);

@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
         let wordsWithExample = await db.example.findMany({
             take: 100,
             where: { example: { not: null } },
-            select: { word: true, example: true },
+            select: { word: true, example: true, id: true },
         });
         // split the words into correct and incorrect answers
         wordsWithExample = _.shuffle(wordsWithExample);
