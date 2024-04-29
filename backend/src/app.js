@@ -19,12 +19,12 @@ app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
   res.json({
-    message: "👋",
+    message: "API",
   });
 });
 
-app.use("/api/v1", api);
-
 app.use(middlewares.log);
+
+app.use("/api/v1", api);
 
 module.exports = app;
