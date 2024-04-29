@@ -1,15 +1,15 @@
 import StartGame from "@/games/components/StartGame";
 
-const HomeScreen = () => {
+const GameHub = () => {
   return (
     <div>
       <div className="container">
-        <h1>Home Screen</h1>
-        <p>Welcome to the Home Screen</p>
+        <h1>Game hub</h1>
+        <p>Welcome to the Game Selection</p>
         <StartGame />
       </div>
     </div>
   );
 };
 
-export default HomeScreen;
+export default GameHub;
