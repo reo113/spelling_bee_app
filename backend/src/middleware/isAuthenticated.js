@@ -10,7 +10,6 @@ function isAuthenticated(req, res, next) {
 
   try {
     const token = authorization.split(" ")[1];
-    console.log(token);
     const payload = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
     req.payload = payload;
   } catch (err) {
