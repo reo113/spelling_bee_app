@@ -1,110 +1,146 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
-const { db } = require("../../utils/db");
+const jwt = require("jsonwebtoken");
+const { v4: uuidv4 } = require("uuid");
+const {
+  findUserByEmail,
+  createUserByEmailAndPassword,
+  findUserById,
+} = require("../user/user.services");
+const { generateTokens } = require("../../utils/jwt");
+const {
+  addRefreshTokenToWhitelist,
+  findRefreshTokenById,
+  deleteRefreshToken,
+  revokeTokens,
+} = require("./auth.services");
+const { hashToken } = require("../../utils/hashToken");
 
 const router = express.Router();
 
-router.get("/current_user", async (req, res) => {
-  if (req.session.userId) {
-    const user = await db.user.findUnique({
-      where: {
-        id: req.session.userId,
-      },
-      select: {
-        id: true,
-        email: true,
-        username: true,
-      },
-    });
-    return res.status(200).json({ user });
-  } else {
-    return res.status(401).json({ user: null });
-  }
-});
-
-router.post("/signup", async (req, res) => {
-  const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
+router.post("/register", async (req, res, next) => {
   try {
-    const user = await db.user.create({
-      data: {
-        username: req.body.username,
-        email: req.body.email,
-        password: hashedPassword,
-      },
-      select: {
-        id: true,
-        username: true,
-        email: true,
-      },
-    });
-
-    req.session.userId = user.id;
-
-    res.status(201).json({
-      message: "User created!",
-      user,
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({
-      message: "Error occurred while creating user",
-      error: err,
-    });
-  }
-});
-
-router.delete("/logout", (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      return res.sendStatus(500);
+    const { email, password } = req.body;
+    if (!email || !password) {
+      res.status(400);
+      throw new Error("You must provide an email and a password.");
     }
 
-    res.clearCookie("connect.sid");
-    return res.sendStatus(200);
-  });
+    const existingUser = await findUserByEmail(email);
+
+    if (existingUser) {
+      res.status(400);
+      throw new Error("Email already in use.");
+    }
+
+    const user = await createUserByEmailAndPassword({ email, password });
+    const jti = uuidv4();
+    const { accessToken, refreshToken } = generateTokens(user, jti);
+    await addRefreshTokenToWhitelist({ jti, refreshToken, userId: user.id });
+
+    res.json({
+      accessToken,
+      refreshToken,
+    });
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", async (req, res, next) => {
   try {
-    const user = await db.user.findUnique({
-      where: {
-        username: req.body.username,
-      },
+    const { email, password } = req.body;
+    if (!email || !password) {
+      res.status(400);
+      throw new Error("You must provide an email and a password.");
+    }
+
+    const existingUser = await findUserByEmail(email);
+
+    if (!existingUser) {
+      res.status(403);
+      throw new Error("Invalid login credentials.");
+    }
+
+    const validPassword = await bcrypt.compare(password, existingUser.password);
+    if (!validPassword) {
+      res.status(403);
+      throw new Error("Invalid login credentials.");
+    }
+
+    const jti = uuidv4();
+    const { accessToken, refreshToken } = generateTokens(existingUser, jti);
+    await addRefreshTokenToWhitelist({
+      jti,
+      refreshToken,
+      userId: existingUser.id,
     });
 
+    res.json({
+      accessToken,
+      refreshToken,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post("/refreshToken", async (req, res, next) => {
+  try {
+    const { refreshToken } = req.body;
+    if (!refreshToken) {
+      res.status(400);
+      throw new Error("Missing refresh token.");
+    }
+    const payload = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+    const savedRefreshToken = await findRefreshTokenById(payload.jti);
+
+    if (!savedRefreshToken || savedRefreshToken.revoked === true) {
+      res.status(401);
+      throw new Error("Unauthorized");
+    }
+
+    const hashedToken = hashToken(refreshToken);
+    if (hashedToken !== savedRefreshToken.hashedToken) {
+      res.status(401);
+      throw new Error("Unauthorized");
+    }
+
+    const user = await findUserById(payload.userId);
     if (!user) {
-      return res.status(401).json({
-        message: "Incorrect credentials",
-      });
+      res.status(401);
+      throw new Error("Unauthorized");
     }
 
-    const passwordMatch = await bcrypt.compare(
-      req.body.password,
-      user.password,
+    await deleteRefreshToken(savedRefreshToken.id);
+    const jti = uuidv4();
+    const { accessToken, refreshToken: newRefreshToken } = generateTokens(
+      user,
+      jti,
     );
+    await addRefreshTokenToWhitelist({
+      jti,
+      refreshToken: newRefreshToken,
+      userId: user.id,
+    });
 
-    if (passwordMatch) {
-      req.session.userId = user.id;
-      return res.status(200).json({
-        message: "Logged in successfully",
-        user: {
-          id: user.id,
-          username: user.username,
-          email: user.email,
-        },
-      });
-    } else {
-      return res.status(401).json({
-        message: "Incorrect credentials",
-      });
-    }
+    res.json({
+      accessToken,
+      refreshToken: newRefreshToken,
+    });
   } catch (err) {
-    console.error(err);
-    res
-      .status(500)
-      .json({ message: "An error occurred during the login process" });
+    next(err);
   }
 });
+
+// router.post("/revokeRefreshTokens", async (req, res, next) => {
+//   try {
+//     const { userId } = req.body;
+//     await revokeTokens(userId);
+//     res.json({ message: `Tokens revoked for user with id #${userId}` });
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 module.exports = router;
