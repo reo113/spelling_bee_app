@@ -1,6 +1,6 @@
 import { SetStateAction, useCallback, useState } from "react";
 import GameFactory from "../factory/gameFactory";
-import GameHub from "../wrapper/GameHub";
+import GameWrapper from "../wrapper/GameWrapper";
 import axios from "axios";
 
 const StartGame = () => {
@@ -44,7 +44,7 @@ const StartGame = () => {
           </button>
         </div>
       ) : (
-        <GameHub game={game} gameType={gameType} onGameOver={onGameOver} />
+        <GameWrapper game={game} gameType={gameType} onGameOver={onGameOver} />
       )}
     </div>
   );

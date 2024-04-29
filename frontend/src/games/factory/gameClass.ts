@@ -1,3 +1,4 @@
+
 class DefinitionGame {
     constructor(data) {
         this.data = data;
@@ -55,14 +56,13 @@ class DefinitionGame {
 
 class AudioGame extends DefinitionGame {
     playAudio() {
-        const audioUrl = this.getCurrentQuestion().audioUrl;
+        const audioUrl = this.getCurrentQuestion().audio;
         const audio = new Audio(audioUrl);
         audio.play();
     }
 
     // Override the method if specific actions needed
     answerQuestion(isCorrect) {
-        // this.playAudio();
         super.answerQuestion(isCorrect);
     }
 }
