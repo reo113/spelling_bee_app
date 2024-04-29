@@ -1,7 +1,6 @@
-import HomeScreen from "@/pages/misc/HomeScreen";
+import HomeScreen from "@/pages/misc/GameHub";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-// import GameScreen from "./components/custom/games/DefinitionGame";
-// import AudioGameScreen from "./AudioGame";
+
 function App() {
   const router = createBrowserRouter([
     {
