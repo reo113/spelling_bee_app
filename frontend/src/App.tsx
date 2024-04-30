@@ -2,6 +2,8 @@ import Login from "@/pages/auth/components/Login";
 import Register from "@/pages/auth/components/Register";
 import GameHub from "@/pages/misc/GameHub";
 import AuthProvider from "@/contexts/AuthContext";
+import StartGame from "@/games/components/StartGame";
+
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 function App() {
@@ -17,6 +19,10 @@ function App() {
     {
       path: "/register",
       element: <Register />,
+    },
+    {
+      path: "/game/:gameType",
+      element: <StartGame />,
     },
   ]);
 

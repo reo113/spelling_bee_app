@@ -1,4 +1,3 @@
-import StartGame from "@/games/components/StartGame";
 import { redirect } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { AuthContext } from "@/contexts/AuthContext";
@@ -19,7 +18,17 @@ const GameHub = () => {
       <div className="container">
         <h1>Game Hub</h1>
         <p>Welcome to the Game Selection</p>
-        <StartGame />
+        <ul>
+          <li>
+            <Link to="/game/definition">Play Definition Game</Link>
+          </li>
+          <li>
+            <Link to="/game/audio">Play Audio Game</Link>
+          </li>
+          <li>
+            <Link to="/game/sentence">Play Sentence Game</Link>
+          </li>
+        </ul>
         {currentUser ? (
           <Button
             onClick={handleLogout}

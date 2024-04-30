@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     let wordsWithDefinitions = await db.dictionary.findMany({
-      take: 100,
+      take: 20000,
       select: { word: true, definition: true, id: true },
     });
     // split the words into correct and incorrect answers
