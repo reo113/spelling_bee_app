@@ -1,7 +1,7 @@
 const apiKey = "v200pgdwucwqdtqnp2dll678gosivzb0761lllr8w0ql2na70";
 const axios = require('axios');
 const { db } = require("../utils/db");
-import cleanWord from '../utils/cleanwords';
+const {cleanWord} = require('../utils/cleanwords');
 
 // default rate limit
 let limits = {
@@ -27,46 +27,46 @@ const checkRateLimit = async () => {
         limits.hour.remaining = 100;
     }
 };
-const fetchAudioFromWordnik = async (word) => {
+const fetchExampleFromWordnik = async (word) => {
     word = cleanWord(word);
-    const url = `https://api.wordnik.com/v4/word.json/${word}/audio?useCanonical=false&limit=10&api_key=${apiKey}`;
+    const url = `https://api.wordnik.com/v4/word.json/${word}/examples?includeDuplicates=false&useCanonical=false&limit=10&api_key=${apiKey}`;
     try {
         const response = await axios.get(url);
         updateRateLimits(response.headers);
-        const audioFiles = response.data;
+        const example = response.data;
 
-        // Find the first audio URL that is defined
-        const validAudio = audioFiles.find(audio => audio.fileUrl);
-        return validAudio ? validAudio.fileUrl : null;
+        // Find the first example that is defined
+        const validExample = example.examples.find(ex => ex.text);
+        return validExample ? validExample.text : null;
     } catch (error) {
         if (error.response && error.response.status === 429) {
             const retryAfter = error.response.headers['retry-after'] * 1000; // Convert to milliseconds
             console.log(`Rate limit exceeded, retrying after ${retryAfter} milliseconds`);
             await new Promise(resolve => setTimeout(resolve, retryAfter));
-            return fetchAudioFromWordnik(word); // Retry fetching
+            return fetchExampleFromWordnik(word); // Retry fetching
         }
-        console.error(`Failed to fetch audio for ${word}:`, error.message);
+        console.error(`Failed to fetch example for ${word}:`, error.message);
         return null;
     }
 };
 
-const updateDictionaryAudio = async () => {
+const updateDictionaryExample = async () => {
     try {
         const dictionaryEntries = await db.dictionary.findMany({
-            where: { audio: null } // Only process entries without an audio URL
+            where: { example: null } // Only process entries without an example 
         });
 
         for (const entry of dictionaryEntries) {
             await checkRateLimit(); // Throttle requests
-            const audioUrl = await fetchAudioFromWordnik(entry.word);
-            if (audioUrl) {
+            const example = await fetchExampleFromWordnik(entry.word);
+            if (example) {
                 await db.dictionary.update({
                     where: { id: entry.id },
-                    data: { audio: audioUrl }
+                    data: { example: example }
                 });
-                console.log(`Updated audio URL for ${entry.word}`);
+                console.log(`Updated example URL for ${entry.word}`);
             } else {
-                console.log(`No audio found for ${entry.word}, skipped.`);
+                console.log(`No example found for ${entry.word}, skipped.`);
             }
         }
     } catch (error) {
@@ -76,4 +76,4 @@ const updateDictionaryAudio = async () => {
     }
 };
 
-updateDictionaryAudio();
+updateDictionaryExample();

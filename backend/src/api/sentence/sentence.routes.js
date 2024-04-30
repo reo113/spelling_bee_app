@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
     try {
-        let wordsWithExample = await db.example.findMany({
+        let wordsWithExample = await db.dictionary.findMany({
             take: 100,
             where: { example: { not: null } },
             select: { word: true, example: true, id: true },
