@@ -40,4 +40,4 @@ const GameHub = () => {
   );
 };
 
-export default HomeScreen;
+export default GameHub;
