@@ -1,11 +1,17 @@
-import HomeScreen from "@/pages/misc/GameHub";
+import GameHub from "@/pages/misc/GameHub";
+import StartGame from "@/games/components/StartGame";
+
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <HomeScreen />,
+      element: <GameHub />,
+    },
+    {
+      path: "/game/:gameType", 
+      element: <StartGame />,
     },
   ]);
 
