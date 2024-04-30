@@ -7,7 +7,7 @@ function Skeleton({
   return (
     <div
       className={cn(
-        "tailwind.config.tsanimate-pulse tailwind.config.tsrounded-md tailwind.config.tsbg-muted",
+        "animate-pulse rounded-md bg-muted",
         className,
       )}
       {...props}

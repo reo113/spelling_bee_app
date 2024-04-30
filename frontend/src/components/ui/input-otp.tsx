@@ -16,7 +16,7 @@ const InputOTP = React.forwardRef<
       "flex items-center gap-2 has-[:disabled]:opacity-50",
       containerClassName,
     )}
-    className={cn("disabled:tailwind.config.tscursor-not-allowed", className)}
+    className={cn("disabled:""cursor-not-allowed", className)}
     {...props}
   />
 ));
@@ -29,7 +29,7 @@ const InputOTPGroup = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "tailwind.config.tsflex tailwind.config.tsitems-center",
+      """flex ""items-center",
       className,
     )}
     {...props}
@@ -48,17 +48,17 @@ const InputOTPSlot = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "tailwind.config.tsrelative tailwind.config.tsflex tailwind.config.tsh-10 tailwind.config.tsw-10 tailwind.config.tsitems-center tailwind.config.tsjustify-center tailwind.config.tsborder-y tailwind.config.tsborder-r tailwind.config.tsborder-input tailwind.config.tstext-sm tailwind.config.tstransition-all first:tailwind.config.tsrounded-l-md first:tailwind.config.tsborder-l last:tailwind.config.tsrounded-r-md",
+        """relative ""flex ""h-10 ""w-10 ""items-center ""justify-center ""border-y ""border-r ""border-input ""text-sm ""transition-all first:""rounded-l-md first:""border-l last:""rounded-r-md",
         isActive &&
-          "tailwind.config.tsz-10 tailwind.config.tsring-2 tailwind.config.tsring-ring tailwind.config.tsring-offset-background",
+          """z-10 ""ring-2 ""ring-ring ""ring-offset-background",
         className,
       )}
       {...props}
     >
       {char}
       {hasFakeCaret && (
-        <div className="tailwind.config.tspointer-events-none tailwind.config.tsabsolute tailwind.config.tsinset-0 tailwind.config.tsflex tailwind.config.tsitems-center tailwind.config.tsjustify-center">
-          <div className="tailwind.config.tsh-4 tailwind.config.tsw-px tailwind.config.tsanimate-caret-blink tailwind.config.tsbg-foreground tailwind.config.tsduration-1000" />
+        <div className="""pointer-events-none ""absolute ""inset-0 ""flex ""items-center ""justify-center">
+          <div className="""h-4 ""w-px ""animate-caret-blink ""bg-foreground ""duration-1000" />
         </div>
       )}
     </div>

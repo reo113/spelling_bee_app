@@ -23,7 +23,7 @@ const Menubar = React.forwardRef<
   <MenubarPrimitive.Root
     ref={ref}
     className={cn(
-      "tailwind.config.tsflex tailwind.config.tsh-10 tailwind.config.tsitems-center tailwind.config.tsspace-x-1 tailwind.config.tsrounded-md tailwind.config.tsborder tailwind.config.tsbg-background tailwind.config.tsp-1",
+      """flex ""h-10 ""items-center ""space-x-1 ""rounded-md ""border ""bg-background ""p-1",
       className,
     )}
     {...props}
@@ -38,7 +38,7 @@ const MenubarTrigger = React.forwardRef<
   <MenubarPrimitive.Trigger
     ref={ref}
     className={cn(
-      "tailwind.config.tsflex tailwind.config.tscursor-default tailwind.config.tsselect-none tailwind.config.tsitems-center tailwind.config.tsrounded-sm tailwind.config.tspx-3 tailwind.config.tspy-1.5 tailwind.config.tstext-sm tailwind.config.tsfont-medium tailwind.config.tsoutline-none focus:tailwind.config.tsbg-accent focus:tailwind.config.tstext-accent-foreground data-[state=open]:tailwind.config.tsbg-accent data-[state=open]:tailwind.config.tstext-accent-foreground",
+      """flex ""cursor-default ""select-none ""items-center ""rounded-sm ""px-3 ""py-1.5 ""text-sm ""font-medium ""outline-none focus:""bg-accent focus:""text-accent-foreground data-[state=open]:""bg-accent data-[state=open]:""text-accent-foreground",
       className,
     )}
     {...props}
@@ -55,14 +55,14 @@ const MenubarSubTrigger = React.forwardRef<
   <MenubarPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      "tailwind.config.tsflex tailwind.config.tscursor-default tailwind.config.tsselect-none tailwind.config.tsitems-center tailwind.config.tsrounded-sm tailwind.config.tspx-2 tailwind.config.tspy-1.5 tailwind.config.tstext-sm tailwind.config.tsoutline-none focus:tailwind.config.tsbg-accent focus:tailwind.config.tstext-accent-foreground data-[state=open]:tailwind.config.tsbg-accent data-[state=open]:tailwind.config.tstext-accent-foreground",
-      inset && "tailwind.config.tspl-8",
+      """flex ""cursor-default ""select-none ""items-center ""rounded-sm ""px-2 ""py-1.5 ""text-sm ""outline-none focus:""bg-accent focus:""text-accent-foreground data-[state=open]:""bg-accent data-[state=open]:""text-accent-foreground",
+      inset && """pl-8",
       className,
     )}
     {...props}
   >
     {children}
-    <ChevronRight className="tailwind.config.tsml-auto tailwind.config.tsh-4 tailwind.config.tsw-4" />
+    <ChevronRight className="""ml-auto ""h-4 ""w-4" />
   </MenubarPrimitive.SubTrigger>
 ));
 MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName;
@@ -74,7 +74,7 @@ const MenubarSubContent = React.forwardRef<
   <MenubarPrimitive.SubContent
     ref={ref}
     className={cn(
-      "tailwind.config.tsz-50 tailwind.config.tsmin-w-[8rem] tailwind.config.tsoverflow-hidden tailwind.config.tsrounded-md tailwind.config.tsborder tailwind.config.tsbg-popover tailwind.config.tsp-1 tailwind.config.tstext-popover-foreground data-[state=open]:tailwind.config.tsanimate-in data-[state=closed]:tailwind.config.tsanimate-out data-[state=closed]:tailwind.config.tsfade-out-0 data-[state=open]:tailwind.config.tsfade-in-0 data-[state=closed]:tailwind.config.tszoom-out-95 data-[state=open]:tailwind.config.tszoom-in-95 data-[side=bottom]:tailwind.config.tsslide-in-from-top-2 data-[side=left]:tailwind.config.tsslide-in-from-right-2 data-[side=right]:tailwind.config.tsslide-in-from-left-2 data-[side=top]:tailwind.config.tsslide-in-from-bottom-2",
+      """z-50 ""min-w-[8rem] ""overflow-hidden ""rounded-md ""border ""bg-popover ""p-1 ""text-popover-foreground data-[state=open]:""animate-in data-[state=closed]:""animate-out data-[state=closed]:""fade-out-0 data-[state=open]:""fade-in-0 data-[state=closed]:""zoom-out-95 data-[state=open]:""zoom-in-95 data-[side=bottom]:""slide-in-from-top-2 data-[side=left]:""slide-in-from-right-2 data-[side=right]:""slide-in-from-left-2 data-[side=top]:""slide-in-from-bottom-2",
       className,
     )}
     {...props}
@@ -97,7 +97,7 @@ const MenubarContent = React.forwardRef<
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          "tailwind.config.tsz-50 tailwind.config.tsmin-w-[12rem] tailwind.config.tsoverflow-hidden tailwind.config.tsrounded-md tailwind.config.tsborder tailwind.config.tsbg-popover tailwind.config.tsp-1 tailwind.config.tstext-popover-foreground tailwind.config.tsshadow-md data-[state=open]:tailwind.config.tsanimate-in data-[state=closed]:tailwind.config.tsfade-out-0 data-[state=open]:tailwind.config.tsfade-in-0 data-[state=closed]:tailwind.config.tszoom-out-95 data-[state=open]:tailwind.config.tszoom-in-95 data-[side=bottom]:tailwind.config.tsslide-in-from-top-2 data-[side=left]:tailwind.config.tsslide-in-from-right-2 data-[side=right]:tailwind.config.tsslide-in-from-left-2 data-[side=top]:tailwind.config.tsslide-in-from-bottom-2",
+          """z-50 ""min-w-[12rem] ""overflow-hidden ""rounded-md ""border ""bg-popover ""p-1 ""text-popover-foreground ""shadow-md data-[state=open]:""animate-in data-[state=closed]:""fade-out-0 data-[state=open]:""fade-in-0 data-[state=closed]:""zoom-out-95 data-[state=open]:""zoom-in-95 data-[side=bottom]:""slide-in-from-top-2 data-[side=left]:""slide-in-from-right-2 data-[side=right]:""slide-in-from-left-2 data-[side=top]:""slide-in-from-bottom-2",
           className,
         )}
         {...props}
@@ -116,8 +116,8 @@ const MenubarItem = React.forwardRef<
   <MenubarPrimitive.Item
     ref={ref}
     className={cn(
-      "tailwind.config.tsrelative tailwind.config.tsflex tailwind.config.tscursor-default tailwind.config.tsselect-none tailwind.config.tsitems-center tailwind.config.tsrounded-sm tailwind.config.tspx-2 tailwind.config.tspy-1.5 tailwind.config.tstext-sm tailwind.config.tsoutline-none focus:tailwind.config.tsbg-accent focus:tailwind.config.tstext-accent-foreground data-[disabled]:tailwind.config.tspointer-events-none data-[disabled]:tailwind.config.tsopacity-50",
-      inset && "tailwind.config.tspl-8",
+      """relative ""flex ""cursor-default ""select-none ""items-center ""rounded-sm ""px-2 ""py-1.5 ""text-sm ""outline-none focus:""bg-accent focus:""text-accent-foreground data-[disabled]:""pointer-events-none data-[disabled]:""opacity-50",
+      inset && """pl-8",
       className,
     )}
     {...props}
@@ -132,15 +132,15 @@ const MenubarCheckboxItem = React.forwardRef<
   <MenubarPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      "tailwind.config.tsrelative tailwind.config.tsflex tailwind.config.tscursor-default tailwind.config.tsselect-none tailwind.config.tsitems-center tailwind.config.tsrounded-sm tailwind.config.tspy-1.5 tailwind.config.tspl-8 tailwind.config.tspr-2 tailwind.config.tstext-sm tailwind.config.tsoutline-none focus:tailwind.config.tsbg-accent focus:tailwind.config.tstext-accent-foreground data-[disabled]:tailwind.config.tspointer-events-none data-[disabled]:tailwind.config.tsopacity-50",
+      """relative ""flex ""cursor-default ""select-none ""items-center ""rounded-sm ""py-1.5 ""pl-8 ""pr-2 ""text-sm ""outline-none focus:""bg-accent focus:""text-accent-foreground data-[disabled]:""pointer-events-none data-[disabled]:""opacity-50",
       className,
     )}
     checked={checked}
     {...props}
   >
-    <span className="tailwind.config.tsabsolute tailwind.config.tsleft-2 tailwind.config.tsflex tailwind.config.tsh-3.5 tailwind.config.tsw-3.5 tailwind.config.tsitems-center tailwind.config.tsjustify-center">
+    <span className="""absolute ""left-2 ""flex ""h-3.5 ""w-3.5 ""items-center ""justify-center">
       <MenubarPrimitive.ItemIndicator>
-        <Check className="tailwind.config.tsh-4 tailwind.config.tsw-4" />
+        <Check className="""h-4 ""w-4" />
       </MenubarPrimitive.ItemIndicator>
     </span>
     {children}
@@ -155,14 +155,14 @@ const MenubarRadioItem = React.forwardRef<
   <MenubarPrimitive.RadioItem
     ref={ref}
     className={cn(
-      "tailwind.config.tsrelative tailwind.config.tsflex tailwind.config.tscursor-default tailwind.config.tsselect-none tailwind.config.tsitems-center tailwind.config.tsrounded-sm tailwind.config.tspy-1.5 tailwind.config.tspl-8 tailwind.config.tspr-2 tailwind.config.tstext-sm tailwind.config.tsoutline-none focus:tailwind.config.tsbg-accent focus:tailwind.config.tstext-accent-foreground data-[disabled]:tailwind.config.tspointer-events-none data-[disabled]:tailwind.config.tsopacity-50",
+      """relative ""flex ""cursor-default ""select-none ""items-center ""rounded-sm ""py-1.5 ""pl-8 ""pr-2 ""text-sm ""outline-none focus:""bg-accent focus:""text-accent-foreground data-[disabled]:""pointer-events-none data-[disabled]:""opacity-50",
       className,
     )}
     {...props}
   >
-    <span className="tailwind.config.tsabsolute tailwind.config.tsleft-2 tailwind.config.tsflex tailwind.config.tsh-3.5 tailwind.config.tsw-3.5 tailwind.config.tsitems-center tailwind.config.tsjustify-center">
+    <span className="""absolute ""left-2 ""flex ""h-3.5 ""w-3.5 ""items-center ""justify-center">
       <MenubarPrimitive.ItemIndicator>
-        <Circle className="tailwind.config.tsh-2 tailwind.config.tsw-2 tailwind.config.tsfill-current" />
+        <Circle className="""h-2 ""w-2 ""fill-current" />
       </MenubarPrimitive.ItemIndicator>
     </span>
     {children}
@@ -179,8 +179,8 @@ const MenubarLabel = React.forwardRef<
   <MenubarPrimitive.Label
     ref={ref}
     className={cn(
-      "tailwind.config.tspx-2 tailwind.config.tspy-1.5 tailwind.config.tstext-sm tailwind.config.tsfont-semibold",
-      inset && "tailwind.config.tspl-8",
+      """px-2 ""py-1.5 ""text-sm ""font-semibold",
+      inset && """pl-8",
       className,
     )}
     {...props}
@@ -195,7 +195,7 @@ const MenubarSeparator = React.forwardRef<
   <MenubarPrimitive.Separator
     ref={ref}
     className={cn(
-      "tailwind.config.ts-mx-1 tailwind.config.tsmy-1 tailwind.config.tsh-px tailwind.config.tsbg-muted",
+      """-mx-1 ""my-1 ""h-px ""bg-muted",
       className,
     )}
     {...props}
@@ -210,7 +210,7 @@ const MenubarShortcut = ({
   return (
     <span
       className={cn(
-        "tailwind.config.tsml-auto tailwind.config.tstext-xs tailwind.config.tstracking-widest tailwind.config.tstext-muted-foreground",
+        """ml-auto ""text-xs ""tracking-widest ""text-muted-foreground",
         className,
       )}
       {...props}

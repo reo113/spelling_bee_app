@@ -12,12 +12,12 @@ const ScrollArea = React.forwardRef<
   <ScrollAreaPrimitive.Root
     ref={ref}
     className={cn(
-      "tailwind.config.tsrelative tailwind.config.tsoverflow-hidden",
+      "relative overflow-hidden",
       className,
     )}
     {...props}
   >
-    <ScrollAreaPrimitive.Viewport className="tailwind.config.tsh-full tailwind.config.tsw-full tailwind.config.tsrounded-[inherit]">
+    <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">
       {children}
     </ScrollAreaPrimitive.Viewport>
     <ScrollBar />
@@ -34,16 +34,16 @@ const ScrollBar = React.forwardRef<
     ref={ref}
     orientation={orientation}
     className={cn(
-      "tailwind.config.tsflex tailwind.config.tstouch-none tailwind.config.tsselect-none tailwind.config.tstransition-colors",
+      "flex touch-none select-none transition-colors",
       orientation === "vertical" &&
-        "tailwind.config.tsh-full tailwind.config.tsw-2.5 tailwind.config.tsborder-l tailwind.config.tsborder-l-transparent tailwind.config.tsp-[1px]",
+        "h-full w-2.5 border-l border-l-transparent p-[1px]",
       orientation === "horizontal" &&
-        "tailwind.config.tsh-2.5 tailwind.config.tsflex-col tailwind.config.tsborder-t tailwind.config.tsborder-t-transparent tailwind.config.tsp-[1px]",
+        "h-2.5 flex-col border-t border-t-transparent p-[1px]",
       className,
     )}
     {...props}
   >
-    <ScrollAreaPrimitive.ScrollAreaThumb className="tailwind.config.tsrelative tailwind.config.tsflex-1 tailwind.config.tsrounded-full tailwind.config.tsbg-border" />
+    <ScrollAreaPrimitive.ScrollAreaThumb className="relative flex-1 rounded-full bg-border" />
   </ScrollAreaPrimitive.ScrollAreaScrollbar>
 ));
 ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName;

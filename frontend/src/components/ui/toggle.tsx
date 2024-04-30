@@ -7,18 +7,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const toggleVariants = cva(
-  "tailwind.config.tsinline-flex tailwind.config.tsitems-center tailwind.config.tsjustify-center tailwind.config.tsrounded-md tailwind.config.tstext-sm tailwind.config.tsfont-medium tailwind.config.tsring-offset-background tailwind.config.tstransition-colors hover:tailwind.config.tsbg-muted hover:tailwind.config.tstext-muted-foreground focus-visible:tailwind.config.tsoutline-none focus-visible:tailwind.config.tsring-2 focus-visible:tailwind.config.tsring-ring focus-visible:tailwind.config.tsring-offset-2 disabled:tailwind.config.tspointer-events-none disabled:tailwind.config.tsopacity-50 data-[state=on]:tailwind.config.tsbg-accent data-[state=on]:tailwind.config.tstext-accent-foreground",
+  "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground",
   {
     variants: {
       variant: {
-        default: "tailwind.config.tsbg-transparent",
+        default: "bg-transparent",
         outline:
-          "tailwind.config.tsborder tailwind.config.tsborder-input tailwind.config.tsbg-transparent hover:tailwind.config.tsbg-accent hover:tailwind.config.tstext-accent-foreground",
+          "border border-input bg-transparent hover:bg-accent hover:text-accent-foreground",
       },
       size: {
-        default: "tailwind.config.tsh-10 tailwind.config.tspx-3",
-        sm: "tailwind.config.tsh-9 tailwind.config.tspx-2.5",
-        lg: "tailwind.config.tsh-11 tailwind.config.tspx-5",
+        default: "h-10 px-3",
+        sm: "h-9 px-2.5",
+        lg: "h-11 px-5",
       },
     },
     defaultVariants: {

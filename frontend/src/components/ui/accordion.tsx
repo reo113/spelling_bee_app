@@ -14,7 +14,7 @@ const AccordionItem = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AccordionPrimitive.Item
     ref={ref}
-    className={cn("tailwind.config.tsborder-b", className)}
+    className={cn("""border-b", className)}
     {...props}
   />
 ));
@@ -24,17 +24,17 @@ const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
 >(({ className, children, ...props }, ref) => (
-  <AccordionPrimitive.Header className="tailwind.config.tsflex">
+  <AccordionPrimitive.Header className="""flex">
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "tailwind.config.tsflex tailwind.config.tsflex-1 tailwind.config.tsitems-center tailwind.config.tsjustify-between tailwind.config.tspy-4 tailwind.config.tsfont-medium tailwind.config.tstransition-all hover:tailwind.config.tsunderline [&[data-state=open]>svg]:tailwind.config.tsrotate-180",
+        """flex ""flex-1 ""items-center ""justify-between ""py-4 ""font-medium ""transition-all hover:""underline [&[data-state=open]>svg]:""rotate-180",
         className,
       )}
       {...props}
     >
       {children}
-      <ChevronDown className="tailwind.config.tsh-4 tailwind.config.tsw-4 tailwind.config.tsshrink-0 tailwind.config.tstransition-transform tailwind.config.tsduration-200" />
+      <ChevronDown className="""h-4 ""w-4 ""shrink-0 ""transition-transform ""duration-200" />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));
@@ -46,11 +46,11 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className="tailwind.config.tsoverflow-hidden tailwind.config.tstext-sm tailwind.config.tstransition-all data-[state=closed]:tailwind.config.tsanimate-accordion-up data-[state=open]:tailwind.config.tsanimate-accordion-down"
+    className="""overflow-hidden ""text-sm ""transition-all data-[state=closed]:""animate-accordion-up data-[state=open]:""animate-accordion-down"
     {...props}
   >
     <div
-      className={cn("tailwind.config.tspb-4 tailwind.config.tspt-0", className)}
+      className={cn("""pb-4 ""pt-0", className)}
     >
       {children}
     </div>

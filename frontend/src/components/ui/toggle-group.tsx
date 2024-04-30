@@ -22,7 +22,7 @@ const ToggleGroup = React.forwardRef<
   <ToggleGroupPrimitive.Root
     ref={ref}
     className={cn(
-      "tailwind.config.tsflex tailwind.config.tsitems-center tailwind.config.tsjustify-center tailwind.config.tsgap-1",
+      """flex ""items-center ""justify-center ""gap-1",
       className,
     )}
     {...props}

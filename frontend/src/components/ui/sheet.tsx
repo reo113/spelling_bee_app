@@ -21,7 +21,7 @@ const SheetOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Overlay
     className={cn(
-      "tailwind.config.tsfixed tailwind.config.tsinset-0 tailwind.config.tsz-50 tailwind.config.tsbg-black/80 tailwind.config.ts data-[state=open]:tailwind.config.tsanimate-in data-[state=closed]:tailwind.config.tsanimate-out data-[state=closed]:tailwind.config.tsfade-out-0 data-[state=open]:tailwind.config.tsfade-in-0",
+      """fixed ""inset-0 ""z-50 ""bg-black/80 "" data-[state=open]:""animate-in data-[state=closed]:""animate-out data-[state=closed]:""fade-out-0 data-[state=open]:""fade-in-0",
       className,
     )}
     {...props}
@@ -31,16 +31,16 @@ const SheetOverlay = React.forwardRef<
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
 
 const sheetVariants = cva(
-  "tailwind.config.tsfixed tailwind.config.tsz-50 tailwind.config.tsgap-4 tailwind.config.tsbg-background tailwind.config.tsp-6 tailwind.config.tsshadow-lg tailwind.config.tstransition tailwind.config.tsease-in-out data-[state=open]:tailwind.config.tsanimate-in data-[state=closed]:tailwind.config.tsanimate-out data-[state=closed]:tailwind.config.tsduration-300 data-[state=open]:tailwind.config.tsduration-500",
+  """fixed ""z-50 ""gap-4 ""bg-background ""p-6 ""shadow-lg ""transition ""ease-in-out data-[state=open]:""animate-in data-[state=closed]:""animate-out data-[state=closed]:""duration-300 data-[state=open]:""duration-500",
   {
     variants: {
       side: {
-        top: "tailwind.config.tsinset-x-0 tailwind.config.tstop-0 tailwind.config.tsborder-b data-[state=closed]:tailwind.config.tsslide-out-to-top data-[state=open]:tailwind.config.tsslide-in-from-top",
+        top: """inset-x-0 ""top-0 ""border-b data-[state=closed]:""slide-out-to-top data-[state=open]:""slide-in-from-top",
         bottom:
-          "tailwind.config.tsinset-x-0 tailwind.config.tsbottom-0 tailwind.config.tsborder-t data-[state=closed]:tailwind.config.tsslide-out-to-bottom data-[state=open]:tailwind.config.tsslide-in-from-bottom",
-        left: "tailwind.config.tsinset-y-0 tailwind.config.tsleft-0 tailwind.config.tsh-full tailwind.config.tsw-3/4 tailwind.config.tsborder-r data-[state=closed]:tailwind.config.tsslide-out-to-left data-[state=open]:tailwind.config.tsslide-in-from-left sm:tailwind.config.tsmax-w-sm",
+          """inset-x-0 ""bottom-0 ""border-t data-[state=closed]:""slide-out-to-bottom data-[state=open]:""slide-in-from-bottom",
+        left: """inset-y-0 ""left-0 ""h-full ""w-3/4 ""border-r data-[state=closed]:""slide-out-to-left data-[state=open]:""slide-in-from-left sm:""max-w-sm",
         right:
-          "tailwind.config.tsinset-y-0 tailwind.config.tsright-0 tailwind.config.tsh-full tailwind.config.tsw-3/4 tailwind.config.ts tailwind.config.tsborder-l data-[state=closed]:tailwind.config.tsslide-out-to-right data-[state=open]:tailwind.config.tsslide-in-from-right sm:tailwind.config.tsmax-w-sm",
+          """inset-y-0 ""right-0 ""h-full ""w-3/4 "" ""border-l data-[state=closed]:""slide-out-to-right data-[state=open]:""slide-in-from-right sm:""max-w-sm",
       },
     },
     defaultVariants: {
@@ -65,9 +65,9 @@ const SheetContent = React.forwardRef<
       {...props}
     >
       {children}
-      <SheetPrimitive.Close className="tailwind.config.tsabsolute tailwind.config.tsright-4 tailwind.config.tstop-4 tailwind.config.tsrounded-sm tailwind.config.tsopacity-70 tailwind.config.tsring-offset-background tailwind.config.tstransition-opacity hover:tailwind.config.tsopacity-100 focus:tailwind.config.tsoutline-none focus:tailwind.config.tsring-2 focus:tailwind.config.tsring-ring focus:tailwind.config.tsring-offset-2 disabled:tailwind.config.tspointer-events-none data-[state=open]:tailwind.config.tsbg-secondary">
-        <X className="tailwind.config.tsh-4 tailwind.config.tsw-4" />
-        <span className="tailwind.config.tssr-only">Close</span>
+      <SheetPrimitive.Close className="""absolute ""right-4 ""top-4 ""rounded-sm ""opacity-70 ""ring-offset-background ""transition-opacity hover:""opacity-100 focus:""outline-none focus:""ring-2 focus:""ring-ring focus:""ring-offset-2 disabled:""pointer-events-none data-[state=open]:""bg-secondary">
+        <X className="""h-4 ""w-4" />
+        <span className="""sr-only">Close</span>
       </SheetPrimitive.Close>
     </SheetPrimitive.Content>
   </SheetPortal>
@@ -80,7 +80,7 @@ const SheetHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "tailwind.config.tsflex tailwind.config.tsflex-col tailwind.config.tsspace-y-2 tailwind.config.tstext-center sm:tailwind.config.tstext-left",
+      """flex ""flex-col ""space-y-2 ""text-center sm:""text-left",
       className,
     )}
     {...props}
@@ -94,7 +94,7 @@ const SheetFooter = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "tailwind.config.tsflex tailwind.config.tsflex-col-reverse sm:tailwind.config.tsflex-row sm:tailwind.config.tsjustify-end sm:tailwind.config.tsspace-x-2",
+      """flex ""flex-col-reverse sm:""flex-row sm:""justify-end sm:""space-x-2",
       className,
     )}
     {...props}
@@ -109,7 +109,7 @@ const SheetTitle = React.forwardRef<
   <SheetPrimitive.Title
     ref={ref}
     className={cn(
-      "tailwind.config.tstext-lg tailwind.config.tsfont-semibold tailwind.config.tstext-foreground",
+      """text-lg ""font-semibold ""text-foreground",
       className,
     )}
     {...props}
@@ -124,7 +124,7 @@ const SheetDescription = React.forwardRef<
   <SheetPrimitive.Description
     ref={ref}
     className={cn(
-      "tailwind.config.tstext-sm tailwind.config.tstext-muted-foreground",
+      """text-sm ""text-muted-foreground",
       className,
     )}
     {...props}

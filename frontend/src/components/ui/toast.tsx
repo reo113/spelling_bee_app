@@ -16,7 +16,7 @@ const ToastViewport = React.forwardRef<
   <ToastPrimitives.Viewport
     ref={ref}
     className={cn(
-      "tailwind.config.tsfixed tailwind.config.tstop-0 tailwind.config.tsz-[100] tailwind.config.tsflex tailwind.config.tsmax-h-screen tailwind.config.tsw-full tailwind.config.tsflex-col-reverse tailwind.config.tsp-4 sm:tailwind.config.tsbottom-0 sm:tailwind.config.tsright-0 sm:tailwind.config.tstop-auto sm:tailwind.config.tsflex-col md:tailwind.config.tsmax-w-[420px]",
+      "fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]",
       className,
     )}
     {...props}
@@ -25,14 +25,14 @@ const ToastViewport = React.forwardRef<
 ToastViewport.displayName = ToastPrimitives.Viewport.displayName;
 
 const toastVariants = cva(
-  "tailwind.config.tsgroup tailwind.config.tspointer-events-auto tailwind.config.tsrelative tailwind.config.tsflex tailwind.config.tsw-full tailwind.config.tsitems-center tailwind.config.tsjustify-between tailwind.config.tsspace-x-4 tailwind.config.tsoverflow-hidden tailwind.config.tsrounded-md tailwind.config.tsborder tailwind.config.tsp-6 tailwind.config.tspr-8 tailwind.config.tsshadow-lg tailwind.config.tstransition-all data-[swipe=cancel]:tailwind.config.tstranslate-x-0 data-[swipe=end]:tailwind.config.tstranslate-x-[var(--radix-toast-swipe-end-x)] data-[swipe=move]:tailwind.config.tstranslate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=move]:tailwind.config.tstransition-none data-[state=open]:tailwind.config.tsanimate-in data-[state=closed]:tailwind.config.tsanimate-out data-[swipe=end]:tailwind.config.tsanimate-out data-[state=closed]:tailwind.config.tsfade-out-80 data-[state=closed]:tailwind.config.tsslide-out-to-right-full data-[state=open]:tailwind.config.tsslide-in-from-top-full data-[state=open]:sm:tailwind.config.tsslide-in-from-bottom-full",
+  "group pointer-events-auto relative flex w-full items-center justify-between space-x-4 overflow-hidden rounded-md border p-6 pr-8 shadow-lg transition-all data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[var(--radix-toast-swipe-end-x)] data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=move]:transition-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[swipe=end]:animate-out data-[state=closed]:fade-out-80 data-[state=closed]:slide-out-to-right-full data-[state=open]:slide-in-from-top-full data-[state=open]:sm:slide-in-from-bottom-full",
   {
     variants: {
       variant: {
         default:
-          "tailwind.config.tsborder tailwind.config.tsbg-background tailwind.config.tstext-foreground",
+          "border bg-background text-foreground",
         destructive:
-          "tailwind.config.tsdestructive tailwind.config.tsgroup tailwind.config.tsborder-destructive tailwind.config.tsbg-destructive tailwind.config.tstext-destructive-foreground",
+          "destructive group border-destructive bg-destructive text-destructive-foreground",
       },
     },
     defaultVariants: {
@@ -63,7 +63,7 @@ const ToastAction = React.forwardRef<
   <ToastPrimitives.Action
     ref={ref}
     className={cn(
-      "tailwind.config.tsinline-flex tailwind.config.tsh-8 tailwind.config.tsshrink-0 tailwind.config.tsitems-center tailwind.config.tsjustify-center tailwind.config.tsrounded-md tailwind.config.tsborder tailwind.config.tsbg-transparent tailwind.config.tspx-3 tailwind.config.tstext-sm tailwind.config.tsfont-medium tailwind.config.tsring-offset-background tailwind.config.tstransition-colors hover:tailwind.config.tsbg-secondary focus:tailwind.config.tsoutline-none focus:tailwind.config.tsring-2 focus:tailwind.config.tsring-ring focus:tailwind.config.tsring-offset-2 disabled:tailwind.config.tspointer-events-none disabled:tailwind.config.tsopacity-50 group-[.destructive]:tailwind.config.tsborder-muted/40 group-[.destructive]:hover:tailwind.config.tsborder-destructive/30 group-[.destructive]:hover:tailwind.config.tsbg-destructive group-[.destructive]:hover:tailwind.config.tstext-destructive-foreground group-[.destructive]:focus:tailwind.config.tsring-destructive",
+      "inline-flex h-8 shrink-0 items-center justify-center rounded-md border bg-transparent px-3 text-sm font-medium ring-offset-background transition-colors hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 group-[.destructive]:border-muted/40 group-[.destructive]:hover:border-destructive/30 group-[.destructive]:hover:bg-destructive group-[.destructive]:hover:text-destructive-foreground group-[.destructive]:focus:ring-destructive",
       className,
     )}
     {...props}
@@ -78,13 +78,13 @@ const ToastClose = React.forwardRef<
   <ToastPrimitives.Close
     ref={ref}
     className={cn(
-      "tailwind.config.tsabsolute tailwind.config.tsright-2 tailwind.config.tstop-2 tailwind.config.tsrounded-md tailwind.config.tsp-1 tailwind.config.tstext-foreground/50 tailwind.config.tsopacity-0 tailwind.config.tstransition-opacity hover:tailwind.config.tstext-foreground focus:tailwind.config.tsopacity-100 focus:tailwind.config.tsoutline-none focus:tailwind.config.tsring-2 group-hover:tailwind.config.tsopacity-100 group-[.destructive]:tailwind.config.tstext-red-300 group-[.destructive]:hover:tailwind.config.tstext-red-50 group-[.destructive]:focus:tailwind.config.tsring-red-400 group-[.destructive]:focus:tailwind.config.tsring-offset-red-600",
+      "absolute right-2 top-2 rounded-md p-1 text-foreground/50 opacity-0 transition-opacity hover:text-foreground focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100 group-[.destructive]:text-red-300 group-[.destructive]:hover:text-red-50 group-[.destructive]:focus:ring-red-400 group-[.destructive]:focus:ring-offset-red-600",
       className,
     )}
     toast-close=""
     {...props}
   >
-    <X className="tailwind.config.tsh-4 tailwind.config.tsw-4" />
+    <X className="h-4 w-4" />
   </ToastPrimitives.Close>
 ));
 ToastClose.displayName = ToastPrimitives.Close.displayName;
@@ -96,7 +96,7 @@ const ToastTitle = React.forwardRef<
   <ToastPrimitives.Title
     ref={ref}
     className={cn(
-      "tailwind.config.tstext-sm tailwind.config.tsfont-semibold",
+      "text-sm font-semibold",
       className,
     )}
     {...props}
@@ -111,7 +111,7 @@ const ToastDescription = React.forwardRef<
   <ToastPrimitives.Description
     ref={ref}
     className={cn(
-      "tailwind.config.tstext-sm tailwind.config.tsopacity-90",
+      "text-sm opacity-90",
       className,
     )}
     {...props}

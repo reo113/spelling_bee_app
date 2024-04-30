@@ -12,15 +12,15 @@ const Slider = React.forwardRef<
   <SliderPrimitive.Root
     ref={ref}
     className={cn(
-      "tailwind.config.tsrelative tailwind.config.tsflex tailwind.config.tsw-full tailwind.config.tstouch-none tailwind.config.tsselect-none tailwind.config.tsitems-center",
+      """relative ""flex ""w-full ""touch-none ""select-none ""items-center",
       className,
     )}
     {...props}
   >
-    <SliderPrimitive.Track className="tailwind.config.tsrelative tailwind.config.tsh-2 tailwind.config.tsw-full tailwind.config.tsgrow tailwind.config.tsoverflow-hidden tailwind.config.tsrounded-full tailwind.config.tsbg-secondary">
-      <SliderPrimitive.Range className="tailwind.config.tsabsolute tailwind.config.tsh-full tailwind.config.tsbg-primary" />
+    <SliderPrimitive.Track className="""relative ""h-2 ""w-full ""grow ""overflow-hidden ""rounded-full ""bg-secondary">
+      <SliderPrimitive.Range className="""absolute ""h-full ""bg-primary" />
     </SliderPrimitive.Track>
-    <SliderPrimitive.Thumb className="tailwind.config.tsblock tailwind.config.tsh-5 tailwind.config.tsw-5 tailwind.config.tsrounded-full tailwind.config.tsborder-2 tailwind.config.tsborder-primary tailwind.config.tsbg-background tailwind.config.tsring-offset-background tailwind.config.tstransition-colors focus-visible:tailwind.config.tsoutline-none focus-visible:tailwind.config.tsring-2 focus-visible:tailwind.config.tsring-ring focus-visible:tailwind.config.tsring-offset-2 disabled:tailwind.config.tspointer-events-none disabled:tailwind.config.tsopacity-50" />
+    <SliderPrimitive.Thumb className="""block ""h-5 ""w-5 ""rounded-full ""border-2 ""border-primary ""bg-background ""ring-offset-background ""transition-colors focus-visible:""outline-none focus-visible:""ring-2 focus-visible:""ring-ring focus-visible:""ring-offset-2 disabled:""pointer-events-none disabled:""opacity-50" />
   </SliderPrimitive.Root>
 ));
 Slider.displayName = SliderPrimitive.Root.displayName;

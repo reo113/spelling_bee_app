@@ -6,11 +6,11 @@ const Table = React.forwardRef<
   HTMLTableElement,
   React.HTMLAttributes<HTMLTableElement>
 >(({ className, ...props }, ref) => (
-  <div className="tailwind.config.tsrelative tailwind.config.tsw-full tailwind.config.tsoverflow-auto">
+  <div className="relative w-full overflow-auto">
     <table
       ref={ref}
       className={cn(
-        "tailwind.config.tsw-full tailwind.config.tscaption-bottom tailwind.config.tstext-sm",
+        "w-full caption-bottom text-sm",
         className,
       )}
       {...props}
@@ -25,7 +25,7 @@ const TableHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <thead
     ref={ref}
-    className={cn("[&_tr]:tailwind.config.tsborder-b", className)}
+    className={cn("[&_tr]:border-b", className)}
     {...props}
   />
 ));
@@ -37,7 +37,7 @@ const TableBody = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <tbody
     ref={ref}
-    className={cn("[&_tr:last-child]:tailwind.config.tsborder-0", className)}
+    className={cn("[&_tr:last-child]:border-0", className)}
     {...props}
   />
 ));
@@ -50,7 +50,7 @@ const TableFooter = React.forwardRef<
   <tfoot
     ref={ref}
     className={cn(
-      "tailwind.config.tsborder-t tailwind.config.tsbg-muted/50 tailwind.config.tsfont-medium [&>tr]:last:tailwind.config.tsborder-b-0",
+      "border-t bg-muted/50 font-medium [&>tr]:last:border-b-0",
       className,
     )}
     {...props}
@@ -65,7 +65,7 @@ const TableRow = React.forwardRef<
   <tr
     ref={ref}
     className={cn(
-      "tailwind.config.tsborder-b tailwind.config.tstransition-colors hover:tailwind.config.tsbg-muted/50 data-[state=selected]:tailwind.config.tsbg-muted",
+      "border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
       className,
     )}
     {...props}
@@ -80,7 +80,7 @@ const TableHead = React.forwardRef<
   <th
     ref={ref}
     className={cn(
-      "tailwind.config.tsh-12 tailwind.config.tspx-4 tailwind.config.tstext-left tailwind.config.tsalign-middle tailwind.config.tsfont-medium tailwind.config.tstext-muted-foreground [&:has([role=checkbox])]:tailwind.config.tspr-0",
+      "h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0",
       className,
     )}
     {...props}
@@ -95,7 +95,7 @@ const TableCell = React.forwardRef<
   <td
     ref={ref}
     className={cn(
-      "tailwind.config.tsp-4 tailwind.config.tsalign-middle [&:has([role=checkbox])]:tailwind.config.tspr-0",
+      "p-4 align-middle [&:has([role=checkbox])]:pr-0",
       className,
     )}
     {...props}
@@ -110,7 +110,7 @@ const TableCaption = React.forwardRef<
   <caption
     ref={ref}
     className={cn(
-      "tailwind.config.tsmt-4 tailwind.config.tstext-sm tailwind.config.tstext-muted-foreground",
+      "mt-4 text-sm text-muted-foreground",
       className,
     )}
     {...props}

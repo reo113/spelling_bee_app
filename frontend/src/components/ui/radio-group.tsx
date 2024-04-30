@@ -13,7 +13,7 @@ const RadioGroup = React.forwardRef<
   return (
     <RadioGroupPrimitive.Root
       className={cn(
-        "tailwind.config.tsgrid tailwind.config.tsgap-2",
+        """grid ""gap-2",
         className,
       )}
       {...props}
@@ -31,13 +31,13 @@ const RadioGroupItem = React.forwardRef<
     <RadioGroupPrimitive.Item
       ref={ref}
       className={cn(
-        "tailwind.config.tsaspect-square tailwind.config.tsh-4 tailwind.config.tsw-4 tailwind.config.tsrounded-full tailwind.config.tsborder tailwind.config.tsborder-primary tailwind.config.tstext-primary tailwind.config.tsring-offset-background focus:tailwind.config.tsoutline-none focus-visible:tailwind.config.tsring-2 focus-visible:tailwind.config.tsring-ring focus-visible:tailwind.config.tsring-offset-2 disabled:tailwind.config.tscursor-not-allowed disabled:tailwind.config.tsopacity-50",
+        """aspect-square ""h-4 ""w-4 ""rounded-full ""border ""border-primary ""text-primary ""ring-offset-background focus:""outline-none focus-visible:""ring-2 focus-visible:""ring-ring focus-visible:""ring-offset-2 disabled:""cursor-not-allowed disabled:""opacity-50",
         className,
       )}
       {...props}
     >
-      <RadioGroupPrimitive.Indicator className="tailwind.config.tsflex tailwind.config.tsitems-center tailwind.config.tsjustify-center">
-        <Circle className="tailwind.config.tsh-2.5 tailwind.config.tsw-2.5 tailwind.config.tsfill-current tailwind.config.tstext-current" />
+      <RadioGroupPrimitive.Indicator className="""flex ""items-center ""justify-center">
+        <Circle className="""h-2.5 ""w-2.5 ""fill-current ""text-current" />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   );
