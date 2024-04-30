@@ -3,20 +3,22 @@ import { redirect } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { AuthContext } from "@/contexts/AuthContext";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
-const HomeScreen = () => {
+const GameHub = () => {
   const { currentUser, logout } = useContext(AuthContext);
+
   const handleLogout = (e) => {
     e.preventDefault();
     logout();
     redirect("/");
   };
+
   return (
     <div>
       <div className="container">
-        <h1>Home Screen</h1>
-        <p>Welcome to the Home Screen</p>
+        <h1>Game Hub</h1>
+        <p>Welcome to the Game Selection</p>
         <StartGame />
         {currentUser ? (
           <Button

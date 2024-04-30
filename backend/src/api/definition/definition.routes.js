@@ -1,19 +1,14 @@
-// const apiKey = "v200pgdwucwqdtqnp2dll678gosivzb0761lllr8w0ql2na70";
-// const urlr = https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&excludePartOfSpeech=noun-plural&limit=5&api_key=${apiKey};
-
 const express = require("express");
 const _ = require("lodash");
 const { db } = require("../../utils/db");
-
 const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
     let wordsWithDefinitions = await db.dictionary.findMany({
       take: 100,
-      select: { word: true, definition: true },
+      select: { word: true, definition: true, id: true },
     });
-
     // split the words into correct and incorrect answers
     wordsWithDefinitions = _.shuffle(wordsWithDefinitions);
     const correctAnswers = wordsWithDefinitions.slice(0, 10);
@@ -21,7 +16,7 @@ router.get("/", async (req, res) => {
 
     const result = correctAnswers.map((word) => {
       //shuffle and pick two incorrect words
-      const shuffledIncorrect = _.shuffle(incorrectPool).slice(0, 2);
+      const shuffledIncorrect = incorrectPool.slice(0, 2);
       // remove the already used words from the pool
       incorrectPool = incorrectPool.filter(
         (def) => !shuffledIncorrect.includes(def)
@@ -37,20 +32,12 @@ router.get("/", async (req, res) => {
         words: finalWords,
       };
     });
+
     res.json(result);
   } catch (error) {
     console.error("Error fetching words and definitions:", error);
     res.status(500).send("Server Error");
   }
-});
-
-// Assuming similar structure for other game types
-router.get("/audio", async (req, res) => {
-  // Your logic for handling 'audio' game type
-});
-
-router.get("/sentence", async (req, res) => {
-  // Your logic for handling 'sentence' game type
 });
 
 module.exports = router;

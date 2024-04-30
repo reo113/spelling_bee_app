@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const GameHub = ({ game, gameType, onGameOver }) => {
+const GameWrapper = ({ game, gameType, onGameOver }) => {
   const [currentQuestion, setCurrentQuestion] = useState(
     game.getGameState().question
   );
@@ -44,4 +44,4 @@ const GameHub = ({ game, gameType, onGameOver }) => {
   );
 };
 
-export default GameHub;
+export default GameWrapper;
