@@ -16,6 +16,9 @@ export const theme = {
       "2xl": "1400px",
     },
   },
+  fontFamily: {
+    poppins: ["Poppins", "sans-serif"],
+  },
   extend: {
     colors: {
       border: "hsl(var(--border))",
@@ -54,6 +57,10 @@ export const theme = {
         DEFAULT: "hsl(var(--card))",
         foreground: "hsl(var(--card-foreground))",
       },
+      yl: "#F7DA21",
+      yldark: "#ad9917",
+      dark: "#202F36",
+      lg: "#37465A",
     },
     borderRadius: {
       lg: "var(--radius)",
