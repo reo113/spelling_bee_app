@@ -1,7 +1,7 @@
 
-class DefinitionGame {
+class DefinitionGame  {
     constructor(data) {
-        this.data = data;
+        this.data= data;
         this.currentIndex = 0;
         this.points = 0;
         this.lives = 3;
@@ -62,14 +62,14 @@ class AudioGame extends DefinitionGame {
     }
 
     // Override the method if specific actions needed
-    answerQuestion(isCorrect) {
+    answerQuestion(isCorrect: boolean) {
         super.answerQuestion(isCorrect);
     }
 }
 
 class SentenceGame extends DefinitionGame {
-    checkSentence(input) {
-        const currentSentence = this.getCurrentQuestion().sentence;
+    hideWordFromSentenc(word: string) {
+        const currentSentence = this.getCurrentQuestion().example.replace(word, '_____');
         return input.trim() === currentSentence.trim();
     }
 

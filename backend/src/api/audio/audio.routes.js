@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
         let wordsWithAudio = await db.dictionary.findMany({
             take: 100,
             where: { audio: { not: null } },
-            select: { word: true, audio: true },
+            select: { word: true, audio: true, id: true },
         });
         // Shuffle the words and pick 10 for the game
         wordsWithAudio = _.shuffle(wordsWithAudio);

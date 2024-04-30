@@ -1,15 +1,36 @@
-import HomeScreen from "@/pages/misc/GameHub";
+import Login from "@/pages/auth/components/Login";
+import Register from "@/pages/auth/components/Register";
+import GameHub from "@/pages/misc/GameHub";
+import AuthProvider from "@/contexts/AuthContext";
+import StartGame from "@/games/components/StartGame";
+
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <HomeScreen />,
+      element: <GameHub />,
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    {
+      path: "/register",
+      element: <Register />,
+    },
+    {
+      path: "/game/:gameType",
+      element: <StartGame />,
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
 }
 
 export default App;

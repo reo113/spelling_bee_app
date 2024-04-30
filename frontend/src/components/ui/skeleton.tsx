@@ -6,10 +6,7 @@ function Skeleton({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn(
-        "tailwind.config.tsanimate-pulse tailwind.config.tsrounded-md tailwind.config.tsbg-muted",
-        className,
-      )}
+      className={cn("animate-pulse rounded-md bg-muted", className)}
       {...props}
     />
   );

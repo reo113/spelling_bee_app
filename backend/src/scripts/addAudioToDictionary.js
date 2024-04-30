@@ -1,18 +1,15 @@
 const apiKey = "v200pgdwucwqdtqnp2dll678gosivzb0761lllr8w0ql2na70";
 const axios = require('axios');
 const { db } = require("../utils/db");
+import cleanWord from '../utils/cleanwords';
 
-const cleanWord = (word) => {
-    // Removes any character that is not a letter (a-z or A-Z)
-    return word.replace(/[^a-zA-Z]/g, "").toLowerCase();
-};
-// Global rate limit tracking
+// default rate limit
 let limits = {
     minute: { remaining: 100, limit: 100 },
     hour: { remaining: 100, limit: 100 }
 };
 
-// Update rate limits from response headers
+// update rate limits from Wordnik response headers
 function updateRateLimits(headers) {
     limits.minute.remaining = parseInt(headers['x-ratelimit-remaining-minute']);
     limits.minute.limit = parseInt(headers['x-ratelimit-limit-minute']);
@@ -20,17 +17,17 @@ function updateRateLimits(headers) {
     limits.hour.limit = parseInt(headers['x-ratelimit-limit-hour']);
 }
 
-// Throttling requests based on remaining limits
+// throttling requests based on remaining limits
 const checkRateLimit = async () => {
     while (limits.minute.remaining < 1 || limits.hour.remaining < 1) {
         console.log('Approaching rate limit, pausing requests...');
         await new Promise(resolve => setTimeout(resolve, 60000)); // Wait for 1 minute
-        // Re-check limits here if necessary
+        // Re-set limits to avoid infinite loop
         limits.minute.remaining = 100;
         limits.hour.remaining = 100;
     }
 };
-const fetchAudioUrlFromWordnik = async (word) => {
+const fetchAudioFromWordnik = async (word) => {
     word = cleanWord(word);
     const url = `https://api.wordnik.com/v4/word.json/${word}/audio?useCanonical=false&limit=10&api_key=${apiKey}`;
     try {
@@ -46,7 +43,7 @@ const fetchAudioUrlFromWordnik = async (word) => {
             const retryAfter = error.response.headers['retry-after'] * 1000; // Convert to milliseconds
             console.log(`Rate limit exceeded, retrying after ${retryAfter} milliseconds`);
             await new Promise(resolve => setTimeout(resolve, retryAfter));
-            return fetchAudioUrlFromWordnik(word); // Retry fetching
+            return fetchAudioFromWordnik(word); // Retry fetching
         }
         console.error(`Failed to fetch audio for ${word}:`, error.message);
         return null;
@@ -61,7 +58,7 @@ const updateDictionaryAudio = async () => {
 
         for (const entry of dictionaryEntries) {
             await checkRateLimit(); // Throttle requests
-            const audioUrl = await fetchAudioUrlFromWordnik(entry.word);
+            const audioUrl = await fetchAudioFromWordnik(entry.word);
             if (audioUrl) {
                 await db.dictionary.update({
                     where: { id: entry.id },

@@ -4,14 +4,15 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const alertVariants = cva(
-  "tailwind.config.tsrelative tailwind.config.tsw-full tailwind.config.tsrounded-lg tailwind.config.tsborder tailwind.config.tsp-4 [&>svg~*]:tailwind.config.tspl-7 [&>svg+div]:tailwind.config.tstranslate-y-[-3px] [&>svg]:tailwind.config.tsabsolute [&>svg]:tailwind.config.tsleft-4 [&>svg]:tailwind.config.tstop-4 [&>svg]:tailwind.config.tstext-foreground",
+  "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground",
+  "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground",
   {
     variants: {
       variant: {
-        default:
-          "tailwind.config.tsbg-background tailwind.config.tstext-foreground",
+        default: "bg-background text-foreground",
         destructive:
-          "tailwind.config.tsborder-destructive/50 tailwind.config.tstext-destructive dark:tailwind.config.tsborder-destructive [&>svg]:tailwind.config.tstext-destructive",
+          "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive",
+          "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive",
       },
     },
     defaultVariants: {
@@ -39,10 +40,7 @@ const AlertTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <h5
     ref={ref}
-    className={cn(
-      "tailwind.config.tsmb-1 tailwind.config.tsfont-medium tailwind.config.tsleading-none tailwind.config.tstracking-tight",
-      className,
-    )}
+    className={cn("mb-1 font-medium leading-none tracking-tight", className)}
     {...props}
   />
 ));
@@ -54,10 +52,7 @@ const AlertDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn(
-      "tailwind.config.tstext-sm [&_p]:tailwind.config.tsleading-relaxed",
-      className,
-    )}
+    className={cn("text-sm [&_p]:leading-relaxed", className)}
     {...props}
   />
 ));

@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import Header from "../components/Header";
+import { Button } from '@/components/ui/button';
 
 const GameWrapper = ({ game, gameType, onGameOver }) => {
   const [currentQuestion, setCurrentQuestion] = useState(
@@ -25,6 +27,7 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
   return (
     <div>
       <h1>{gameType.toUpperCase()} Game</h1>
+      <Header points={game.getGameState().points} userId={null} lives={game.getGameState().lives} />
       <div>Question: {currentQuestion.answer.definition}</div>
       {gameType === "audio" && (
         <button onClick={() => game.playAudio()}>Play Audio</button>
@@ -32,14 +35,12 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
       <ul>
         {currentQuestion.words.map((word, index) => (
           <li key={index}>
-            <button onClick={() => handleAnswer(word, currentQuestion)}>
+            <Button variant={"outline"} className="mb-4" onClick={() => handleAnswer(word, currentQuestion)}>
               {word}
-            </button>
+            </Button>
           </li>
         ))}
       </ul>
-      <div>Score: {game.getGameState().points}</div>
-      <div>Lives: {game.getGameState().lives}</div>
     </div>
   );
 };

@@ -1,8 +1,7 @@
-// middleware/index.js
+const isAuthenticated = require("./isAuthenticated");
 const log = require("./log");
-// import other middleware functions as needed
 
 module.exports = {
   log,
-  // export other middleware functions here
+  isAuthenticated,
 };
