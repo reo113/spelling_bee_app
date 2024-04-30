@@ -8,10 +8,7 @@ const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   <nav
     role="navigation"
     aria-label="pagination"
-    className={cn(
-      "tailwind.config.tsmx-auto tailwind.config.tsflex tailwind.config.tsw-full tailwind.config.tsjustify-center",
-      className,
-    )}
+    className={cn("mx-auto flex w-full justify-center", className)}
     {...props}
   />
 );
@@ -23,10 +20,7 @@ const PaginationContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ul
     ref={ref}
-    className={cn(
-      "tailwind.config.tsflex tailwind.config.tsflex-row tailwind.config.tsitems-center tailwind.config.tsgap-1",
-      className,
-    )}
+    className={cn("flex flex-row items-center gap-1", className)}
     {...props}
   />
 ));
@@ -36,7 +30,7 @@ const PaginationItem = React.forwardRef<
   HTMLLIElement,
   React.ComponentProps<"li">
 >(({ className, ...props }, ref) => (
-  <li ref={ref} className={cn("tailwind.config.ts", className)} {...props} />
+  <li ref={ref} className={cn("", className)} {...props} />
 ));
 PaginationItem.displayName = "PaginationItem";
 
@@ -72,13 +66,10 @@ const PaginationPrevious = ({
   <PaginationLink
     aria-label="Go to previous page"
     size="default"
-    className={cn(
-      "tailwind.config.tsgap-1 tailwind.config.tspl-2.5",
-      className,
-    )}
+    className={cn("gap-1 pl-2.5", className)}
     {...props}
   >
-    <ChevronLeft className="tailwind.config.tsh-4 tailwind.config.tsw-4" />
+    <ChevronLeft className="h-4 w-4" />
     <span>Previous</span>
   </PaginationLink>
 );
@@ -91,14 +82,11 @@ const PaginationNext = ({
   <PaginationLink
     aria-label="Go to next page"
     size="default"
-    className={cn(
-      "tailwind.config.tsgap-1 tailwind.config.tspr-2.5",
-      className,
-    )}
+    className={cn("gap-1 pr-2.5", className)}
     {...props}
   >
     <span>Next</span>
-    <ChevronRight className="tailwind.config.tsh-4 tailwind.config.tsw-4" />
+    <ChevronRight className="h-4 w-4" />
   </PaginationLink>
 );
 PaginationNext.displayName = "PaginationNext";
@@ -109,14 +97,11 @@ const PaginationEllipsis = ({
 }: React.ComponentProps<"span">) => (
   <span
     aria-hidden
-    className={cn(
-      "tailwind.config.tsflex tailwind.config.tsh-9 tailwind.config.tsw-9 tailwind.config.tsitems-center tailwind.config.tsjustify-center",
-      className,
-    )}
+    className={cn("flex h-9 w-9 items-center justify-center", className)}
     {...props}
   >
-    <MoreHorizontal className="tailwind.config.tsh-4 tailwind.config.tsw-4" />
-    <span className="tailwind.config.tssr-only">More pages</span>
+    <MoreHorizontal className="h-4 w-4" />
+    <span className="sr-only">More pages</span>
   </span>
 );
 PaginationEllipsis.displayName = "PaginationEllipsis";

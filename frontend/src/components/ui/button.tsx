@@ -5,28 +5,27 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "tailwind.config.tsinline-flex tailwind.config.tsitems-center tailwind.config.tsjustify-center tailwind.config.tswhitespace-nowrap tailwind.config.tsrounded-md tailwind.config.tstext-sm tailwind.config.tsfont-medium tailwind.config.tsring-offset-background tailwind.config.tstransition-colors focus-visible:tailwind.config.tsoutline-none focus-visible:tailwind.config.tsring-2 focus-visible:tailwind.config.tsring-ring focus-visible:tailwind.config.tsring-offset-2 disabled:tailwind.config.tspointer-events-none disabled:tailwind.config.tsopacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default:
-          "tailwind.config.tsbg-primary tailwind.config.tstext-primary-foreground hover:tailwind.config.tsbg-primary/90",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
         destructive:
-          "tailwind.config.tsbg-destructive tailwind.config.tstext-destructive-foreground hover:tailwind.config.tsbg-destructive/90",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "tailwind.config.tsborder tailwind.config.tsborder-input tailwind.config.tsbg-background hover:tailwind.config.tsbg-accent hover:tailwind.config.tstext-accent-foreground",
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary:
-          "tailwind.config.tsbg-secondary tailwind.config.tstext-secondary-foreground hover:tailwind.config.tsbg-secondary/80",
-        ghost:
-          "hover:tailwind.config.tsbg-accent hover:tailwind.config.tstext-accent-foreground",
-        link: "tailwind.config.tstext-primary tailwind.config.tsunderline-offset-4 hover:tailwind.config.tsunderline",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
+        primary:
+          "bg-yl text-white border-yldark border-2 border-b-4 active:border-b-2",
       },
       size: {
-        default:
-          "tailwind.config.tsh-10 tailwind.config.tspx-4 tailwind.config.tspy-2",
-        sm: "tailwind.config.tsh-9 tailwind.config.tsrounded-md tailwind.config.tspx-3",
-        lg: "tailwind.config.tsh-11 tailwind.config.tsrounded-md tailwind.config.tspx-8",
-        icon: "tailwind.config.tsh-10 tailwind.config.tsw-10",
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3",
+        lg: "h-11 rounded-md px-8",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {

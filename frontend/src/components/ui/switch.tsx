@@ -11,7 +11,7 @@ const Switch = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SwitchPrimitives.Root
     className={cn(
-      "tailwind.config.tspeer tailwind.config.tsinline-flex tailwind.config.tsh-6 tailwind.config.tsw-11 tailwind.config.tsshrink-0 tailwind.config.tscursor-pointer tailwind.config.tsitems-center tailwind.config.tsrounded-full tailwind.config.tsborder-2 tailwind.config.tsborder-transparent tailwind.config.tstransition-colors focus-visible:tailwind.config.tsoutline-none focus-visible:tailwind.config.tsring-2 focus-visible:tailwind.config.tsring-ring focus-visible:tailwind.config.tsring-offset-2 focus-visible:tailwind.config.tsring-offset-background disabled:tailwind.config.tscursor-not-allowed disabled:tailwind.config.tsopacity-50 data-[state=checked]:tailwind.config.tsbg-primary data-[state=unchecked]:tailwind.config.tsbg-input",
+      "peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input",
       className,
     )}
     {...props}
@@ -19,7 +19,7 @@ const Switch = React.forwardRef<
   >
     <SwitchPrimitives.Thumb
       className={cn(
-        "tailwind.config.tspointer-events-none tailwind.config.tsblock tailwind.config.tsh-5 tailwind.config.tsw-5 tailwind.config.tsrounded-full tailwind.config.tsbg-background tailwind.config.tsshadow-lg tailwind.config.tsring-0 tailwind.config.tstransition-transform data-[state=checked]:tailwind.config.tstranslate-x-5 data-[state=unchecked]:tailwind.config.tstranslate-x-0",
+        "pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0",
       )}
     />
   </SwitchPrimitives.Root>

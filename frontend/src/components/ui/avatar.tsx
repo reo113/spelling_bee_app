@@ -12,7 +12,7 @@ const Avatar = React.forwardRef<
   <AvatarPrimitive.Root
     ref={ref}
     className={cn(
-      "tailwind.config.tsrelative tailwind.config.tsflex tailwind.config.tsh-10 tailwind.config.tsw-10 tailwind.config.tsshrink-0 tailwind.config.tsoverflow-hidden tailwind.config.tsrounded-full",
+      "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full",
       className,
     )}
     {...props}
@@ -26,10 +26,7 @@ const AvatarImage = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Image
     ref={ref}
-    className={cn(
-      "tailwind.config.tsaspect-square tailwind.config.tsh-full tailwind.config.tsw-full",
-      className,
-    )}
+    className={cn("aspect-square h-full w-full", className)}
     {...props}
   />
 ));
@@ -42,7 +39,7 @@ const AvatarFallback = React.forwardRef<
   <AvatarPrimitive.Fallback
     ref={ref}
     className={cn(
-      "tailwind.config.tsflex tailwind.config.tsh-full tailwind.config.tsw-full tailwind.config.tsitems-center tailwind.config.tsjustify-center tailwind.config.tsrounded-full tailwind.config.tsbg-muted",
+      "flex h-full w-full items-center justify-center rounded-full bg-muted",
       className,
     )}
     {...props}

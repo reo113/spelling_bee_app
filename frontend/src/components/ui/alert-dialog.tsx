@@ -18,7 +18,7 @@ const AlertDialogOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Overlay
     className={cn(
-      "tailwind.config.tsfixed tailwind.config.tsinset-0 tailwind.config.tsz-50 tailwind.config.tsbg-black/80 tailwind.config.ts data-[state=open]:tailwind.config.tsanimate-in data-[state=closed]:tailwind.config.tsanimate-out data-[state=closed]:tailwind.config.tsfade-out-0 data-[state=open]:tailwind.config.tsfade-in-0",
+      "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0  fixed inset-0 z-50 bg-black/80",
       className,
     )}
     {...props}
@@ -36,7 +36,7 @@ const AlertDialogContent = React.forwardRef<
     <AlertDialogPrimitive.Content
       ref={ref}
       className={cn(
-        "tailwind.config.tsfixed tailwind.config.tsleft-[50%] tailwind.config.tstop-[50%] tailwind.config.tsz-50 tailwind.config.tsgrid tailwind.config.tsw-full tailwind.config.tsmax-w-lg tailwind.config.tstranslate-x-[-50%] tailwind.config.tstranslate-y-[-50%] tailwind.config.tsgap-4 tailwind.config.tsborder tailwind.config.tsbg-background tailwind.config.tsp-6 tailwind.config.tsshadow-lg tailwind.config.tsduration-200 data-[state=open]:tailwind.config.tsanimate-in data-[state=closed]:tailwind.config.tsanimate-out data-[state=closed]:tailwind.config.tsfade-out-0 data-[state=open]:tailwind.config.tsfade-in-0 data-[state=closed]:tailwind.config.tszoom-out-95 data-[state=open]:tailwind.config.tszoom-in-95 data-[state=closed]:tailwind.config.tsslide-out-to-left-1/2 data-[state=closed]:tailwind.config.tsslide-out-to-top-[48%] data-[state=open]:tailwind.config.tsslide-in-from-left-1/2 data-[state=open]:tailwind.config.tsslide-in-from-top-[48%] sm:tailwind.config.tsrounded-lg",
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 sm:rounded-lg",
         className,
       )}
       {...props}
@@ -51,7 +51,7 @@ const AlertDialogHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "tailwind.config.tsflex tailwind.config.tsflex-col tailwind.config.tsspace-y-2 tailwind.config.tstext-center sm:tailwind.config.tstext-left",
+      "flex flex-col space-y-2 text-center sm:text-left",
       className,
     )}
     {...props}
@@ -65,7 +65,7 @@ const AlertDialogFooter = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "tailwind.config.tsflex tailwind.config.tsflex-col-reverse sm:tailwind.config.tsflex-row sm:tailwind.config.tsjustify-end sm:tailwind.config.tsspace-x-2",
+      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
       className,
     )}
     {...props}
@@ -79,10 +79,7 @@ const AlertDialogTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Title
     ref={ref}
-    className={cn(
-      "tailwind.config.tstext-lg tailwind.config.tsfont-semibold",
-      className,
-    )}
+    className={cn("text-lg font-semibold", className)}
     {...props}
   />
 ));
@@ -94,10 +91,7 @@ const AlertDialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Description
     ref={ref}
-    className={cn(
-      "tailwind.config.tstext-sm tailwind.config.tstext-muted-foreground",
-      className,
-    )}
+    className={cn("text-sm text-muted-foreground", className)}
     {...props}
   />
 ));
@@ -124,7 +118,7 @@ const AlertDialogCancel = React.forwardRef<
     ref={ref}
     className={cn(
       buttonVariants({ variant: "outline" }),
-      "tailwind.config.tsmt-2 sm:tailwind.config.tsmt-0",
+      "mt-2 sm:mt-0",
       className,
     )}
     {...props}

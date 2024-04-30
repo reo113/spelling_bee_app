@@ -15,7 +15,7 @@ const Command = React.forwardRef<
   <CommandPrimitive
     ref={ref}
     className={cn(
-      "tailwind.config.tsflex tailwind.config.tsh-full tailwind.config.tsw-full tailwind.config.tsflex-col tailwind.config.tsoverflow-hidden tailwind.config.tsrounded-md tailwind.config.tsbg-popover tailwind.config.tstext-popover-foreground",
+      "flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground",
       className,
     )}
     {...props}
@@ -28,8 +28,8 @@ interface CommandDialogProps extends DialogProps {}
 const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
   return (
     <Dialog {...props}>
-      <DialogContent className="tailwind.config.tsoverflow-hidden tailwind.config.tsp-0 tailwind.config.tsshadow-lg">
-        <Command className="[&_[cmdk-group-heading]]:tailwind.config.tspx-2 [&_[cmdk-group-heading]]:tailwind.config.tsfont-medium [&_[cmdk-group-heading]]:tailwind.config.tstext-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:tailwind.config.tspt-0 [&_[cmdk-group]]:tailwind.config.tspx-2 [&_[cmdk-input-wrapper]_svg]:tailwind.config.tsh-5 [&_[cmdk-input-wrapper]_svg]:tailwind.config.tsw-5 [&_[cmdk-input]]:tailwind.config.tsh-12 [&_[cmdk-item]]:tailwind.config.tspx-2 [&_[cmdk-item]]:tailwind.config.tspy-3 [&_[cmdk-item]_svg]:tailwind.config.tsh-5 [&_[cmdk-item]_svg]:tailwind.config.tsw-5">
+      <DialogContent className="overflow-hidden p-0 shadow-lg">
+        <Command className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5">
           {children}
         </Command>
       </DialogContent>
@@ -41,15 +41,12 @@ const CommandInput = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Input>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
 >(({ className, ...props }, ref) => (
-  <div
-    className="tailwind.config.tsflex tailwind.config.tsitems-center tailwind.config.tsborder-b tailwind.config.tspx-3"
-    cmdk-input-wrapper=""
-  >
-    <Search className="tailwind.config.tsmr-2 tailwind.config.tsh-4 tailwind.config.tsw-4 tailwind.config.tsshrink-0 tailwind.config.tsopacity-50" />
+  <div className="flex items-center border-b px-3" cmdk-input-wrapper="">
+    <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
     <CommandPrimitive.Input
       ref={ref}
       className={cn(
-        "tailwind.config.tsflex tailwind.config.tsh-11 tailwind.config.tsw-full tailwind.config.tsrounded-md tailwind.config.tsbg-transparent tailwind.config.tspy-3 tailwind.config.tstext-sm tailwind.config.tsoutline-none placeholder:tailwind.config.tstext-muted-foreground disabled:tailwind.config.tscursor-not-allowed disabled:tailwind.config.tsopacity-50",
+        "flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50",
         className,
       )}
       {...props}
@@ -65,10 +62,7 @@ const CommandList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <CommandPrimitive.List
     ref={ref}
-    className={cn(
-      "tailwind.config.tsmax-h-[300px] tailwind.config.tsoverflow-y-auto tailwind.config.tsoverflow-x-hidden",
-      className,
-    )}
+    className={cn("max-h-[300px] overflow-y-auto overflow-x-hidden", className)}
     {...props}
   />
 ));
@@ -81,7 +75,7 @@ const CommandEmpty = React.forwardRef<
 >((props, ref) => (
   <CommandPrimitive.Empty
     ref={ref}
-    className="tailwind.config.tspy-6 tailwind.config.tstext-center tailwind.config.tstext-sm"
+    className="py-6 text-center text-sm"
     {...props}
   />
 ));
@@ -95,7 +89,7 @@ const CommandGroup = React.forwardRef<
   <CommandPrimitive.Group
     ref={ref}
     className={cn(
-      "tailwind.config.tsoverflow-hidden tailwind.config.tsp-1 tailwind.config.tstext-foreground [&_[cmdk-group-heading]]:tailwind.config.tspx-2 [&_[cmdk-group-heading]]:tailwind.config.tspy-1.5 [&_[cmdk-group-heading]]:tailwind.config.tstext-xs [&_[cmdk-group-heading]]:tailwind.config.tsfont-medium [&_[cmdk-group-heading]]:tailwind.config.tstext-muted-foreground",
+      "overflow-hidden p-1 text-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground",
       className,
     )}
     {...props}
@@ -110,10 +104,7 @@ const CommandSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <CommandPrimitive.Separator
     ref={ref}
-    className={cn(
-      "tailwind.config.ts-mx-1 tailwind.config.tsh-px tailwind.config.tsbg-border",
-      className,
-    )}
+    className={cn("-mx-1 h-px bg-border", className)}
     {...props}
   />
 ));
@@ -126,7 +117,7 @@ const CommandItem = React.forwardRef<
   <CommandPrimitive.Item
     ref={ref}
     className={cn(
-      "tailwind.config.tsrelative tailwind.config.tsflex tailwind.config.tscursor-default tailwind.config.tsselect-none tailwind.config.tsitems-center tailwind.config.tsrounded-sm tailwind.config.tspx-2 tailwind.config.tspy-1.5 tailwind.config.tstext-sm tailwind.config.tsoutline-none aria-selected:tailwind.config.tsbg-accent aria-selected:tailwind.config.tstext-accent-foreground data-[disabled]:tailwind.config.tspointer-events-none data-[disabled]:tailwind.config.tsopacity-50",
+      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none aria-selected:bg-accent aria-selected:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       className,
     )}
     {...props}
@@ -142,7 +133,7 @@ const CommandShortcut = ({
   return (
     <span
       className={cn(
-        "tailwind.config.tsml-auto tailwind.config.tstext-xs tailwind.config.tstracking-widest tailwind.config.tstext-muted-foreground",
+        "ml-auto text-xs tracking-widest text-muted-foreground",
         className,
       )}
       {...props}

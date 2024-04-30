@@ -13,17 +13,15 @@ const Checkbox = React.forwardRef<
   <CheckboxPrimitive.Root
     ref={ref}
     className={cn(
-      "tailwind.config.tspeer tailwind.config.tsh-4 tailwind.config.tsw-4 tailwind.config.tsshrink-0 tailwind.config.tsrounded-sm tailwind.config.tsborder tailwind.config.tsborder-primary tailwind.config.tsring-offset-background focus-visible:tailwind.config.tsoutline-none focus-visible:tailwind.config.tsring-2 focus-visible:tailwind.config.tsring-ring focus-visible:tailwind.config.tsring-offset-2 disabled:tailwind.config.tscursor-not-allowed disabled:tailwind.config.tsopacity-50 data-[state=checked]:tailwind.config.tsbg-primary data-[state=checked]:tailwind.config.tstext-primary-foreground",
+      "peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
       className,
     )}
     {...props}
   >
     <CheckboxPrimitive.Indicator
-      className={cn(
-        "tailwind.config.tsflex tailwind.config.tsitems-center tailwind.config.tsjustify-center tailwind.config.tstext-current",
-      )}
+      className={cn("flex items-center justify-center text-current")}
     >
-      <Check className="tailwind.config.tsh-4 tailwind.config.tsw-4" />
+      <Check className="h-4 w-4" />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 ));

@@ -19,7 +19,7 @@ const BreadcrumbList = React.forwardRef<
   <ol
     ref={ref}
     className={cn(
-      "tailwind.config.tsflex tailwind.config.tsflex-wrap tailwind.config.tsitems-center tailwind.config.tsgap-1.5 tailwind.config.tsbreak-words tailwind.config.tstext-sm tailwind.config.tstext-muted-foreground sm:tailwind.config.tsgap-2.5",
+      "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5",
       className,
     )}
     {...props}
@@ -33,10 +33,7 @@ const BreadcrumbItem = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <li
     ref={ref}
-    className={cn(
-      "tailwind.config.tsinline-flex tailwind.config.tsitems-center tailwind.config.tsgap-1.5",
-      className,
-    )}
+    className={cn("inline-flex items-center gap-1.5", className)}
     {...props}
   />
 ));
@@ -53,10 +50,7 @@ const BreadcrumbLink = React.forwardRef<
   return (
     <Comp
       ref={ref}
-      className={cn(
-        "tailwind.config.tstransition-colors hover:tailwind.config.tstext-foreground",
-        className,
-      )}
+      className={cn("transition-colors hover:text-foreground", className)}
       {...props}
     />
   );
@@ -72,10 +66,7 @@ const BreadcrumbPage = React.forwardRef<
     role="link"
     aria-disabled="true"
     aria-current="page"
-    className={cn(
-      "tailwind.config.tsfont-normal tailwind.config.tstext-foreground",
-      className,
-    )}
+    className={cn("font-normal text-foreground", className)}
     {...props}
   />
 ));
@@ -89,7 +80,7 @@ const BreadcrumbSeparator = ({
   <li
     role="presentation"
     aria-hidden="true"
-    className={cn("[&>svg]:tailwind.config.tssize-3.5", className)}
+    className={cn("[&>svg]:size-3.5", className)}
     {...props}
   >
     {children ?? <ChevronRight />}
@@ -104,14 +95,11 @@ const BreadcrumbEllipsis = ({
   <span
     role="presentation"
     aria-hidden="true"
-    className={cn(
-      "tailwind.config.tsflex tailwind.config.tsh-9 tailwind.config.tsw-9 tailwind.config.tsitems-center tailwind.config.tsjustify-center",
-      className,
-    )}
+    className={cn("flex h-9 w-9 items-center justify-center", className)}
     {...props}
   >
-    <MoreHorizontal className="tailwind.config.tsh-4 tailwind.config.tsw-4" />
-    <span className="tailwind.config.tssr-only">More</span>
+    <MoreHorizontal className="h-4 w-4" />
+    <span className="sr-only">More</span>
   </span>
 );
 BreadcrumbEllipsis.displayName = "BreadcrumbElipssis";
