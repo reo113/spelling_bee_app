@@ -1,5 +1,6 @@
 import Login from "@/pages/auth/components/Login";
 import Register from "@/pages/auth/components/Register";
+import LandingPage from "@/pages/misc/LandingPage";
 import GameHub from "@/pages/misc/GameHub";
 import AuthProvider from "@/contexts/AuthContext";
 import StartGame from "@/games/components/StartGame";
@@ -10,6 +11,10 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
+      element: <LandingPage />,
+    },
+    {
+      path: "/games",
       element: <GameHub />,
     },
     {
