@@ -2,7 +2,7 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const {
   findUserByEmail,
-  createUserByEmailAndPassword,
+  createUser,
   findUserById,
 } = require("../user/user.services");
 
@@ -21,6 +21,7 @@ router.get("/currentUser", async (req, res) => {
     return res.json({
       user: {
         id: user.id,
+        username: user.username,
         email: user.email,
       },
     });
@@ -30,7 +31,7 @@ router.get("/currentUser", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-  const { email, password } = req.body;
+  const { username, email, password } = req.body;
 
   if (!email || !password) {
     res.status(400);
@@ -45,7 +46,7 @@ router.post("/register", async (req, res) => {
   }
 
   try {
-    const user = await createUserByEmailAndPassword({ email, password });
+    const user = await createUser({ username, email, password });
 
     req.session.userId = user.id;
 
@@ -90,6 +91,7 @@ router.post("/login", async (req, res) => {
           message: "Logged in successfully.",
           user: {
             id: existingUser.id,
+            username: existingUser.username,
             email: existingUser.email,
           },
         });
