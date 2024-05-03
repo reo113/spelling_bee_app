@@ -53,6 +53,7 @@ router.post("/register", async (req, res) => {
     res.json({
       user: {
         id: user.id,
+        username: user.username,
         email: user.email,
       },
     });
