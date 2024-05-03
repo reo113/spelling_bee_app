@@ -8,7 +8,7 @@ export default function History() {
   return (
     <div className="min-h-screen w-full">
       <div className="w-full text-center">
-        <span className="h2">{currentUser.email}'s Game History</span>
+        <span className="h2">{currentUser.username}'s Game History</span>
       </div>
     </div>
   );

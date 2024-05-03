@@ -29,7 +29,7 @@ export default function CustomDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Avatar className="h-12 w-12 cursor-pointer border-2 border-yl">
+        <Avatar className="border-bee h-12 w-12 cursor-pointer border-2">
           <AvatarImage
             src="https://avatar.iran.liara.run/public/5"
             alt="Avatar"

@@ -30,10 +30,10 @@ export default function LandingPage() {
           {/* Language Selector Dropdown */}
           <div className="hidden sm:block">
             <Select>
-              <SelectTrigger className="w-[180px] border-yldark bg-yl py-6 ring-0 focus:ring-0 focus:ring-offset-0">
+              <SelectTrigger className="border-beedark bg-bee w-[180px] py-6 ring-0 focus:ring-0 focus:ring-offset-0">
                 <SelectValue placeholder="Language" />
               </SelectTrigger>
-              <SelectContent className="border-yldark bg-yl">
+              <SelectContent className="border-beedark bg-bee">
                 <SelectItem value="english">English</SelectItem>
                 <SelectItem value="spanish">Spanish</SelectItem>
                 <SelectItem value="french">French</SelectItem>
