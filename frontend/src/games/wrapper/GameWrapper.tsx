@@ -14,7 +14,7 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
     if (game.getGameState().gameOver) {
       onGameOver();
       alert(`Game Over! Your final score is ${game.points}`);
-      navigate("/");
+      navigate("/games");
     } else {
       setCurrentQuestion(game.getGameState().question);
     }
