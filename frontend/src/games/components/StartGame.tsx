@@ -11,6 +11,7 @@ const StartGame = () => {
 
   // Define fetchData using useCallback
   const fetchData = useCallback((type) => {
+console.log("fetching",type);
     setLoading(true);
     axios
       .get(`/api/v1/${type}`)
@@ -30,10 +31,10 @@ const StartGame = () => {
 
   // useEffect to call fetchData when gameType changes
   useEffect(() => {
-    if (gameType) {
+    if (!game && gameType) {
       fetchData(gameType);
     }
-  }, [gameType, fetchData]);
+  }, [gameType, fetchData,game]);
 
   const onGameOver = useCallback(() => {
     setGame(null); 
