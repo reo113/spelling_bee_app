@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Header from "../components/Header";
 import { Button } from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
 import { useNavigate } from 'react-router-dom';
 import Summary from "../components/Summary";
+import { AuthContext } from "@/contexts/AuthContext";
 
 const GameWrapper = ({ game, gameType, onGameOver }) => {
   const [currentQuestion, setCurrentQuestion] = useState(
     game.getGameState().question
   );
+  const { currentUser } = useContext(AuthContext);
+console.log("current question",currentQuestion);
+console.log("game",game);
   const [audioInput, setAudioInput] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const navigate = useNavigate();
@@ -34,13 +38,30 @@ const handleSubmit=(e)=>{
   console.log("submitted"); 
 }
 
+const submitResponse = async (response) => {
+    fetch('/api/v1/response', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(response)
+    })
+    .then(res => res.text())
+    .then(data => console.log(data))
+    .catch(err => console.error('Error submitting answer:', err));
+};
+
   const handleAnswer = (answer, currentQuestion) => {
     console.log("handle answer is called");
-    game.answerQuestion(answer === currentQuestion.answer.word);
+    const isCorrect = answer === currentQuestion.answer.word;
+    game.answerQuestion(isCorrect);
+    if(currentUser){
+      submitResponse({
+        reponse:answer,
+        questionId: currentQuestion.id,
+        userId: currentUser.id,
+        isCorrect: isCorrect
+      });
+    }
     if (game.getGameState().gameOver) {
-      // onGameOver();
-      // alert(`Game Over! Your final score is ${game.points}`);
-      // navigate("/games");
       showModal();
     } else {
       setCurrentQuestion(game.getGameState().question);
@@ -50,10 +71,6 @@ const handleSubmit=(e)=>{
   };
 
   useEffect(() => {
-    // if(game.getGameState().gameOver && !isModalVisible){
-    //   onGameOver();
-    //   setIsModalVisible(true);
-    // }
     setCurrentQuestion(game.getGameState().question);
   }, [game]);
 

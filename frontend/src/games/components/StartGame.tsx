@@ -1,20 +1,25 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState,useContext } from "react";
 import GameFactory from "../factory/gameFactory";
 import GameWrapper from "../wrapper/GameWrapper";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
+import { AuthContext } from "@/contexts/AuthContext";
 const StartGame = () => {
   const [game, setGame] = useState(null);
   const [loading, setLoading] = useState(true);
   const { gameType } = useParams();
+  const { currentUser } = useContext(AuthContext);
 
   // Define fetchData using useCallback
+  let userId = null;
+  if(currentUser){
+    userId = currentUser.id;
+  }
   const fetchData = useCallback((type) => {
-console.log("fetching",type);
+  console.log("fetching",type);
     setLoading(true);
     axios
-      .get(`/api/v1/${type}`)
+      .post(`/api/v1/${type}`,{userId:userId, type:type})
       .then((response) => {
         const data = response.data;
         const newGame = GameFactory.createGame(type, data);
