@@ -1,6 +1,6 @@
 import DefinitionGame from './gameClass';
-import AudioGame from './gameClass';
-import SentenceGame from './gameClass';
+import {AudioGame} from './gameClass';
+import {SentenceGame} from './gameClass';
 
 class GameFactory {
     static createGame(type: string, data) {

@@ -60,23 +60,12 @@ class AudioGame extends DefinitionGame {
         const audio = new Audio(audioUrl);
         audio.play();
     }
-
-    // Override the method if specific actions needed
-    answerQuestion(isCorrect: boolean) {
-        super.answerQuestion(isCorrect);
-    }
 }
 
 class SentenceGame extends DefinitionGame {
-    hideWordFromSentenc(word: string) {
-        const currentSentence = this.getCurrentQuestion().example.replace(word, '_____');
-        return input.trim() === currentSentence.trim();
-    }
-
-    // Customize answering logic if necessary
-    answerQuestion(input) {
-        const isCorrect = this.checkSentence(input);
-        super.answerQuestion(isCorrect);
+    hideWordFromSentence(word: string) {
+        const currentSentence = this.getCurrentQuestion().answer.example.replace(word, '_____');
+        return currentSentence.trim();
     }
 }
 
