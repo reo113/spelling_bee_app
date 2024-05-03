@@ -4,9 +4,9 @@ const { db } = require("../../utils/db");
 const router = express.Router();
 
 
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
 
-  const { userId, type } = req.query;
+  const { userId, type } = req.body;
   try {
     let wordsWithDefinitions = await db.dictionary.findMany({
       take: 20000,
@@ -16,6 +16,7 @@ router.get("/", async (req, res) => {
     wordsWithDefinitions = _.shuffle(wordsWithDefinitions);
     const correctAnswers = wordsWithDefinitions.slice(0, 10);
     let incorrectPool = wordsWithDefinitions.slice(10);
+    console.log(userId);
 
     if (userId) {
       const result = await db.$transaction(async (prisma) => {
@@ -48,6 +49,7 @@ router.get("/", async (req, res) => {
           });
 
           questions.push({
+            id: question.id,
             answer: word,
             words: _.shuffle([word.word, shuffledIncorrect[0].word, shuffledIncorrect[1].word]),
           });
@@ -58,6 +60,7 @@ router.get("/", async (req, res) => {
       res.json(result);
     } else {
       // If no valid userId, just return the shuffled words without creating game data
+      console.log("No userId");
       const questions = correctAnswers.map(word => {
         const shuffledIncorrect = _.sampleSize(incorrectPool, 2);
         incorrectPool = _.difference(incorrectPool, shuffledIncorrect);

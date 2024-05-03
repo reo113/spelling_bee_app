@@ -8,12 +8,13 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
+  id        String     @id @default(uuid())
   username  String
-  email     String   @unique
+  email     String     @unique
   password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  Response  Response[]
 }
 
 model Game {
@@ -49,6 +50,7 @@ model Response {
   userId     String
   isCorrect  Boolean
   question   Question @relation(fields: [questionId], references: [id])
+  user       User     @relation(fields: [userId], references: [id])
 }
 
 model Dictionary {
