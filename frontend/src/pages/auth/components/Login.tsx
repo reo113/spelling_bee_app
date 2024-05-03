@@ -28,15 +28,15 @@ export default function Login() {
         <div className="flex w-full items-center justify-between py-[20px]">
           <div className="grid h-[50px] w-[50px] place-items-center">
             <Link to="/">
-              <X className="hover:text-yl h-8 w-8 border-none text-white" />
+              <X className="h-8 w-8 border-none text-white hover:text-yl" />
             </Link>
           </div>
           <Button
             variant="primary"
-            className="bg-dark border-yl hover:bg-lg rounded-xl px-6 py-6"
+            className="rounded-xl border-yl bg-dark px-6 py-6 hover:bg-lg"
           >
             <Link to="/register">
-              <span className="text-yl mb-0 text-[16px] font-bold uppercase">
+              <span className="mb-0 text-[16px] font-bold uppercase text-yl">
                 Sign Up
               </span>
             </Link>
@@ -74,7 +74,7 @@ export default function Login() {
                       name="email"
                       id="email"
                       placeholder="Email"
-                      className="border-xl focus:border-yl bg-dark border-lg block w-full cursor-text rounded-xl border-2 py-3 pl-12 pr-6 text-sm text-white placeholder:text-[#747778] focus:outline-none"
+                      className="border-xl block w-full cursor-text rounded-xl border-2 border-lg bg-dark py-3 pl-12 pr-6 text-sm text-white placeholder:text-[#747778] focus:border-yl focus:outline-none"
                     />
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 transform text-white">
                       <Mail />
@@ -89,7 +89,7 @@ export default function Login() {
                       name="password"
                       id="password"
                       placeholder="Password"
-                      className="border-xl focus:border-yl bg-dark border-lg block w-full cursor-text rounded-xl border-2 py-3 pl-12 pr-6 text-sm text-white placeholder:text-[#747778] focus:outline-none"
+                      className="border-xl block w-full cursor-text rounded-xl border-2 border-lg bg-dark py-3 pl-12 pr-6 text-sm text-white placeholder:text-[#747778] focus:border-yl focus:outline-none"
                     />
                     <span className="absolute left-3 top-1/2 -translate-y-1/2 transform text-white">
                       <Lock />
@@ -103,16 +103,10 @@ export default function Login() {
                 </div>
 
                 <fieldset className="w-full">
-                  {/* <button
-                    type="submit"
-                    className="bg-yl hover:bg-yl/80 flex h-[50px] w-full items-center justify-center rounded-xl text-[16px] font-bold uppercase text-black transition-all duration-300"
-                  >
-                    Log in
-                  </button> */}
                   <Button
                     type="submit"
                     variant="primary"
-                    className="hover:bg-dark flex h-[50px] w-full items-center justify-center rounded-xl text-[16px] font-bold uppercase"
+                    className="flex h-[50px] w-full items-center justify-center rounded-xl text-[16px] font-bold uppercase hover:bg-dark"
                   >
                     Log in
                   </Button>
