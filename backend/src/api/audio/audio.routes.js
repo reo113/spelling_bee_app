@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 
         const result = wordPool.map((word) => {
             return {
-                word: word.word,
+                answer: word,
                 audio: word.audio,
             };
         });

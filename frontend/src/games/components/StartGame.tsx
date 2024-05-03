@@ -11,14 +11,14 @@ const StartGame = () => {
 
   // Define fetchData using useCallback
   const fetchData = useCallback((type) => {
-    setLoading(true); // Ensure loading is set when starting a new fetch
+    setLoading(true);
     axios
       .get(`/api/v1/${type}`)
       .then((response) => {
         const data = response.data;
         const newGame = GameFactory.createGame(type, data);
         setGame(newGame);
-        setLoading(false); // Set loading to false upon successful fetch
+        setLoading(false);
         console.log("fetched");
       })
       .catch((error) => {
@@ -36,7 +36,7 @@ const StartGame = () => {
   }, [gameType, fetchData]);
 
   const onGameOver = useCallback(() => {
-    setGame(null); // Potentially you might want to set loading to true here if you restart the fetching
+    setGame(null); 
   }, []);
 
   if (loading) return <div>Loading...</div>;

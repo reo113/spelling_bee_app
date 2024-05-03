@@ -8,48 +8,52 @@ datasource db {
 }
 
 model User {
-  id            String        @id @default(uuid())
-  email         String        @unique
-  password      String
-  games         Game[]
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Game {
   id        String     @id @default(uuid())
-  userId    String
+  userId    String?
   type      String
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
-  user      User       @relation(fields: [userId], references: [id])
-  questions Question[]
+  Question  Question[]
 }
 
 model Question {
-  id         String     @id @default(uuid())
-  gameId     String
-  dictId     String
-  answerId   String
-  question   String
-  dictionary Dictionary @relation(fields: [dictId], references: [id])
-  answer     Answer     @relation(fields: [answerId], references: [id])
-  game       Game       @relation(fields: [gameId], references: [id])
+  id            String         @id @default(uuid())
+  gameId        String
+  questionText  String?
+  correctAnswer String?
+  game          Game           @relation(fields: [gameId], references: [id])
+  AnswerChoice  AnswerChoice[]
+  Responses     Response[]
 }
 
-model Answer {
-  id         String     @id @default(uuid())
-  answer     String
+model AnswerChoice {
+  id         String   @id @default(uuid())
+  choice     String
   questionId String
-  gameId     String?
-  Question   Question[]
+  question   Question @relation(fields: [questionId], references: [id])
+}
+
+model Response {
+  id         String   @id @default(uuid())
+  reponse    String
+  questionId String
+  userId     String
+  isCorrect  Boolean
+  question   Question @relation(fields: [questionId], references: [id])
 }
 
 model Dictionary {
-  id         String     @id @default(uuid())
-  word       String     @unique
+  id         String  @id @default(uuid())
+  word       String  @unique
   definition String
   audio      String?
   example    String?
-  question   Question[]
 }

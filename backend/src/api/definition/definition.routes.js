@@ -3,7 +3,10 @@ const _ = require("lodash");
 const { db } = require("../../utils/db");
 const router = express.Router();
 
+
 router.get("/", async (req, res) => {
+
+  const { userId, type } = req.query;
   try {
     let wordsWithDefinitions = await db.dictionary.findMany({
       take: 20000,
@@ -14,26 +17,58 @@ router.get("/", async (req, res) => {
     const correctAnswers = wordsWithDefinitions.slice(0, 10);
     let incorrectPool = wordsWithDefinitions.slice(10);
 
-    const result = correctAnswers.map((word) => {
-      //shuffle and pick two incorrect words
-      const shuffledIncorrect = incorrectPool.slice(0, 2);
-      // remove the already used words from the pool
-      incorrectPool = incorrectPool.filter(
-        (def) => !shuffledIncorrect.includes(def)
-      );
-      const finalWords = _.shuffle([
-        word.word,
-        shuffledIncorrect[0].word,
-        shuffledIncorrect[1].word,
-      ]);
+    if (userId) {
+      const result = await db.$transaction(async (prisma) => {
+        const newGame = await prisma.game.create({
+          data: {
+            userId: userId,
+            type: type
+          }
+        });
 
-      return {
-        answer: word,
-        words: finalWords,
-      };
-    });
+        const questions = [];
 
-    res.json(result);
+        for (const word of correctAnswers) {
+          const shuffledIncorrect = _.sampleSize(incorrectPool, 2);
+          incorrectPool = _.difference(incorrectPool, shuffledIncorrect);
+
+          const question = await prisma.question.create({
+            data: {
+              gameId: newGame.id,
+              questionText: word.definition,
+              correctAnswer: word.word,
+              AnswerChoice: {
+                create: [
+                  { choice: word.word },
+                  { choice: shuffledIncorrect[0].word },
+                  { choice: shuffledIncorrect[1].word }
+                ]
+              }
+            }
+          });
+
+          questions.push({
+            answer: word,
+            words: _.shuffle([word.word, shuffledIncorrect[0].word, shuffledIncorrect[1].word]),
+          });
+        }
+
+        return questions;
+      });
+      res.json(result);
+    } else {
+      // If no valid userId, just return the shuffled words without creating game data
+      const questions = correctAnswers.map(word => {
+        const shuffledIncorrect = _.sampleSize(incorrectPool, 2);
+        incorrectPool = _.difference(incorrectPool, shuffledIncorrect);
+        return {
+          answer: word,
+          words: _.shuffle([word.word, shuffledIncorrect[0].word, shuffledIncorrect[1].word]),
+        };
+      });
+
+      res.json(questions);
+    }
   } catch (error) {
     console.error("Error fetching words and definitions:", error);
     res.status(500).send("Server Error");
