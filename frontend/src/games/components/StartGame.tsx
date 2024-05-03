@@ -4,6 +4,8 @@ import GameWrapper from "../wrapper/GameWrapper";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
+import Loading from "@/components/custom/Loading";
+
 const StartGame = () => {
   const [game, setGame] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -11,7 +13,7 @@ const StartGame = () => {
 
   // Define fetchData using useCallback
   const fetchData = useCallback((type) => {
-console.log("fetching",type);
+    console.log("fetching", type);
     setLoading(true);
     axios
       .get(`/api/v1/${type}`)
@@ -34,15 +36,17 @@ console.log("fetching",type);
     if (!game && gameType) {
       fetchData(gameType);
     }
-  }, [gameType, fetchData,game]);
+  }, [gameType, fetchData, game]);
 
   const onGameOver = useCallback(() => {
-    setGame(null); 
+    setGame(null);
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
 
-  return <GameWrapper game={game} gameType={gameType} onGameOver={onGameOver} />;
+  return (
+    <GameWrapper game={game} gameType={gameType} onGameOver={onGameOver} />
+  );
 };
 
 export default StartGame;
