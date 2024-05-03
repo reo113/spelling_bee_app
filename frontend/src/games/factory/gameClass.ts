@@ -15,10 +15,12 @@ class DefinitionGame  {
         if (isCorrect) {
             this.points += 10;
             this.results.push({ correct: true });
+            console.log("Correct Answer")
             //playSound('correct');
         } else {
             this.lives -= 1;
             this.results.push({ correct: false });
+            console.log("Incorrect Answer")
             //playSound('incorrect');
             if (this.lives === 0) {
                 this.endGame();
@@ -57,14 +59,15 @@ class DefinitionGame  {
 class AudioGame extends DefinitionGame {
     playAudio() {
         const audioUrl = this.getCurrentQuestion().audio;
+        console.log('Playing audio:', this.currentIndex)
         const audio = new Audio(audioUrl);
         audio.play();
     }
 }
 
 class SentenceGame extends DefinitionGame {
-    hideWordFromSentence(word: string) {
-        const currentSentence = this.getCurrentQuestion().answer.example.replace(word, '_____');
+    hideWordFromSentence() {
+        const currentSentence = this.getCurrentQuestion().answer.example.replace(this.getCurrentQuestion().answer.word, '_____');
         return currentSentence.trim();
     }
 }
