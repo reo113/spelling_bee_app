@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+
+// UI
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -6,36 +9,40 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Link } from "react-router-dom";
-import Lottie from "lottie-react";
+import CustomDropdown from "./CustomDropdown";
 
 export default function LandingPage() {
   return (
-    <>
-      <div className="mx-auto flex w-full items-center justify-between bg-white px-48 py-6">
+    <main className="min-h-screen w-full overflow-hidden">
+      <div className="sm:px-18 md:px-26 mx-auto flex w-full items-center justify-between bg-white px-4 py-6 lg:px-48 xl:px-64">
         {/* Image and Spelling Bee Text Group */}
         <div className="flex items-center">
           <img
             src="/logo.svg"
             alt="Spelling Bee Logo"
-            className="h-16 w-32 sm:h-16 sm:w-32"
+            className="h-8 w-16 sm:h-16 sm:w-32"
           />
-          <span className="text-xl font-bold sm:text-2xl">
+          <span className="text-xl font-bold sm:text-2xl md:text-3xl">
             Spelling Bee App
           </span>
         </div>
+        <div className="flex items-center justify-center gap-x-4">
+          {/* Language Selector Dropdown */}
+          <div className="hidden sm:block">
+            <Select>
+              <SelectTrigger className="w-[180px] border-yldark bg-yl py-6 ring-0 focus:ring-0 focus:ring-offset-0">
+                <SelectValue placeholder="Language" />
+              </SelectTrigger>
+              <SelectContent className="border-yldark bg-yl">
+                <SelectItem value="english">English</SelectItem>
+                <SelectItem value="spanish">Spanish</SelectItem>
+                <SelectItem value="french">French</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
 
-        {/* Language Selector Dropdown */}
-        <Select>
-          <SelectTrigger className="w-[180px] border-yldark bg-yl py-6 ring-0 focus:ring-0 focus:ring-offset-0">
-            <SelectValue placeholder="Language" />
-          </SelectTrigger>
-          <SelectContent className="border-yldark bg-yl">
-            <SelectItem value="english">English</SelectItem>
-            <SelectItem value="spanish">Spanish</SelectItem>
-            <SelectItem value="french">French</SelectItem>
-          </SelectContent>
-        </Select>
+          <CustomDropdown />
+        </div>
       </div>
 
       {/* Section 1 */}
@@ -215,6 +222,6 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-    </>
+    </main>
   );
 }
