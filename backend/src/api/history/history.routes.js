@@ -1,10 +1,11 @@
 const express = require("express");
+const { isAuthenticated } = require("../../middleware");
 const { findUserById } = require("../user/user.services");
 const { findGamesByUserId, getGameDataById } = require("./history.services");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", isAuthenticated, async (req, res) => {
   try {
     const userId = req.session.userId;
 
@@ -30,7 +31,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:gameId", async (req, res) => {
+router.get("/:gameId", isAuthenticated, async (req, res) => {
   try {
     const { gameId } = req.params;
 
