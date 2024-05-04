@@ -1,4 +1,4 @@
-import correct from '@correct.mp3';
+import correct from '@/assets/correct.mp3';
 
 class DefinitionGame  {
     constructor(data) {
