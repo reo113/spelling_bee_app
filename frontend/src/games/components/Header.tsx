@@ -2,7 +2,7 @@ import { Progress } from "@/components/ui/progress";
 import { X } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const Header = ({ lives, userId, points }) => {
+const Header = ({ lives, userId, index }) => {
   return (
     <header
       className="mx-auto flex w-full max-w-[1140px] items-center
@@ -11,7 +11,7 @@ const Header = ({ lives, userId, points }) => {
       <Link to="/games">
         <X className="cursor-pointer text-slate-500 transition hover:text-bee" />
       </Link>
-      <Progress value={points} />
+      <Progress value={index} />
       <div className="font bold flex items-center text-rose-500"></div>
     </header>
   );

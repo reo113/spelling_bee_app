@@ -80,7 +80,7 @@ const submitResponse = async (response) => {
         {gameType === "definition" && (
           <div>
             <h1>{gameType.toUpperCase()} Game</h1>
-            <Header points={game.getGameState().points} userId={null} lives={game.getGameState().lives} />
+            <Header index={game.getGameState().index} userId={null} lives={game.getGameState().lives} />
             <div>Question: {currentQuestion.answer.definition}</div>
             <ul>
               {currentQuestion.words.map((word, index) => (
