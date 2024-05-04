@@ -5,17 +5,15 @@ import { AuthContext } from "@/contexts/AuthContext";
 
 // UI
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import LanguageSelector from "./LanguageSelector";
 import CustomDropdown from "./CustomDropdown";
+
+import { useTranslation } from "react-i18next";
 
 export default function Navbar() {
   const { currentUser } = useContext(AuthContext);
+
+  const { t } = useTranslation("common");
 
   return (
     <div className="sm:px-18 md:px-26 mx-auto flex w-full items-center justify-between bg-white bg-none px-4 py-6 shadow-md lg:px-48 xl:px-64">
@@ -35,22 +33,13 @@ export default function Navbar() {
       <div className="flex items-center justify-center gap-x-4">
         {/* Language Selector Dropdown */}
         <div className="hidden sm:block">
-          <Select>
-            <SelectTrigger className="border-beedark w-[180px] bg-bee py-6 ring-0 focus:ring-0 focus:ring-offset-0">
-              <SelectValue placeholder="Language" />
-            </SelectTrigger>
-            <SelectContent className="border-beedark bg-bee">
-              <SelectItem value="english">English</SelectItem>
-              <SelectItem value="spanish">Spanish</SelectItem>
-              <SelectItem value="french">French</SelectItem>
-            </SelectContent>
-          </Select>
+          <LanguageSelector />
         </div>
 
         {currentUser === null ? (
           <Link to="/login">
             <Button variant="outline" className="px-6 py-6">
-              Log In
+              {t("app.login")}
             </Button>
           </Link>
         ) : (

@@ -1,35 +1,37 @@
 import { Link } from "react-router-dom";
 
 import Navbar from "@/components/custom/Navbar";
+import { SpellCheck, Ear, MousePointerClick } from "lucide-react";
 
-const games = [
-  {
-    id: 1,
-    name: "Word Choices",
-    description: "Choose the correct word that matches the definition.",
-    imageUrl:
-      "https://st2.depositphotos.com/3051589/45390/i/450/depositphotos_453901934-stock-photo-definition-business-team-hands-work.jpg",
-    link: "/game/definition",
-  },
-  {
-    id: 2,
-    name: "Spell by Hearing",
-    description: "Listen and spell the word correctly to win points!",
-    imageUrl:
-      "https://lh7-us.googleusercontent.com/we6R_SypPk-Efe7BujABImnIV1MJJRdJ_4DM8xR__aLZ23uJDLBAtZrh2cZWP2uVvHuAn4EsGNq5k-KNvyWIoLznTT9h3jKq3IE_vkdD7WiPwQ4oXdGHhVne0ZKMYdqTnLe0iDUwrL62",
-    link: "/game/audio",
-  },
-  {
-    id: 3,
-    name: "Complete the Sentence",
-    description: "Fill in the blanks to complete the sentence correctly.",
-    imageUrl:
-      "https://tophat.com/wp-content/uploads/BLOG-fill-in-the-blank@1X.jpg",
-    link: "/game/sentence",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const GameHub = () => {
+  const { t } = useTranslation("common");
+
+  const games = [
+    {
+      id: 1,
+      name: t("games.definition.title"),
+      description: t("games.definition.description"),
+      icon: <SpellCheck className="h-32 w-32" />,
+      link: "/game/definition",
+    },
+    {
+      id: 2,
+      name: t("games.audio.title"),
+      description: t("games.audio.description"),
+      icon: <Ear className="h-32 w-32" />,
+      link: "/game/audio",
+    },
+    {
+      id: 3,
+      name: t("games.sentence.title"),
+      description: t("games.sentence.description"),
+      icon: <MousePointerClick className="h-32 w-32" />,
+      link: "/game/sentence",
+    },
+  ];
+
   return (
     <>
       <div className="min-h-screen w-full overflow-hidden">
@@ -41,24 +43,22 @@ const GameHub = () => {
         <Navbar />
 
         {/* Gamehub */}
-        <div className="flex w-full items-center justify-center">
-          <div className="container mx-auto px-4">
-            <div className="my-8 text-center">
+        <div className="flex w-full items-center justify-center py-12">
+          <div className="mx-auto px-4">
+            <div className="mb-6 text-center">
               <span className="text-4xl font-bold text-gray-800">
-                Select Your Game
+                {t("games.select")}
               </span>
             </div>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {games.map((game) => (
+            <div className="flex w-full flex-col items-center justify-center gap-x-6 gap-y-6 lg:flex-row">
+              {games.map((game, index) => (
                 <div
-                  key={game.id}
-                  className="overflow-hidden rounded-lg bg-white shadow-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl"
+                  key={index}
+                  className="relative w-[300px] overflow-hidden rounded-lg bg-white shadow-lg transition-shadow duration-300 ease-in-out hover:shadow-2xl sm:w-[350px] md:w-[400px]"
                 >
-                  <img
-                    src={game.imageUrl}
-                    alt={game.name}
-                    className="h-64 w-full object-cover"
-                  />
+                  <div className="grid h-64 w-full place-items-center bg-gray-100">
+                    {game.icon}
+                  </div>
 
                   <div className="p-6">
                     <h2 className="mb-3 text-2xl font-bold text-gray-800">
@@ -69,7 +69,7 @@ const GameHub = () => {
 
                   <Link to={game.link}>
                     <div className="w-full cursor-pointer rounded-b-lg bg-bee px-4 py-2 text-center font-bold text-white transition-colors hover:bg-darkbee">
-                      Play Now
+                      {t("games.play")}
                     </div>
                   </Link>
                 </div>

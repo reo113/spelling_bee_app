@@ -6,10 +6,12 @@ import Navbar from "@/components/custom/Navbar";
 
 import Lottie from "lottie-react";
 import bee from "@/assets/bee.json";
-import bee2 from "@/assets/bee2.json";
-import bee3 from "@/assets/bee3.json";
+
+import { useTranslation } from "react-i18next";
 
 export default function LandingPage() {
+  const { t } = useTranslation("common");
+
   return (
     <div className="min-h-screen w-full overflow-hidden">
       {/* Background */}
@@ -25,15 +27,14 @@ export default function LandingPage() {
       {/* Hero */}
       <div className="flex min-h-screen w-full items-center justify-center overflow-hidden bg-none">
         <div className="flex flex-col items-center justify-center space-y-24 p-4 sm:flex-row sm:space-x-10 sm:space-y-0">
-          {/* Animation Container with GIF */}
           <div className="max-h-[300px] max-w-[400px] xl:max-h-[475px] xl:max-w-[500px]">
             <Lottie animationData={bee} />
           </div>
 
           {/* Text and Buttons Container */}
           <div className="flex flex-col items-center space-y-4">
-            <h1 className="mb-4 text-center text-3xl font-bold text-gray-800 sm:text-4xl">
-              The free, fun, and <br /> effective way to learn new words!
+            <h1 className="mb-4 max-w-[350px] text-center text-3xl font-bold text-gray-800 sm:max-w-[600px] sm:text-4xl">
+              {t("app.title")}
             </h1>
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
               <Link to="/games">
@@ -41,7 +42,7 @@ export default function LandingPage() {
                   variant="primary"
                   className="min-w-48 rounded-lg px-5 py-8 text-lg font-bold text-white"
                 >
-                  Get Started
+                  {t("app.start")}
                 </Button>
               </Link>
               <Link to="/login">
@@ -49,7 +50,7 @@ export default function LandingPage() {
                   variant="secondary"
                   className="flex min-w-48 items-center justify-center rounded-lg px-5 py-8 text-lg font-bold text-white"
                 >
-                  Log In
+                  {t("app.login")}
                 </Button>
               </Link>
             </div>
