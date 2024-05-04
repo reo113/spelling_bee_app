@@ -1,3 +1,4 @@
+import correct from '@correct.mp3';
 
 class DefinitionGame  {
     constructor(data) {
@@ -16,17 +17,15 @@ class DefinitionGame  {
             this.points += 10;
             this.results.push({ correct: true });
             console.log("Correct Answer")
-            //playSound('correct');
         } else {
             this.lives -= 1;
             this.results.push({ correct: false });
             console.log("Incorrect Answer")
-            //playSound('incorrect');
             if (this.lives === 0) {
                 this.endGame();
             }
         }
-
+        this.playSound();
         this.nextQuestion();
     }
     nextQuestion() {
@@ -54,6 +53,10 @@ class DefinitionGame  {
             gameOver: this.gameOver,
             index: this.currentIndex
         };
+    }
+    playSound(){
+        const soundEffect = new Audio(correct);
+        soundEffect.play();
     }
 }
 
