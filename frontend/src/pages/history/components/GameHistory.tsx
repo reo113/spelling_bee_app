@@ -68,7 +68,7 @@ export default function History() {
                           );
                         })}
                       </div>
-                      {question.Responses.length > 0 && (
+                      {question.Responses.length > 0 ? (
                         <span
                           className={
                             question.Responses[0].isCorrect === true
@@ -78,6 +78,8 @@ export default function History() {
                         >
                           {question.Responses[0].reponse}
                         </span>
+                      ) : (
+                        <span className="italic">No response found</span>
                       )}
                     </div>
                   </AccordionContent>
