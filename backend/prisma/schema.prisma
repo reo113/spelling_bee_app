@@ -60,3 +60,10 @@ model Dictionary {
   audio      String?
   example    String?
 }
+
+model SpanishDictionary {
+  id         String  @id @default(uuid())
+  word       String  @unique
+  definition String
+  example    String?
+}
