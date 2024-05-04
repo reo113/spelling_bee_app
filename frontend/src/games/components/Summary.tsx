@@ -14,7 +14,7 @@ function Modal({ game, hideModal }) {
 
   const hearts = [];
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < lives; i++) {
     hearts.push(<Heart key={i} className="text-red-600" />);
   }
 
