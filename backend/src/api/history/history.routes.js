@@ -5,7 +5,7 @@ const { findGamesByUserId, getGameDataById } = require("./history.services");
 
 const router = express.Router();
 
-router.get("/", isAuthenticated, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const userId = req.session.userId;
 
@@ -13,25 +13,27 @@ router.get("/", isAuthenticated, async (req, res) => {
       const user = await findUserById(userId);
 
       if (!user) {
-        return res.json({ message: "User doesn't exist." });
+        return res.status(404).json({ message: "User doesn't exist." });
       }
 
       const games = await findGamesByUserId(userId);
 
       res.json(games);
     } else {
-      return res.status(500).json({ message: "Error getting games for user." });
+      return res
+        .status(500)
+        .json({ message: "Error getting games: no user Id provided." });
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json({
+    res.json({
       message: "Error occurred while getting games for user.",
       error: err,
     });
   }
 });
 
-router.get("/:gameId", isAuthenticated, async (req, res) => {
+router.get("/:gameId", async (req, res) => {
   try {
     const { gameId } = req.params;
 
