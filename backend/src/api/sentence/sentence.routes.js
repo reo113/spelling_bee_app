@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
 
                 const questions = [];
 
-                correctAnswers.map(async (word) => {
+                for (const word of correctAnswers) {
                     //shuffle and pick two incorrect words
                     const shuffledIncorrect = _.sampleSize(incorrectPool, 2);
                     // remove the already used words from the pool
@@ -59,7 +59,7 @@ router.post("/", async (req, res) => {
                         answer: word,
                         words: finalWords,
                     });
-                });
+                };
                 return questions;
             });
             res.json(result);
