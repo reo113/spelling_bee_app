@@ -2,7 +2,9 @@ const express = require("express");
 const _ = require("lodash");
 const { db } = require("../../utils/db");
 const router = express.Router();
-
+function hideWordFromSentence(word, sentence) {
+    return sentence.replace(word, "_____").trim();
+}
 router.post("/", async (req, res) => {
     const { userId, type } = req.body;
     try {
@@ -27,16 +29,16 @@ router.post("/", async (req, res) => {
 
                 const questions = [];
 
-                correctAnswers.map(async (word) => {
+                for (const word of correctAnswers) {
                     //shuffle and pick two incorrect words
                     const shuffledIncorrect = _.sampleSize(incorrectPool, 2);
                     // remove the already used words from the pool
                     incorrectPool = _.difference(incorrectPool, shuffledIncorrect);
-
+                    const example = hideWordFromSentence(word.word, word.example);
                     const question = await prisma.question.create({
                         data: {
                             gameId: newGame.id,
-                            questionText: word.example,
+                            questionText: example,
                             correctAnswer: word.word,
                             AnswerChoice: {
                                 create: [
@@ -53,13 +55,13 @@ router.post("/", async (req, res) => {
                         shuffledIncorrect[0].word,
                         shuffledIncorrect[1].word,
                     ]);
-
+                    word["example"] = example;
                     questions.push({
                         id: question.id,
                         answer: word,
                         words: finalWords,
                     });
-                });
+                };
                 return questions;
             });
             res.json(result);
@@ -68,6 +70,8 @@ router.post("/", async (req, res) => {
             const questions = correctAnswers.map(word => {
                 const shuffledIncorrect = _.sampleSize(incorrectPool, 2);
                 incorrectPool = _.difference(incorrectPool, shuffledIncorrect);
+                const example = hideWordFromSentence(word.word, word.example);
+                word["example"] = example;
                 return {
                     answer: word,
                     words: _.shuffle([word.word, shuffledIncorrect[0].word, shuffledIncorrect[1].word]),

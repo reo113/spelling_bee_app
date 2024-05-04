@@ -31,15 +31,6 @@ router.post("/", async (req, res) => {
                 const updatedResult = await Promise.all(wordPool.map(async (word) => {
                     await checkRateLimit(); // Throttle requests
                     const audioUrl = await fetchAudioFromWordnik(word.word);
-                    if (audioUrl) {
-                        await db.dictionary.update({
-                            where: { id: word.id },
-                            data: { audio: audioUrl }
-                        });
-                        console.log(`Updated audio URL for ${word.word}`);
-                    } else {
-                        console.log(`No audio found for ${word.word}, skipped.`);
-                    }
                     const question = await prisma.question.create({
                         data: {
                             gameId: newGame.id,
@@ -63,15 +54,6 @@ router.post("/", async (req, res) => {
             const updatedQuestions = await Promise.all(wordPool.map(async (word) => {
                 await checkRateLimit(); // Throttle requests
                 const audioUrl = await fetchAudioFromWordnik(word.word);
-                if (audioUrl) {
-                    await db.dictionary.update({
-                        where: { id: word.id },
-                        data: { audio: audioUrl }
-                    });
-                    console.log(`Updated audio URL for ${word.word}`);
-                } else {
-                    console.log(`No audio found for ${word.word}, skipped.`);
-                }
                 return {
                     answer: word,
                     audio: audioUrl,
