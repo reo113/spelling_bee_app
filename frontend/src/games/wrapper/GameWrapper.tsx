@@ -111,7 +111,7 @@ const submitResponse = async (response) => {
           <div>
             <h1>{gameType.toUpperCase()} Game</h1>
             <Header points={game.getGameState().points} userId={null} lives={game.getGameState().lives} />
-            <div>Question: {game.hideWordFromSentence()}</div>
+            <div>Question: {currentQuestion.answer.example}</div>
             <ul>
               {currentQuestion.words.map((word, index) => (
                 <li key={index}>
