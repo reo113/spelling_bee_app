@@ -1,0 +1,24 @@
+{
+  "app": {
+    "title": "The free, fun, and effective way to learn new words!",
+    "start": "Get Started",
+    "login": "Log In",
+    "loading": "Loading..."
+  },
+  "games": {
+    "select": "Select Your Game",
+    "play": "Play Now",
+    "definition": {
+      "title": "Choose the Correct Word",
+      "description": "Choose the correct word that matches the definition."
+    },
+    "audio": {
+      "title": "Spell by Hearing",
+      "description": "Listen and spell the word correctly to gain points."
+    },
+    "sentence": {
+      "title": "Complete the Sentence",
+      "description": "Fill in the blanks to complete the sentence correctly."
+    }
+  }
+}
