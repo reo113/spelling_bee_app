@@ -5,6 +5,7 @@ const definition = require("./definition/definition.routes");
 const audio = require("./audio/audio.routes");
 const sentence = require("./sentence/sentence.routes");
 const response = require("./response/response.routes");
+const history = require("./history/history.routes");
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -19,4 +20,6 @@ router.use("/definition", definition);
 router.use("/audio", audio);
 router.use("/sentence", sentence);
 router.use("/response", response);
+router.use("/history", history);
+
 module.exports = router;
