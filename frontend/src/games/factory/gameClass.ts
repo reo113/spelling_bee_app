@@ -51,7 +51,8 @@ class DefinitionGame  {
             question: this.getCurrentQuestion(),
             points: this.points,
             lives: this.lives,
-            gameOver: this.gameOver
+            gameOver: this.gameOver,
+            index: this.currentIndex
         };
     }
 }

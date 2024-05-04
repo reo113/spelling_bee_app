@@ -10,13 +10,12 @@ router.post("/", async (req, res) => {
   try {
     let wordsWithDefinitions = await db.dictionary.findMany({
       take: 20000,
-      select: { word: true, definition: true, id: true },
+      select: { word: true, definition: true },
     });
     // split the words into correct and incorrect answers
     wordsWithDefinitions = _.shuffle(wordsWithDefinitions);
     const correctAnswers = wordsWithDefinitions.slice(0, 10);
     let incorrectPool = wordsWithDefinitions.slice(10);
-    console.log(userId);
 
     if (userId) {
       const result = await db.$transaction(async (prisma) => {
@@ -60,7 +59,6 @@ router.post("/", async (req, res) => {
       res.json(result);
     } else {
       // If no valid userId, just return the shuffled words without creating game data
-      console.log("No userId");
       const questions = correctAnswers.map(word => {
         const shuffledIncorrect = _.sampleSize(incorrectPool, 2);
         incorrectPool = _.difference(incorrectPool, shuffledIncorrect);
