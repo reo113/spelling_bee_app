@@ -11,8 +11,7 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
     game.getGameState().question
   );
   const { currentUser } = useContext(AuthContext);
-console.log("current question",currentQuestion);
-console.log("game",game);
+
   const [audioInput, setAudioInput] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const navigate = useNavigate();
