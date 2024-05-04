@@ -7,6 +7,7 @@ import GameHub from "@/pages/misc/GameHub";
 import StartGame from "@/games/components/StartGame";
 
 import History from "@/pages/history/components/History";
+import GameHistory from "@/pages/history/components/GameHistory";
 
 import AuthProvider from "@/contexts/AuthContext";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -40,6 +41,14 @@ function App() {
       element: (
         <ProtectedRoute>
           <History />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/history/:gameId",
+      element: (
+        <ProtectedRoute>
+          <GameHistory />
         </ProtectedRoute>
       ),
     },
