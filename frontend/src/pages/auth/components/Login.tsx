@@ -21,7 +21,7 @@ export default function Login() {
 
   // Redirect if user is already logged in
   if (currentUser) {
-    return <Navigate to="/" />;
+    return <Navigate to="/games" />;
   }
 
   // Toggle isShown state
