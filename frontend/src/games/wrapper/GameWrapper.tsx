@@ -96,7 +96,7 @@ const submitResponse = async (response) => {
         {gameType === "audio" && (
           <div>
             <h1>{gameType.toUpperCase()} Game</h1>
-            <Header points={game.getGameState().points} userId={null} lives={game.getGameState().lives} />
+            <Header index={game.getGameState().index} userId={null} lives={game.getGameState().lives} />
             <form onSubmit={handleSubmit}>
               <Button type="button" onClick={(e) => {
                 e.stopPropagation();
@@ -110,7 +110,7 @@ const submitResponse = async (response) => {
         {gameType === "sentence" && (
           <div>
             <h1>{gameType.toUpperCase()} Game</h1>
-            <Header points={game.getGameState().points} userId={null} lives={game.getGameState().lives} />
+            <Header index={game.getGameState().index} userId={null} lives={game.getGameState().lives} />
             <div>Question: {currentQuestion.answer.example}</div>
             <ul>
               {currentQuestion.words.map((word, index) => (
