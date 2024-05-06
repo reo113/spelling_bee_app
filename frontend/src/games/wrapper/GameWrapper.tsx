@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { AuthContext } from "@/contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +6,8 @@ import Header from "../components/Header";
 import Summary from "../components/Summary";
 
 import { useTranslation } from "react-i18next";
+
+import { Volume2 } from "lucide-react";
 
 const GameWrapper = ({ game, gameType, onGameOver }) => {
   const { t } = useTranslation("common");
@@ -119,7 +120,6 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
                   <li key={index} className="m-2">
                     <Button
                       variant="primary"
-                      // className="rounded border-bee bg-none px-8 py-8 transition-colors duration-300 ease-in-out hover:bg-yellow-500 hover:text-white"
                       className="px-8 py-8 text-xl"
                       onClick={() => handleAnswer(word, currentQuestion)}
                     >
@@ -133,22 +133,19 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
         )}
 
         {gameType === "audio" && (
-          <div className="container mx-auto p-5">
-            <span className="mb-6 text-center text-3xl font-bold">
-              {t("games.audio.title")}
-            </span>
-            <Header
-              index={game.getGameState().index}
-              userId={null}
-              lives={game.getGameState().lives}
-            />
-            <div className="mb-4 flex items-center justify-center">
-              <div className="mb-4 mt-4 flex items-center space-x-2 rounded-lg bg-blue-200 p-3 shadow">
-                <div className="text-lg font-semibold text-gray-800">
-                  Score:{" "}
-                  <span className="text-green-600">
-                    {game.getGameState().points}
-                  </span>
+          <div className="container mx-auto py-12 sm:py-24">
+            <div className="w-full pt-12 text-center">
+              <span className="text-4xl font-bold">
+                {t("games.audio.title")}
+              </span>
+            </div>
+
+            <Header index={game.getGameState().index} />
+
+            <div className="my-12 flex items-center justify-center">
+              <div className="flex items-center space-x-2 rounded-lg p-3">
+                <div className="flex flex-row space-x-2 text-xl font-semibold">
+                  <span className="">Score: {game.getGameState().points}</span>
                 </div>
                 {Array.from({ length: game.getGameState().lives }).map(
                   (_, idx) => (
@@ -159,6 +156,7 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
                 )}
               </div>
             </div>
+
             <form
               onSubmit={handleSubmit}
               className="mx-auto mb-6 w-full max-w-md rounded-lg bg-white p-6 shadow-md"
@@ -166,24 +164,26 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
               <div className="flex flex-col items-center space-y-4">
                 <Button
                   type="button"
-                  className="flex h-20 w-20 items-center justify-center rounded bg-black text-2xl font-bold text-white"
+                  variant="primary"
+                  className="flex items-center justify-center rounded bg-bee px-12 py-12 text-white"
                   onClick={(e) => {
                     e.stopPropagation();
                     game.playAudio();
                   }}
                 >
-                  🔊
+                  <Volume2 className="h-12 w-12" />
                 </Button>
-                <Input
+                <input
                   type="text"
                   placeholder="Type the word you heard"
                   value={audioInput}
                   onChange={handleChange}
-                  className="w-full rounded border border-gray-300 p-2"
+                  className="border-xl block w-full cursor-text rounded-xl border-2 border-dusk p-6 text-2xl focus:border-bee focus:outline-none active:outline-none"
                 />
                 <Button
                   type="submit"
-                  className="w-32 rounded bg-yellow-500 px-4 py-2 font-bold text-white hover:bg-yellow-700"
+                  variant="primary"
+                  className="w-full px-8 py-8 text-xl"
                 >
                   Submit
                 </Button>
