@@ -26,8 +26,8 @@ router.post("/", async (req, res) => {
     }
     // split the words into correct and incorrect answers
     wordsWithDefinitions = _.shuffle(wordsWithDefinitions);
-    const correctAnswers = wordsWithDefinitions.slice(0, 10);
-    let incorrectPool = wordsWithDefinitions.slice(10);
+    const correctAnswers = wordsWithDefinitions.slice(0, 5);
+    let incorrectPool = wordsWithDefinitions.slice(5);
 
     if (userId) {
       const result = await db.$transaction(async (prisma) => {
