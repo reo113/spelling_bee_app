@@ -5,7 +5,8 @@
     "login": "Log In",
     "signup": "Sign Up",
     "loading": "Loading...",
-    "history": "Game History"
+    "history": "Game History",
+    "question": "Question"
   },
   "games": {
     "select": "Select Your Game",

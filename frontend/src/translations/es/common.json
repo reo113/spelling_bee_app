@@ -5,7 +5,8 @@
     "login": "Iniciar Sesión",
     "signup": "Inscribirse",
     "loading": "Cargando...",
-    "history": "Historia del Juego"
+    "history": "Historia del Juego",
+    "question": "Pregunta"
   },
   "games": {
     "select": "Seleccione Su Juego",

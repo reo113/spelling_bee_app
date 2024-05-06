@@ -58,7 +58,9 @@ export default function History() {
             game.map((question, index) => {
               return (
                 <AccordionItem value={"item-" + index}>
-                  <AccordionTrigger>Question {index + 1}</AccordionTrigger>
+                  <AccordionTrigger>
+                    {t("app.question")} {index + 1}
+                  </AccordionTrigger>
                   <AccordionContent>
                     <div className="flex flex-col">
                       <span className="">{question.questionText}</span>
