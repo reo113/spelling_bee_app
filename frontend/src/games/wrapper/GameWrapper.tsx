@@ -73,7 +73,7 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
   }, [game]);
 
   return (
-    <div className="relative h-screen bg-bee-pattern">
+    <div className="relative h-screen">
       <div
         className={`transition-opacity duration-300 ${isModalVisible ? "opacity-50" : "opacity-100"}`}
       >
