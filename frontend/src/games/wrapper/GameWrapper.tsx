@@ -193,22 +193,19 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
         )}
 
         {gameType === "sentence" && (
-          <div className="container mx-auto p-5">
-            <span className="mb-6 text-center text-3xl font-bold text-gray-800">
-              {t("games.definition.title")}
-            </span>
-            <Header
-              index={game.getGameState().index}
-              userId={null}
-              lives={game.getGameState().lives}
-            />
-            <div className="mb-4 flex items-center justify-center">
-              <div className="mt-4 flex items-center space-x-2 rounded-lg bg-blue-200 p-3 shadow">
-                <div className="text-lg font-semibold text-gray-800">
-                  Score:{" "}
-                  <span className="text-green-600">
-                    {game.getGameState().points}
-                  </span>
+          <div className="container mx-auto py-12 sm:py-24">
+            <div className="w-full pt-12 text-center">
+              <span className="text-4xl font-bold">
+                {t("games.sentence.title")}
+              </span>
+            </div>
+
+            <Header index={game.getGameState().index} />
+
+            <div className="my-12 flex items-center justify-center">
+              <div className="flex items-center space-x-2 rounded-lg p-3">
+                <div className="flex flex-row space-x-2 text-xl font-semibold">
+                  <span className="">Score: {game.getGameState().points}</span>
                 </div>
                 {Array.from({ length: game.getGameState().lives }).map(
                   (_, idx) => (
@@ -219,17 +216,18 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
                 )}
               </div>
             </div>
-            <div className="mb-6 rounded-lg bg-white p-6 shadow-md">
-              <h2 className="mb-4 text-xl font-semibold">Question:</h2>
-              <p className="mb-5 text-lg text-gray-600">
+
+            <div className="flex flex-col space-y-8 rounded-lg">
+              <p className="text-center text-4xl">
                 {currentQuestion.answer.example}
               </p>
-              <ul className="flex flex-wrap justify-center">
+              <ul className="flex flex-col justify-center sm:flex-row">
                 {currentQuestion.words.map((word, index) => (
                   <li key={index} className="m-2">
                     <Button
-                      variant="outline"
-                      className="rounded border-yellow-500 px-4 py-2 text-yellow-500 transition-colors duration-300 ease-in-out hover:bg-yellow-500 hover:text-white"
+                      variant="primary"
+                      // className="rounded border-bee bg-none px-8 py-8 transition-colors duration-300 ease-in-out hover:bg-yellow-500 hover:text-white"
+                      className="px-8 py-8 text-xl"
                       onClick={() => handleAnswer(word, currentQuestion)}
                     >
                       {word}
