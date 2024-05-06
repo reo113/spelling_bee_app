@@ -10,6 +10,8 @@
   "games": {
     "select": "Seleccione Su Juego",
     "play": "Jugar Ahora",
+    "alert": "Con soporte en inglés y español.",
+    "warning": "Sólo se admite en inglés.",
     "definition": {
       "title": "Elija la Palabra Correcta",
       "description": "Elija la palabra correcta que corresponda a la definición."
