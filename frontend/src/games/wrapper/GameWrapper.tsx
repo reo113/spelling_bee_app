@@ -143,8 +143,8 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
               lives={game.getGameState().lives}
             />
             <div className="mb-4 flex items-center justify-center">
-              <div className="mt-4 flex items-center space-x-2 rounded-lg bg-blue-200 p-3 shadow">
-                <div className="text-lg font-semibold text-gray-800 ">
+              <div className="mb-4 mt-4 flex items-center space-x-2 rounded-lg bg-blue-200 p-3 shadow">
+                <div className="text-lg font-semibold text-gray-800">
                   Score:{" "}
                   <span className="text-green-600">
                     {game.getGameState().points}
@@ -161,29 +161,29 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
             </div>
             <form
               onSubmit={handleSubmit}
-              className="mb-6 rounded-lg bg-white p-6 shadow-md"
+              className="mx-auto mb-6 w-full max-w-md rounded-lg bg-white p-6 shadow-md"
             >
-              <div className="flex flex-col space-y-4">
+              <div className="flex flex-col items-center space-y-4">
                 <Button
                   type="button"
-                  className="self-center rounded bg-blue-500 px-4 py-2 font-bold hover:bg-blue-700 hover:text-white"
+                  className="flex h-20 w-20 items-center justify-center rounded bg-black text-2xl font-bold text-white"
                   onClick={(e) => {
                     e.stopPropagation();
                     game.playAudio();
                   }}
                 >
-                  Play Audio
+                  🔊
                 </Button>
                 <Input
                   type="text"
                   placeholder="Type the word you heard"
                   value={audioInput}
                   onChange={handleChange}
-                  className="rounded border border-gray-300 p-2"
+                  className="w-full rounded border border-gray-300 p-2"
                 />
                 <Button
                   type="submit"
-                  className="rounded bg-yellow-500 px-4 py-2 font-bold text-white hover:bg-yellow-700"
+                  className="w-32 rounded bg-yellow-500 px-4 py-2 font-bold text-white hover:bg-yellow-700"
                 >
                   Submit
                 </Button>
