@@ -16,7 +16,7 @@ export default function Navbar() {
   const { t } = useTranslation("common");
 
   return (
-    <div className="sm:px-18 md:px-26 mx-auto flex w-full items-center justify-between bg-white bg-none px-4 py-6 shadow-md lg:px-48 xl:px-64">
+    <div className="sm:px-18 md:px-26 mx-auto flex w-full items-center justify-between bg-none px-4 py-6 lg:px-48 xl:px-64">
       {/* Image and Spelling Bee Text Group */}
       <Link to="/">
         <div className="flex items-center">

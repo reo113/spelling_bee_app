@@ -3,9 +3,16 @@ import { AuthContext } from "@/contexts/AuthContext";
 import { Link, redirect } from "react-router-dom";
 
 // Icons
-import { LogOut, Settings, User, LogIn, NotebookText } from "lucide-react";
+import {
+  LogOut,
+  Settings,
+  User,
+  LogIn,
+  NotebookText,
+  Gamepad2,
+} from "lucide-react";
 
-/// UI
+// UI
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,7 +36,7 @@ export default function CustomDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Avatar className="border-bee h-12 w-12 cursor-pointer border-2">
+        <Avatar className="h-12 w-12 cursor-pointer border-2 border-bee">
           <AvatarImage
             src="https://avatar.iran.liara.run/public/5"
             alt="Avatar"
@@ -39,7 +46,7 @@ export default function CustomDropdown() {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuSeparator />
+        {/* <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
             <User className="mr-2 h-4 w-4" />
@@ -48,6 +55,17 @@ export default function CustomDropdown() {
           <DropdownMenuItem>
             <Settings className="mr-2 h-4 w-4" />
             <span>Settings</span>
+          </DropdownMenuItem>
+        </DropdownMenuGroup> */}
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <Link to="/games" className="w-full">
+              <div className="flex w-full flex-row items-center">
+                <Gamepad2 className="mr-2 h-4 w-4" />
+                <span>Game Hub</span>
+              </div>
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />

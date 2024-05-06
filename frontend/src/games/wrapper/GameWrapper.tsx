@@ -84,8 +84,6 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
             </h1>
             <Header
               index={game.getGameState().index}
-              userId={null}
-              lives={game.getGameState().lives}
             />
             <div className="mb-4 flex items-center justify-center">
               <div className="mt-4 flex items-center space-x-2 rounded-lg bg-blue-200 p-3 shadow">
@@ -133,8 +131,6 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
             </h1>
             <Header
               index={game.getGameState().index}
-              userId={null}
-              lives={game.getGameState().lives}
             />
             <div className="mb-4 flex items-center justify-center">
               <div className="mt-4 flex items-center space-x-2 rounded-lg bg-blue-200 p-3 shadow">
@@ -193,8 +189,6 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
             </h1>
             <Header
               index={game.getGameState().index}
-              userId={null}
-              lives={game.getGameState().lives}
             />
             <div className="mb-4 flex items-center justify-center">
               <div className="mt-4 flex items-center space-x-2 rounded-lg bg-blue-200 p-3 shadow">

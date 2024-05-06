@@ -20,10 +20,6 @@ export const theme = {
     poppins: ["Poppins", "sans-serif"],
   },
   extend: {
-    backgroundImage: {
-      "bee-pattern":
-        "url('https://media.istockphoto.com/id/1030791052/vector/cute-seamless-bee-pattern-vector.jpg?s=612x612&w=0&k=20&c=-1XmuHGaRM4WcrVkMjXp71P5VAdlRLaPJiecakhYvDA=')",
-    },
     colors: {
       border: "hsl(var(--border))",
       input: "hsl(var(--input))",

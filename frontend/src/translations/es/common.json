@@ -3,7 +3,9 @@
     "title": "La forma gratuita, divertida y eficaz de aprender nuevas palabras!",
     "start": "Empezar",
     "login": "Iniciar Sesión",
-    "loading": "Cargando..."
+    "signup": "Inscribirse",
+    "loading": "Cargando...",
+    "history": "Historia del Juego"
   },
   "games": {
     "select": "Seleccione Su Juego",
@@ -20,5 +22,14 @@
       "title": "Completar la Frase",
       "description": "Rellena los espacios en blanco para completar la frase correctamente."
     }
+  },
+  "summary": {
+    "title": "Resumen del Juego",
+    "score": "Puntuación Final",
+    "lives": "Vidas",
+    "notification": "Atención!",
+    "register": "Puedes ver el historial del juego con una cuenta válida.",
+    "history": "Puedes ver tus partidas anteriores.",
+    "close": "Cerrar"
   }
 }

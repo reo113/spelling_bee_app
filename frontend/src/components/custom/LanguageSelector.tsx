@@ -1,18 +1,9 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-// import {
-//   Select,
-//   SelectContent,
-//   SelectItem,
-//   SelectTrigger,
-//   SelectValue,
-// } from "@/components/ui/select";
-// import { Button } from "../ui/button";
-
 import languages from "@/translations/languages";
 
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { Check, ChevronDown, ChevronUp } from "lucide-react";
 
 export default function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,29 +19,6 @@ export default function LanguageSelector() {
   };
 
   return (
-    // <Select>
-    //   <SelectTrigger className="border-beedark min-w-[200px] bg-bee py-6 ring-0 focus:ring-0 focus:ring-offset-0">
-    //     <SelectValue placeholder={t("language-selector.label")} />
-    //   </SelectTrigger>
-    //   <SelectContent className="border-beedark bg-bee">
-    //     <SelectItem value="en">
-    //       <button
-    //         className="h-full w-full"
-    //         onClick={() => i18n.changeLanguage("en")}
-    //       >
-    //         {t("language-selector.languages.en")}
-    //       </button>
-    //     </SelectItem>
-    //     <SelectItem value="es" onClick={() => i18n.changeLanguage("en")}>
-    //       <button
-    //         className="h-full w-full"
-    //         onClick={() => i18n.changeLanguage("en")}
-    //       >
-    //         Spanish
-    //       </button>
-    //     </SelectItem>
-    //   </SelectContent>
-    // </Select>
     <div
       className="relative flex h-[50px] w-[220px] cursor-pointer items-center justify-center rounded-md border-2 border-darkbee bg-bee px-4 py-4 sm:text-sm"
       onClick={() => toggleIsOpen()}
@@ -66,16 +34,18 @@ export default function LanguageSelector() {
       {isOpen && (
         <div className="absolute left-0 top-14 flex w-[220px] flex-col gap-y-2 rounded-md border-2 border-darkbee bg-bee px-4 py-4">
           <button
-            className="w-full rounded-md px-2 py-2 hover:bg-gray-200"
+            className="flex w-full flex-row items-center gap-x-2 rounded-md px-2 py-2 hover:bg-gray-200"
             onClick={() => switchLanguage("en")}
           >
-            English
+            {i18n.languages[0] === "en" ? <Check className="h-4 w-4" /> : <></>}
+            <span className="">English</span>
           </button>
           <button
-            className="w-full rounded-md px-2 py-2 hover:bg-gray-200"
+            className="flex w-full flex-row items-center gap-x-2 rounded-md px-2 py-2 hover:bg-gray-200"
             onClick={() => switchLanguage("es")}
           >
-            Spanish
+            {i18n.languages[0] === "es" ? <Check className="h-4 w-4" /> : <></>}
+            <span className="">Spanish</span>
           </button>
         </div>
       )}
