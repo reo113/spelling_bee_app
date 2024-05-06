@@ -3,7 +3,9 @@
     "title": "The free, fun, and effective way to learn new words!",
     "start": "Get Started",
     "login": "Log In",
-    "loading": "Loading..."
+    "signup": "Sign Up",
+    "loading": "Loading...",
+    "history": "Game History"
   },
   "games": {
     "select": "Select Your Game",
@@ -20,5 +22,14 @@
       "title": "Complete the Sentence",
       "description": "Fill in the blanks to complete the sentence correctly."
     }
+  },
+  "summary": {
+    "title": "Game Summary",
+    "score": "Final Score",
+    "lives": "Lives",
+    "notification": "Heads up!",
+    "register": "You can view game history with a valid account.",
+    "history": "You can view your previous games.",
+    "close": "Close"
   }
 }

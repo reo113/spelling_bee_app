@@ -14,9 +14,13 @@ import {
 
 import Navbar from "@/components/custom/Navbar";
 
+import { useTranslation } from "react-i18next";
+
 export default function History() {
   const { currentUser } = useContext(AuthContext);
   const { gameId } = useParams();
+
+  const { t } = useTranslation("common");
 
   const [game, setGame] = useState([]);
 
@@ -34,8 +38,14 @@ export default function History() {
       {/* Navbar */}
       <Navbar />
 
+      <div className="fixed left-0 top-0 -z-10 h-full w-full">
+        <div className="absolute top-0 z-[-2] h-screen w-screen bg-gray-100 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(228,165,7,0.3),rgba(255,255,255,0))]"></div>
+      </div>
+
       <div className="w-full py-12 text-center">
-        <span className="h2">{currentUser.username}'s Game History</span>
+        <span className="h2">
+          {currentUser.username}'s {t("app.history")}
+        </span>
       </div>
 
       <div className="flex items-center justify-center">
