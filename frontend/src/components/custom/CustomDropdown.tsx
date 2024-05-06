@@ -38,7 +38,7 @@ export default function CustomDropdown() {
       <DropdownMenuTrigger asChild>
         <Avatar className="h-12 w-12 cursor-pointer border-2 border-bee">
           <AvatarImage
-            src="https://avatar.iran.liara.run/public/5"
+            src="https://api.dicebear.com/8.x/bottts-neutral/svg?seed=Bella"
             alt="Avatar"
           />
           <AvatarFallback>AV</AvatarFallback>
