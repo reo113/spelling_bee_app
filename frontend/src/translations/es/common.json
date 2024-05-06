@@ -1,0 +1,35 @@
+{
+  "app": {
+    "title": "La forma gratuita, divertida y eficaz de aprender nuevas palabras!",
+    "start": "Empezar",
+    "login": "Iniciar Sesión",
+    "signup": "Inscribirse",
+    "loading": "Cargando...",
+    "history": "Historia del Juego"
+  },
+  "games": {
+    "select": "Seleccione Su Juego",
+    "play": "Jugar Ahora",
+    "definition": {
+      "title": "Elija la Palabra Correcta",
+      "description": "Elija la palabra correcta que corresponda a la definición."
+    },
+    "audio": {
+      "title": "Hechizo de Oído",
+      "description": "Escucha y escribe correctamente la palabra para ganar puntos."
+    },
+    "sentence": {
+      "title": "Completar la Frase",
+      "description": "Rellena los espacios en blanco para completar la frase correctamente."
+    }
+  },
+  "summary": {
+    "title": "Resumen del Juego",
+    "score": "Puntuación Final",
+    "lives": "Vidas",
+    "notification": "Atención!",
+    "register": "Puedes ver el historial del juego con una cuenta válida.",
+    "history": "Puedes ver tus partidas anteriores.",
+    "close": "Cerrar"
+  }
+}

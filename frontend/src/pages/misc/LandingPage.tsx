@@ -2,73 +2,47 @@ import { Link } from "react-router-dom";
 
 // UI
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import CustomDropdown from "./CustomDropdown";
+import Navbar from "@/components/custom/Navbar";
+
+import Lottie from "lottie-react";
+import bee from "@/assets/bee.json";
+
+import { useTranslation } from "react-i18next";
 
 export default function LandingPage() {
-  return (
-    <main className="min-h-screen w-full overflow-hidden">
-      <div className="sm:px-18 md:px-26 mx-auto flex w-full items-center justify-between bg-white px-4 py-6 lg:px-48 xl:px-64">
-        {/* Image and Spelling Bee Text Group */}
-        <div className="flex items-center">
-          <img
-            src="/logo.svg"
-            alt="Spelling Bee Logo"
-            className="h-8 w-16 sm:h-16 sm:w-32"
-          />
-          <span className="text-xl font-bold sm:text-2xl md:text-3xl">
-            Spelling Bee App
-          </span>
-        </div>
-        <div className="flex items-center justify-center gap-x-4">
-          {/* Language Selector Dropdown */}
-          <div className="hidden sm:block">
-            <Select>
-              <SelectTrigger className="w-[180px] border-yldark bg-yl py-6 ring-0 focus:ring-0 focus:ring-offset-0">
-                <SelectValue placeholder="Language" />
-              </SelectTrigger>
-              <SelectContent className="border-yldark bg-yl">
-                <SelectItem value="english">English</SelectItem>
-                <SelectItem value="spanish">Spanish</SelectItem>
-                <SelectItem value="french">French</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+  const { t } = useTranslation("common");
 
-          <CustomDropdown />
+  return (
+    <div className="min-h-screen w-full overflow-hidden">
+      {/* Background */}
+      <div className="fixed left-0 top-0 -z-10 h-full w-full">
+        <div className="relative h-full w-full bg-gray-100">
+          <div className="absolute h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
         </div>
       </div>
 
-      {/* Section 1 */}
-      <div className="flex min-h-screen w-full items-center justify-center overflow-hidden bg-gray-100">
-        <div className="flex flex-col items-center justify-center p-4 sm:flex-row sm:space-x-10">
-          {/* Animation Container with GIF */}
-          <div className="mb-4 flex items-center justify-center sm:mb-0">
-            <img
-              src="https://i.pinimg.com/originals/02/ce/79/02ce7945c01a4d62f78e480ca9c51f00.gif"
-              alt="Bee Animation"
-              className="bounce h-48 w-48 rounded-lg sm:h-64 sm:w-64"
-            />
+      {/* Navbar */}
+      <Navbar />
+
+      {/* Hero */}
+      <div className="flex w-full items-center justify-center overflow-hidden pt-8 sm:pt-24">
+        <div className="flex flex-col items-center justify-center space-y-8 p-4 sm:flex-row sm:space-x-10">
+          <div className="h-[300px] w-[300px] xl:h-[450px] xl:w-[450px]">
+            <Lottie animationData={bee} />
           </div>
 
           {/* Text and Buttons Container */}
           <div className="flex flex-col items-center space-y-4">
-            <h1 className="mb-4 text-center text-3xl font-bold text-gray-800 sm:text-4xl">
-              The free, fun, and <br /> effective way to learn new words!
-            </h1>
+            <span className="mb-4 max-w-[350px] text-center text-3xl font-bold text-gray-800 sm:max-w-[600px] sm:text-4xl">
+              {t("app.title")}
+            </span>
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
               <Link to="/games">
                 <Button
                   variant="primary"
                   className="min-w-48 rounded-lg px-5 py-8 text-lg font-bold text-white"
                 >
-                  Get Started
+                  {t("app.start")}
                 </Button>
               </Link>
               <Link to="/login">
@@ -76,15 +50,16 @@ export default function LandingPage() {
                   variant="secondary"
                   className="flex min-w-48 items-center justify-center rounded-lg px-5 py-8 text-lg font-bold text-white"
                 >
-                  Log In
+                  {t("app.login")}
                 </Button>
               </Link>
             </div>
           </div>
         </div>
       </div>
-      {/* Section 2 */}
-      <div className="flex h-screen w-full items-center justify-center bg-white px-5 py-10">
+
+      {/* Languages */}
+      <div className="flex h-screen w-full items-center justify-center bg-none px-5 py-10">
         <div className="mx-auto flex max-w-4xl flex-col items-center justify-between space-y-5 md:flex-row md:space-y-0">
           {/* Mission Statement */}
           <div className="md:w-1/2">
@@ -131,8 +106,9 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-      {/* Game Section */}
-      <div className="bg-gray-100 py-10">
+
+      {/* Games */}
+      <div className="bg-none py-10">
         {/* Game 1: Spell it by Hearing */}
         <div className="mx-4 mb-16 flex max-w-4xl flex-col items-center justify-between md:mx-auto md:flex-row ">
           <img
@@ -187,7 +163,8 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-      {/* Final Section */}
+
+      {/* Footer*/}
       <div className="bee-background bg-green-500 px-5 py-10 text-center text-white">
         <h2 className="mb-4 text-3xl font-bold">Join Our Community</h2>
         <p className="mb-6 text-xl">
@@ -222,6 +199,6 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

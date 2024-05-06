@@ -1,3 +1,4 @@
+import correct from '@/assets/correct.mp3';
 
 class DefinitionGame  {
     constructor(data) {
@@ -15,16 +16,16 @@ class DefinitionGame  {
         if (isCorrect) {
             this.points += 10;
             this.results.push({ correct: true });
-            //playSound('correct');
+            console.log("Correct Answer")
         } else {
             this.lives -= 1;
             this.results.push({ correct: false });
-            //playSound('incorrect');
+            console.log("Incorrect Answer")
             if (this.lives === 0) {
                 this.endGame();
             }
         }
-
+        this.playSound();
         this.nextQuestion();
     }
     nextQuestion() {
@@ -49,22 +50,28 @@ class DefinitionGame  {
             question: this.getCurrentQuestion(),
             points: this.points,
             lives: this.lives,
-            gameOver: this.gameOver
+            gameOver: this.gameOver,
+            index: this.currentIndex
         };
+    }
+    playSound(){
+        const soundEffect = new Audio(correct);
+        soundEffect.play();
     }
 }
 
 class AudioGame extends DefinitionGame {
     playAudio() {
         const audioUrl = this.getCurrentQuestion().audio;
+        console.log('Playing audio:', this.currentIndex)
         const audio = new Audio(audioUrl);
         audio.play();
     }
 }
 
 class SentenceGame extends DefinitionGame {
-    hideWordFromSentence(word: string) {
-        const currentSentence = this.getCurrentQuestion().answer.example.replace(word, '_____');
+    hideWordFromSentence() {
+        const currentSentence = this.getCurrentQuestion().answer.example.replace(this.getCurrentQuestion().answer.word, '_____');
         return currentSentence.trim();
     }
 }

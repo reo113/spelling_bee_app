@@ -17,7 +17,7 @@ function findUserByEmail(email) {
   });
 }
 
-function createUserByEmailAndPassword(user) {
+function createUser(user) {
   user.password = bcrypt.hashSync(user.password, 12);
   return db.user.create({
     data: user,
@@ -27,5 +27,5 @@ function createUserByEmailAndPassword(user) {
 module.exports = {
   findUserByEmail,
   findUserById,
-  createUserByEmailAndPassword,
+  createUser,
 };

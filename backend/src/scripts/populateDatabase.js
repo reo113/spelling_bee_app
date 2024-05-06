@@ -1,9 +1,9 @@
-const wordsData = require('../../dictionary.json');
-const { db } = require("../../utils/db");
-
+const wordsData = require('../dictionary.json');
+const { db } = require("../utils/db");
+const spanishWords = require("../SpanishDictionary.json");
 async function main() {
-  for (const [word, definition] of Object.entries(wordsData)) {
-    await db.dictionary.create({
+  for (const [word, definition] of Object.entries(spanishWords)) {
+    await db.spanishDictionary.create({
       data: {
         word: word,
         definition: definition
@@ -11,7 +11,6 @@ async function main() {
     });
   }
 }
-
 main()
   .catch(e => {
     console.error(e);

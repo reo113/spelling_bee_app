@@ -1,19 +1,32 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useContext } from "react";
 import GameFactory from "../factory/gameFactory";
 import GameWrapper from "../wrapper/GameWrapper";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Loading from "@/components/custom/Loading";
+import { AuthContext } from "@/contexts/AuthContext";
+import { useTranslation } from "react-i18next";
 
 const StartGame = () => {
   const [game, setGame] = useState(null);
   const [loading, setLoading] = useState(true);
   const { gameType } = useParams();
-
+  const { currentUser } = useContext(AuthContext);
+  const { i18n } = useTranslation();
   // Define fetchData using useCallback
+  let userId = null;
+  if (currentUser) {
+    userId = currentUser.id;
+  }
   const fetchData = useCallback((type) => {
+    console.log("fetching", type);
     setLoading(true);
     axios
-      .get(`/api/v1/${type}`)
+      .post(`/api/v1/${type}`, {
+        userId: userId,
+        type: type,
+        languageCode: i18n.language,
+      })
       .then((response) => {
         const data = response.data;
         const newGame = GameFactory.createGame(type, data);
@@ -30,18 +43,20 @@ const StartGame = () => {
 
   // useEffect to call fetchData when gameType changes
   useEffect(() => {
-    if (gameType) {
+    if (!game && gameType) {
       fetchData(gameType);
     }
-  }, [gameType, fetchData]);
+  }, [gameType, fetchData, game]);
 
   const onGameOver = useCallback(() => {
-    setGame(null); 
+    setGame(null);
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
 
-  return <GameWrapper game={game} gameType={gameType} onGameOver={onGameOver} />;
+  return (
+    <GameWrapper game={game} gameType={gameType} onGameOver={onGameOver} />
+  );
 };
 
 export default StartGame;

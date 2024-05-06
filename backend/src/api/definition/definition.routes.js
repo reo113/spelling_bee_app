@@ -4,14 +4,26 @@ const { db } = require("../../utils/db");
 const router = express.Router();
 
 
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
 
-  const { userId, type } = req.query;
+  const { userId, type, languageCode } = req.body;
   try {
-    let wordsWithDefinitions = await db.dictionary.findMany({
-      take: 20000,
-      select: { word: true, definition: true, id: true },
-    });
+    let wordsWithDefinitions = [];
+    switch (languageCode) {
+      case "en":
+        wordsWithDefinitions = await db.dictionary.findMany({
+          take: 20000,
+          select: { word: true, definition: true },
+        });
+        break;
+      case "es":
+        wordsWithDefinitions = await db.spanishDictionary.findMany({
+          take: 50,
+          select: { word: true, definition: true },
+        });
+        break;
+      default: res.status(500).json({ error: "Invalid language code" });
+    }
     // split the words into correct and incorrect answers
     wordsWithDefinitions = _.shuffle(wordsWithDefinitions);
     const correctAnswers = wordsWithDefinitions.slice(0, 10);
@@ -48,6 +60,7 @@ router.get("/", async (req, res) => {
           });
 
           questions.push({
+            id: question.id,
             answer: word,
             words: _.shuffle([word.word, shuffledIncorrect[0].word, shuffledIncorrect[1].word]),
           });
@@ -73,6 +86,7 @@ router.get("/", async (req, res) => {
     console.error("Error fetching words and definitions:", error);
     res.status(500).send("Server Error");
   }
+
 });
 
 module.exports = router;
