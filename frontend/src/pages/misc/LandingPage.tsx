@@ -25,17 +25,17 @@ export default function LandingPage() {
       <Navbar />
 
       {/* Hero */}
-      <div className="flex min-h-screen w-full items-center justify-center overflow-hidden bg-none">
-        <div className="flex flex-col items-center justify-center space-y-24 p-4 sm:flex-row sm:space-x-10 sm:space-y-0">
-          <div className="max-h-[300px] max-w-[400px] xl:max-h-[475px] xl:max-w-[500px]">
+      <div className="flex w-full items-center justify-center overflow-hidden pt-8 sm:pt-24">
+        <div className="flex flex-col items-center justify-center space-y-8 p-4 sm:flex-row sm:space-x-10">
+          <div className="h-[300px] w-[300px] xl:h-[450px] xl:w-[450px]">
             <Lottie animationData={bee} />
           </div>
 
           {/* Text and Buttons Container */}
           <div className="flex flex-col items-center space-y-4">
-            <h1 className="mb-4 max-w-[350px] text-center text-3xl font-bold text-gray-800 sm:max-w-[600px] sm:text-4xl">
+            <span className="mb-4 max-w-[350px] text-center text-3xl font-bold text-gray-800 sm:max-w-[600px] sm:text-4xl">
               {t("app.title")}
-            </h1>
+            </span>
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
               <Link to="/games">
                 <Button
