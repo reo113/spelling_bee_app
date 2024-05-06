@@ -1,12 +1,16 @@
-import { useEffect, useState, useContext } from "react";
-import Header from "../components/Header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useNavigate } from "react-router-dom";
-import Summary from "../components/Summary";
 import { AuthContext } from "@/contexts/AuthContext";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
+import Summary from "../components/Summary";
+
+import { useTranslation } from "react-i18next";
 
 const GameWrapper = ({ game, gameType, onGameOver }) => {
+  const { t } = useTranslation("common");
+
   const [currentQuestion, setCurrentQuestion] = useState(
     game.getGameState().question,
   );
@@ -73,27 +77,28 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
   }, [game]);
 
   return (
-    <div className="relative h-screen">
+    <div className="relative h-screen w-full">
       <div
         className={`transition-opacity duration-300 ${isModalVisible ? "opacity-50" : "opacity-100"}`}
       >
+        <div className="fixed left-0 top-0 -z-10 h-full w-full">
+          <div className="absolute top-0 z-[-2] h-screen w-screen bg-gray-100 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(228,165,7,0.3),rgba(255,255,255,0))]"></div>
+        </div>
+
         {gameType === "definition" && (
-          <div className="container mx-auto p-5">
-            <h1 className="mb-6 text-center text-3xl font-bold text-gray-800">
-              {gameType.toUpperCase()} Game
-            </h1>
-            <Header
-              index={game.getCurrentQuestion()}
-              userId={null}
-              lives={game.getGameState().lives}
-            />
-            <div className="mb-4 flex items-center justify-center">
-              <div className="mt-4 flex items-center space-x-2 rounded-lg bg-blue-200 p-3 shadow">
-                <div className="text-lg font-semibold text-gray-800">
-                  Score:{" "}
-                  <span className="text-green-600">
-                    {game.getGameState().points}
-                  </span>
+          <div className="container mx-auto py-12 sm:py-24">
+            <div className="w-full pt-12 text-center">
+              <span className="text-4xl font-bold">
+                {t("games.definition.title")}
+              </span>
+            </div>
+
+            <Header index={game.getGameState().index} />
+
+            <div className="my-12 flex items-center justify-center">
+              <div className="flex items-center space-x-2 rounded-lg p-3">
+                <div className="flex flex-row space-x-2 text-xl font-semibold">
+                  <span className="">Score: {game.getGameState().points}</span>
                 </div>
                 {Array.from({ length: game.getGameState().lives }).map(
                   (_, idx) => (
@@ -104,17 +109,18 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
                 )}
               </div>
             </div>
-            <div className="mb-6 rounded-lg bg-white p-6 shadow-md">
-              <h2 className="mb-4 text-xl font-semibold">Question:</h2>
-              <p className="mb-5 text-lg text-gray-600">
+
+            <div className="flex flex-col space-y-8 rounded-lg">
+              <p className="text-center text-4xl">
                 {currentQuestion.answer.definition}
               </p>
-              <ul className="flex flex-wrap justify-center">
+              <ul className="flex flex-col justify-center sm:flex-row">
                 {currentQuestion.words.map((word, index) => (
                   <li key={index} className="m-2">
                     <Button
-                      variant="outline"
-                      className="rounded border-yellow-500 px-4 py-2 text-yellow-500 transition-colors duration-300 ease-in-out hover:bg-yellow-500 hover:text-white"
+                      variant="primary"
+                      // className="rounded border-bee bg-none px-8 py-8 transition-colors duration-300 ease-in-out hover:bg-yellow-500 hover:text-white"
+                      className="px-8 py-8 text-xl"
                       onClick={() => handleAnswer(word, currentQuestion)}
                     >
                       {word}
@@ -128,11 +134,11 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
 
         {gameType === "audio" && (
           <div className="container mx-auto p-5">
-            <h1 className="mb-6 text-center text-3xl font-bold text-gray-800">
-              {gameType.toUpperCase()} Game
-            </h1>
+            <span className="mb-6 text-center text-3xl font-bold">
+              {t("games.audio.title")}
+            </span>
             <Header
-              points={game.getGameState().points}
+              index={game.getGameState().index}
               userId={null}
               lives={game.getGameState().lives}
             />
@@ -188,11 +194,11 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
 
         {gameType === "sentence" && (
           <div className="container mx-auto p-5">
-            <h1 className="mb-6 text-center text-3xl font-bold text-gray-800">
-              {gameType.toUpperCase()} Game
-            </h1>
+            <span className="mb-6 text-center text-3xl font-bold text-gray-800">
+              {t("games.definition.title")}
+            </span>
             <Header
-              points={game.getGameState().points}
+              index={game.getGameState().index}
               userId={null}
               lives={game.getGameState().lives}
             />
