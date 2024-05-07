@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
         });
         // Shuffle the words and pick 10 for the game
         wordsWithAudio = _.shuffle(wordsWithAudio);
-        const wordPool = wordsWithAudio.slice(0, 10);
+        const wordPool = wordsWithAudio.slice(0, 5);
 
         if (userId) {
             const result = await db.$transaction(async (prisma) => {

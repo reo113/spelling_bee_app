@@ -1,5 +1,6 @@
 import correct from '@/assets/correct.mp3';
-
+import incorrect from '@/assets/incorrect.mp3';
+import { set } from 'zod';
 class DefinitionGame  {
     constructor(data) {
         this.data= data;
@@ -25,7 +26,7 @@ class DefinitionGame  {
                 this.endGame();
             }
         }
-        this.playSound();
+        this.playSound(isCorrect);
         this.nextQuestion();
     }
     nextQuestion() {
@@ -54,9 +55,18 @@ class DefinitionGame  {
             index: this.currentIndex
         };
     }
-    playSound(){
-        const soundEffect = new Audio(correct);
-        soundEffect.play();
+    playSound(isCorrect){
+        if(isCorrect){
+            const soundEffect = new Audio(correct);
+            soundEffect.onended = () => this.nextQuestion();
+            soundEffect.play();
+       
+        }else{
+            const soundEffect = new Audio(incorrect);
+            soundEffect.onended = () => this.nextQuestion();
+            soundEffect.play();
+        }
+      
     }
 }
 

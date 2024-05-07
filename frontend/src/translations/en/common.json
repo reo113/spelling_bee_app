@@ -5,11 +5,14 @@
     "login": "Log In",
     "signup": "Sign Up",
     "loading": "Loading...",
-    "history": "Game History"
+    "history": "Game History",
+    "question": "Question"
   },
   "games": {
     "select": "Select Your Game",
     "play": "Play Now",
+    "alert": "Supported in English and Spanish.",
+    "warning": "Only supported in English.",
     "definition": {
       "title": "Choose the Correct Word",
       "description": "Choose the correct word that matches the definition."
