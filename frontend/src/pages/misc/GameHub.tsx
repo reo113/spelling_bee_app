@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
 import Navbar from "@/components/custom/Navbar";
+import CustomWarning from "@/components/custom/CustomWarning";
+import CustomAlert from "@/components/custom/CustomAlert";
 import { SpellCheck, Ear, MousePointerClick } from "lucide-react";
 
 import { useTranslation } from "react-i18next";
@@ -64,7 +66,12 @@ const GameHub = () => {
                     <h2 className="mb-3 text-2xl font-bold text-gray-800">
                       {game.name}
                     </h2>
-                    <p className="text-gray-600">{game.description}</p>
+                    <p className="mb-3 text-gray-600">{game.description}</p>
+                    {game.id === 2 || game.id === 3 ? (
+                      <CustomWarning />
+                    ) : (
+                      <CustomAlert />
+                    )}
                   </div>
 
                   <Link to={game.link}>
