@@ -30,6 +30,7 @@ class DefinitionGame  {
         this.nextQuestion();
     }
     nextQuestion() {
+        console.log(this.data.length)
         if (this.currentIndex < this.data.length - 1 && !this.gameOver) {
             this.currentIndex++;
         } else {
@@ -58,12 +59,10 @@ class DefinitionGame  {
     playSound(isCorrect){
         if(isCorrect){
             const soundEffect = new Audio(correct);
-            soundEffect.onended = () => this.nextQuestion();
             soundEffect.play();
        
         }else{
             const soundEffect = new Audio(incorrect);
-            soundEffect.onended = () => this.nextQuestion();
             soundEffect.play();
         }
       
