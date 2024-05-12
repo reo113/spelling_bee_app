@@ -14,7 +14,7 @@ model User {
   password  String
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
-  Response  Response[]
+  responses Response[]
 }
 
 model Game {
@@ -23,7 +23,7 @@ model Game {
   type      String
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
-  Question  Question[]
+  questions Question[]
 }
 
 model Question {
@@ -32,8 +32,8 @@ model Question {
   questionText  String?
   correctAnswer String?
   game          Game           @relation(fields: [gameId], references: [id])
-  AnswerChoice  AnswerChoice[]
-  Responses     Response[]
+  choices       AnswerChoice[]
+  responses     Response[]
 }
 
 model AnswerChoice {
@@ -45,7 +45,7 @@ model AnswerChoice {
 
 model Response {
   id         String   @id @default(uuid())
-  reponse    String
+  response   String
   questionId String
   userId     String
   isCorrect  Boolean
