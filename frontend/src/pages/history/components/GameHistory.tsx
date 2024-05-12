@@ -65,7 +65,7 @@ export default function History() {
                     <div className="flex flex-col">
                       <span className="">{question.questionText}</span>
                       <div className="flex flex-row gap-x-4">
-                        {question.AnswerChoice.map((choice, index) => {
+                        {question.choices.map((choice, index) => {
                           return (
                             <span
                               key={index}
@@ -80,15 +80,15 @@ export default function History() {
                           );
                         })}
                       </div>
-                      {question.Responses.length > 0 ? (
+                      {question.responses.length > 0 ? (
                         <span
                           className={
-                            question.Responses[0].isCorrect === true
+                            question.responses[0].isCorrect === true
                               ? "text-green-500"
                               : "text-red-500"
                           }
                         >
-                          {question.Responses[0].reponse}
+                          {question.responses[0].response}
                         </span>
                       ) : (
                         <span className="italic">No response found</span>

@@ -58,7 +58,7 @@ const GameWrapper = ({ game, gameType, onGameOver }) => {
     game.answerQuestion(isCorrect);
     if (currentUser) {
       submitResponse({
-        reponse: answer,
+        response: answer,
         questionId: currentQuestion.id,
         userId: currentUser.id,
         isCorrect: isCorrect,
