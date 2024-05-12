@@ -17,8 +17,8 @@ function getGameDataById(id) {
       gameId: id,
     },
     include: {
-      AnswerChoice: true,
-      Responses: true,
+      choices: true,
+      responses: true,
     },
   });
 }
