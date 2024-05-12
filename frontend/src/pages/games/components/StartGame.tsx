@@ -1,52 +1,51 @@
 import { useCallback, useEffect, useState, useContext } from "react";
+import { useParams } from "react-router-dom";
+
+import { AuthContext } from "@/contexts/AuthContext";
+
 import GameFactory from "../factory/gameFactory";
 import GameWrapper from "../wrapper/GameWrapper";
-import axios from "axios";
-import { useParams } from "react-router-dom";
 import Loading from "@/components/custom/Loading";
-import { AuthContext } from "@/contexts/AuthContext";
+
 import { useTranslation } from "react-i18next";
 
-const StartGame = () => {
-  const [game, setGame] = useState(null);
-  const [loading, setLoading] = useState(true);
+import { createGame } from "../api/createGame";
+
+export default function StartGame() {
   const { gameType } = useParams();
   const { currentUser } = useContext(AuthContext);
   const { i18n } = useTranslation();
-  // Define fetchData using useCallback
+
+  const [game, setGame] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   let userId = null;
   if (currentUser) {
     userId = currentUser.id;
   }
-  const fetchData = useCallback((type) => {
-    console.log("fetching", type);
-    setLoading(true);
-    axios
-      .post(`/api/v1/${type}`, {
-        userId: userId,
-        type: type,
-        languageCode: i18n.language,
-      })
-      .then((response) => {
-        const data = response.data;
-        const newGame = GameFactory.createGame(type, data);
-        setGame(newGame);
-        setLoading(false);
-        console.log("fetched");
-      })
-      .catch((error) => {
-        console.error("Failed to load game data:", error);
-        setGame(null);
-        setLoading(false); // Set loading to false also on error
-      });
-  }, []);
 
   // useEffect to call fetchData when gameType changes
   useEffect(() => {
+    const fetchGame = async (gameType: string) => {
+      setLoading(true);
+
+      const gameConfig = {
+        userId: userId,
+        type: gameType,
+        languageCode: i18n.language,
+      };
+
+      const gameData = await createGame(gameType, gameConfig);
+
+      const newGame = GameFactory.createGame(gameType, gameData);
+      setGame(newGame);
+      setLoading(false);
+    };
+
     if (!game && gameType) {
-      fetchData(gameType);
+      fetchGame(gameType);
     }
-  }, [gameType, fetchData, game]);
+  }, [gameType, game]);
 
   const onGameOver = useCallback(() => {
     setGame(null);
@@ -54,9 +53,5 @@ const StartGame = () => {
 
   if (loading) return <Loading />;
 
-  return (
-    <GameWrapper game={game} gameType={gameType} onGameOver={onGameOver} />
-  );
-};
-
-export default StartGame;
+  return <GameWrapper game={game} gameType={gameType} />;
+}
