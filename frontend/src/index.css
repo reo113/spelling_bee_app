@@ -78,41 +78,10 @@
   }
 
   .h2 {
-    @apply font-poppins mb-4 text-[35px] font-semibold leading-tight md:text-[54px] md:leading-[1.3];
+    @apply mb-4 font-poppins text-[35px] font-semibold leading-tight md:text-[54px] md:leading-[1.3];
   }
 
   .h3 {
-    @apply font-poppins mb-6 text-[26px] font-semibold leading-[46px];
+    @apply mb-6 font-poppins text-[26px] font-semibold leading-[46px];
   }
-
-  @keyframes bounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-25px);
-  }
-}
-
-.bounce {
-  animation: bounce 1s infinite;
-}
-
-.bee-background {
-  background-image: url("https://media4.giphy.com/media/3de40DZ7jr2k3jMZdX/giphy.gif?cid=6c09b952cpkzoeeto1vs3c28vk33vo4zwfrr0m04q390ty3k&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s"),
-    url("https://media4.giphy.com/media/3de40DZ7jr2k3jMZdX/giphy.gif?cid=6c09b952cpkzoeeto1vs3c28vk33vo4zwfrr0m04q390ty3k&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s"),
-    url("https://media4.giphy.com/media/3de40DZ7jr2k3jMZdX/giphy.gif?cid=6c09b952cpkzoeeto1vs3c28vk33vo4zwfrr0m04q390ty3k&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s");
-  background-position: left top, right bottom, center center;
-  background-repeat: no-repeat;
-  position: relative;
-  overflow: hidden;
-}
-
-@media (max-width: 768px) {
-  .bee-background {
-    background-position: -10% 15%, 70% 75%, 30% 45%; /* Shifted all positions 5% to the left /
-    background-size: 40% 40%, 40% 40%, 40% 40%; / Size set to 40% */
-  }
-}
 }

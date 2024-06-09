@@ -1,11 +1,10 @@
 const express = require("express");
 const _ = require("lodash");
 const { db } = require("../../utils/db");
+
 const router = express.Router();
 
-
 router.post("/", async (req, res) => {
-
   const { userId, type, languageCode } = req.body;
   try {
     let wordsWithDefinitions = [];
@@ -22,7 +21,8 @@ router.post("/", async (req, res) => {
           select: { word: true, definition: true },
         });
         break;
-      default: res.status(500).json({ error: "Invalid language code" });
+      default:
+        res.status(500).json({ error: "Invalid language code" });
     }
     // split the words into correct and incorrect answers
     wordsWithDefinitions = _.shuffle(wordsWithDefinitions);
@@ -34,8 +34,8 @@ router.post("/", async (req, res) => {
         const newGame = await prisma.game.create({
           data: {
             userId: userId,
-            type: type
-          }
+            type: type,
+          },
         });
 
         const questions = [];
@@ -49,20 +49,24 @@ router.post("/", async (req, res) => {
               gameId: newGame.id,
               questionText: word.definition,
               correctAnswer: word.word,
-              AnswerChoice: {
+              choices: {
                 create: [
                   { choice: word.word },
                   { choice: shuffledIncorrect[0].word },
-                  { choice: shuffledIncorrect[1].word }
-                ]
-              }
-            }
+                  { choice: shuffledIncorrect[1].word },
+                ],
+              },
+            },
           });
 
           questions.push({
             id: question.id,
             answer: word,
-            words: _.shuffle([word.word, shuffledIncorrect[0].word, shuffledIncorrect[1].word]),
+            words: _.shuffle([
+              word.word,
+              shuffledIncorrect[0].word,
+              shuffledIncorrect[1].word,
+            ]),
           });
         }
 
@@ -71,12 +75,16 @@ router.post("/", async (req, res) => {
       res.json(result);
     } else {
       // If no valid userId, just return the shuffled words without creating game data
-      const questions = correctAnswers.map(word => {
+      const questions = correctAnswers.map((word) => {
         const shuffledIncorrect = _.sampleSize(incorrectPool, 2);
         incorrectPool = _.difference(incorrectPool, shuffledIncorrect);
         return {
           answer: word,
-          words: _.shuffle([word.word, shuffledIncorrect[0].word, shuffledIncorrect[1].word]),
+          words: _.shuffle([
+            word.word,
+            shuffledIncorrect[0].word,
+            shuffledIncorrect[1].word,
+          ]),
         };
       });
 
@@ -86,7 +94,6 @@ router.post("/", async (req, res) => {
     console.error("Error fetching words and definitions:", error);
     res.status(500).send("Server Error");
   }
-
 });
 
 module.exports = router;

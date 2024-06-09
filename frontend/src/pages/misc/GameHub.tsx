@@ -46,7 +46,7 @@ const GameHub = () => {
 
         {/* Gamehub */}
         <div className="flex w-full items-center justify-center py-12">
-          <div className="mx-auto px-4">
+          <div className="mx-auto">
             <div className="mb-6 text-center">
               <span className="text-4xl font-bold text-gray-800">
                 {t("games.select")}

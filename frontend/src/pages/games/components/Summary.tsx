@@ -8,9 +8,8 @@ import { Gem, ArrowRight } from "lucide-react";
 
 import { useTranslation } from "react-i18next";
 
-function Modal({ game, hideModal }) {
+export default function Summary({ game, hideModal }) {
   const { currentUser } = useContext(AuthContext);
-
   const { t } = useTranslation("common");
 
   const points = game.points;
@@ -64,4 +63,3 @@ function Modal({ game, hideModal }) {
     </div>
   );
 }
-export default Modal;

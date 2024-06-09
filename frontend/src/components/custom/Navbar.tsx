@@ -19,11 +19,11 @@ export default function Navbar() {
     <div className="container mx-auto flex w-full items-center justify-between bg-none py-6">
       {/* Image and Spelling Bee Text Group */}
       <Link to="/">
-        <div className="flex items-center">
+        <div className="flex items-center gap-x-2 sm:gap-x-4">
           <img
             src="/logo.svg"
             alt="Spelling Bee Logo"
-            className="h-8 w-16 sm:h-16 sm:w-32"
+            className="h-12 w-12 sm:h-16 sm:w-16"
           />
           <span className="text-xl font-bold sm:text-2xl md:text-3xl">
             Spelling Bee App
@@ -38,7 +38,7 @@ export default function Navbar() {
 
         {currentUser === null ? (
           <Link to="/login">
-            <Button variant="outline" className="px-6 py-6">
+            <Button variant="outline" className="px-6 py-6 border-2">
               {t("app.login")}
             </Button>
           </Link>

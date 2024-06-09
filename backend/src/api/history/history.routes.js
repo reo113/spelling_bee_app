@@ -1,5 +1,4 @@
 const express = require("express");
-const { isAuthenticated } = require("../../middleware");
 const { findUserById } = require("../user/user.services");
 const { findGamesByUserId, getGameDataById } = require("./history.services");
 
